@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 
 // Screen imports
 import Onboarding from "./screens/Onboarding";
+import Consent from "./screens/Consent";
 
 // App
 export default function App() {
@@ -22,7 +23,9 @@ export default function App() {
     <NavigationContainer>
       <StatusBar />
 
-      <Onboarding />
+      {/* <Onboarding /> */}
+
+      <Consent />
 
       {/* <Navigation /> */}
 
