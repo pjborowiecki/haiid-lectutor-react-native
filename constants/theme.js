@@ -5,7 +5,7 @@ export const FONTS = {
 export const COLOURS = {
   primary: "#34B772",
 
-  onboardingBg: "F0EBD8",
+  onboardingBg: "#F0EBD8",
   onboardingDotsGray: "#5B6A74",
 
   yesGreen: "#CEFFBC",

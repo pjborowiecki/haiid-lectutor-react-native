@@ -1,9 +1,13 @@
+// import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 
 // Component imorts
 import Navigation from "./components/Navigation";
+
+// Screen imports
+import Onboarding from "./screens/Onboarding";
 
 // App
 export default function App() {
@@ -17,7 +21,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar />
-      <Navigation />
+
+      <Onboarding />
+
+      {/* <Navigation /> */}
+
+      {/* {onboardingDone ? <Navigation /> : <Onboarding />} */}
     </NavigationContainer>
   );
 }
