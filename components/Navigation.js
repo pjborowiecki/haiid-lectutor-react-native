@@ -1,0 +1,133 @@
+import { View, Image, StyleSheet } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+// Component imports
+import Home from "../screens/Home";
+import Settings from "../screens/Settings";
+import Stats from "../screens/Stats";
+import { COLOURS } from "../constants";
+
+// Navigation component
+export default function Navigation() {
+  const Tab = createBottomTabNavigator();
+
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: [styles.tabBar, styles.shadow],
+      }}
+    >
+      <Tab.Screen
+        name="Stats"
+        component={Stats}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                ...styles.tabBarOption,
+                backgroundColor: focused ? COLOURS.homeIconBg : "none",
+              }}
+            >
+              <Image
+                source={require("../assets/icons/chart-histogram-icon.png")}
+                resizeMode="contain"
+                style={{
+                  ...styles.tabBarOptionIcon,
+                  tintColor: focused ? COLOURS.black : COLOURS.gray,
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                ...styles.tabBarOption,
+                backgroundColor: focused ? COLOURS.homeIconBg : "none",
+              }}
+            >
+              <Image
+                source={require("../assets/icons/home-icon.png")}
+                resizeMode="contain"
+                style={{
+                  ...styles.tabBarOptionIcon,
+                  tintColor: focused ? COLOURS.black : COLOURS.gray,
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                ...styles.tabBarOption,
+                backgroundColor: focused ? COLOURS.homeIconBg : "none",
+              }}
+            >
+              <Image
+                source={require("../assets/icons/settings-icon.png")}
+                resizeMode="contain"
+                style={{
+                  ...styles.tabBarOptionIcon,
+                  tintColor: focused ? COLOURS.black : COLOURS.gray,
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+// Styles
+const styles = StyleSheet.create({
+  tabBar: {
+    position: "absolute",
+    bottom: 25,
+    left: 20,
+    right: 20,
+    elevation: 99,
+    zIndex: 99,
+    backgroundColor: COLOURS.white,
+    borderRadius: 50,
+    height: 61,
+  },
+
+  tabBarOption: {
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 12,
+    borderRadius: 50,
+  },
+
+  tabBarOptionIcon: {
+    width: 24,
+    height: 24,
+    bottom: 1,
+  },
+
+  shadow: {
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
+  },
+});

@@ -1,34 +1,23 @@
-import {createStackNavigator} from "@react-navigation/stack"
-import {NavigationContainer, DefaultTheme} from "@react-navigation/native"
-import {useFonts} from "expo-font"
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
-import Home from "./screens/Home"
-import Settings from "./screens/Settings"
+// Component imorts
+import Navigation from "./components/Navigation";
 
-const Stack = createStackNavigator()
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: "transparent"
-  }
-}
-
-
-const App = () => {
+// App
+export default function App() {
+  // Fonts import
   const [loaded] = useFonts({
-    HammersmithOne: require("./assets/fonts/HammersmithOne-Regular.ttf")
-  })
+    HammersmithOne: require("./assets/fonts/HammersmithOne-Regular.ttf"),
+  });
 
-  if (!loaded) return null
+  if (!loaded) return null;
 
-  return <NavigationContainer theme={theme}>
-    <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Settings" component={Settings} />
-    </Stack.Navigator>
-  </NavigationContainer>
+  return (
+    <NavigationContainer>
+      <StatusBar />
+      <Navigation />
+    </NavigationContainer>
+  );
 }
-
-export default App

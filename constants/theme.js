@@ -1,3 +1,7 @@
+export const FONTS = {
+  onboardingFont: "HammersmithOne",
+};
+
 export const COLOURS = {
   primary: "#34B772",
 
@@ -16,11 +20,13 @@ export const COLOURS = {
   white: "#FFF",
   black: "#000",
   gray: "#8D8D8D",
+  lightGray: "#DCDCDC",
 
   strokeYellow: "#FFF500",
 
   primaryText: "#000",
   secondaryText: "#818181",
+  tertiaryText: "#B9B9B9",
 
   chemistyBg: "#F7EFC4",
   materialsBg: "#ADE1FF",
@@ -42,14 +48,43 @@ export const COLOURS = {
 
   homeIconBg: "#DEF9C8",
 
-  rewriteFlashcardBg: "#FFAA7B"
+  rewriteFlashcardBg: "#FFAA7B",
+};
 
-}
+export const SHADOWS = {
+  light: {
+    shadowColor: COLOURS.gray,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
 
-export const FONTS = {
-  onboardingFont: "HammersmithOne"
-}
+    elevation: 3,
+  },
+  medium: {
+    shadowColor: COLOURS.gray,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
 
-export const SHADOWS = {}
+    elevation: 7,
+  },
+  dark: {
+    shadowColor: COLOURS.gray,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
 
-export const SIZES = {}
+    elevation: 14,
+  },
+};
+
+export const SIZES = {};
