@@ -138,3 +138,33 @@ export const settings = [
     type: "chevron",
   },
 ];
+
+export const quizzes_questions_and_answers = [
+  {
+    id: 1,
+    count: 4,
+    pairs: [
+      {
+        id: 1,
+        question: "What is Machine Learning?",
+        answer: "A field of study that gives computers the ability to learn without being explicitly programmed."
+      },
+      {
+        id: 2,
+        question: "What is Supervised Learning?",
+        answer: "The typed of machine learning in which machines are trained using well \"labelled\" data"
+      },
+      {
+        id: 3,
+        question: "What is Unsupervised Learning?",
+        answer: "The types of machine learning in which machines are trained using well \"unlabelled\" training data."
+      },
+      {
+        id: 4,
+        question: "What is a Feature?",
+        answer: ""
+      }
+    ]
+  }
+]
+

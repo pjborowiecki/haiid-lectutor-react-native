@@ -7,13 +7,13 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
-import { COLOURS, assets, quizzes } from "../constants";
+import { COLOURS, assets, quizzes } from "../../constants";
 
 // Component imports
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 // Home screen
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
       {/* Header */}
@@ -21,6 +21,7 @@ export default function Home() {
 
       {/* NewQuiz button */}
       <TouchableOpacity
+        onPress={() => navigation.navigate('QuizUpload')}
         style={{
           ...styles.newQuizButton,
           ...styles.shadowDark,

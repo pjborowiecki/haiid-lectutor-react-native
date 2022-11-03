@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { useFonts } from "expo-font";
 
 // Component imports
-import Navigation from "./components/Navigation";
+import Navigation from "./navigation/Navigation";
 
 // Screen imports
 import Onboarding from "./screens/Onboarding";

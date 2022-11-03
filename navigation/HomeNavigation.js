@@ -2,13 +2,13 @@ import { View, Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Component imports
-import Home from "../screens/Home";
-import Settings from "../screens/Settings";
-import Stats from "../screens/Stats";
+import Home from "../screens/home/Home";
+import Settings from "../screens/home/Settings";
+import Stats from "../screens/home/Stats";
 import { COLOURS } from "../constants";
 
 // Navigation component
-export default function Navigation() {
+export default function HomeNavigation() {
   const Tab = createBottomTabNavigator();
 
   return (

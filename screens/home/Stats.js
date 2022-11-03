@@ -1,11 +1,11 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-import { COLOURS, statistics, assets } from "../constants";
+import { COLOURS, statistics, assets } from "../../constants";
 
 // Component imports
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 // Stats screen
-export default function Stats({ navigation }) {
+export default function Stats() {
   return (
     // Stats screen wrapper
     <View style={styles.statsScreenWrapper}>

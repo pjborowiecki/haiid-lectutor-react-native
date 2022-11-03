@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { View, Text, Image, Switch, StyleSheet } from "react-native";
-import { COLOURS, settings } from "../constants";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { COLOURS, settings } from "../../constants";
 
 // Component imports
-import Header from "../components/Header";
-import SettingsSwitch from "../components/SettingsSwitch";
+import Header from "../../components/Header";
+import SettingsSwitch from "../../components/SettingsSwitch";
 
 // Settings screen
-export default function Settings({ navigation }) {
+export default function Settings() {
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [easyReadModeEnabled, setEasyReadModeEnabled] = useState(false);
