@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import Onboarding from "./screens/Onboarding";
 import Consent from "./screens/Consent";
 import { useState } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // App
 export default function App() {
@@ -18,24 +19,33 @@ export default function App() {
     HammersmithOne: require("./assets/fonts/HammersmithOne-Regular.ttf"),
   });
 
-  const [isOnboarding, setIsOnboarding] = useState(true)
-  const [hasConsented, setHasConsented] = useState(false)
+  const Stack = createNativeStackNavigator()
 
   if (!loaded) return null;
 
   return (
     <NavigationContainer>
       <StatusBar />
-
-      {/* Mutually exclusive to consent */}
-      {isOnboarding && <Onboarding onDone={setIsOnboarding}/>}
-
-      {/* Once onboarding is done and the user has not yet consented */}
-      {!hasConsented && !isOnboarding && <Consent onConsented={setHasConsented}/>}
-
-      {/* Not onboarding and consented implies that the user can see the app */}
-      {!isOnboarding && hasConsented && <Navigation />}
-
+      <Stack.Navigator 
+          initialRouteName={"onboarding"}
+          screenOptions={{
+            headerShown: false,
+            headerBackVisible: false
+          }}
+          >
+        <Stack.Screen
+          name="onboarding"
+          component={Onboarding}
+        />
+        <Stack.Screen
+          name="consent"
+          component={Consent}
+        />
+        <Stack.Screen
+          name="app"
+          component={Navigation}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

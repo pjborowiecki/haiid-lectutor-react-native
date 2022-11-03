@@ -5,7 +5,7 @@ import { COLOURS, onboardingData } from "../constants";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 // Onboarding screen
-export default function Onboarding({ onDone }) {
+export default function Onboarding({ navigation }) {
   const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
@@ -90,7 +90,7 @@ export default function Onboarding({ onDone }) {
   const renderDoneButton = () => {
     return (
       <TouchableOpacity
-        onPress={() => onDone(false)}
+        onPress={() => navigation.navigate('consent')}
         style={{
           ...styles.buttonWrapper,
           backgroundColor: COLOURS.primary,
