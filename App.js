@@ -1,16 +1,14 @@
-// import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { useFonts } from "expo-font";
 
-// Component imorts
+// Component imports
 import Navigation from "./components/Navigation";
 
 // Screen imports
 import Onboarding from "./screens/Onboarding";
 import Consent from "./screens/Consent";
-import { useState } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // App
 export default function App() {
@@ -19,7 +17,7 @@ export default function App() {
     HammersmithOne: require("./assets/fonts/HammersmithOne-Regular.ttf"),
   });
 
-  const Stack = createNativeStackNavigator()
+  const Stack = createStackNavigator()
 
   if (!loaded) return null;
 
