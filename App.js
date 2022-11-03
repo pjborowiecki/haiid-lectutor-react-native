@@ -27,22 +27,22 @@ export default function App() {
     <NavigationContainer>
       <StatusBar />
       <Stack.Navigator 
-          initialRouteName={"onboarding"}
+          initialRouteName={"Onboarding"}
           screenOptions={{
             headerShown: false,
             headerBackVisible: false
           }}
           >
         <Stack.Screen
-          name="onboarding"
+          name="Onboarding"
           component={Onboarding}
         />
         <Stack.Screen
-          name="consent"
+          name="Consent"
           component={Consent}
         />
         <Stack.Screen
-          name="app"
+          name="App"
           component={Navigation}
         />
       </Stack.Navigator>

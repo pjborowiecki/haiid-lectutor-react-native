@@ -90,7 +90,7 @@ export default function Onboarding({ navigation }) {
   const renderDoneButton = () => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate('consent')}
+        onPress={() => navigation.navigate('Consent')}
         style={{
           ...styles.buttonWrapper,
           backgroundColor: COLOURS.primary,
