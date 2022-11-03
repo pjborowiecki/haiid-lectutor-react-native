@@ -55,17 +55,6 @@ const styles = StyleSheet.create({
     zIndex: 3,
   },
 
-  shadow: {
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.45,
-    shadowRadius: 3.5,
-    elevation: 15,
-  },
-
   shadowDark: {
     shadowColor: COLOURS.black,
     shadowOffset: {
