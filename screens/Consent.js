@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { assets, COLOURS } from "../constants";
 
 // Consent screen
-export default function Consent({ onConsented }) {
+export default function Consent({ navigation }) {
   const [modalOn, setModalOn] = useState(true);
   const [consent, setConsent] = useState(false);
 
@@ -15,7 +15,7 @@ export default function Consent({ onConsented }) {
     setModalOn((previousState) => !previousState);
     setConsent((previousState) => !previousState);
     setTimeout(() => {
-      onConsented(true);
+      navigation.navigate('app')
     }, 1000)
   };
 
