@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 // Screen imports
 import Onboarding from "./screens/Onboarding";
 import Consent from "./screens/Consent";
+import { useState } from "react";
 
 // App
 export default function App() {
@@ -17,19 +18,24 @@ export default function App() {
     HammersmithOne: require("./assets/fonts/HammersmithOne-Regular.ttf"),
   });
 
+  const [isOnboarding, setIsOnboarding] = useState(true)
+  const [hasConsented, setHasConsented] = useState(false)
+
   if (!loaded) return null;
 
   return (
     <NavigationContainer>
       <StatusBar />
 
-      {/* <Onboarding /> */}
+      {/* Mutually exclusive to consent */}
+      {isOnboarding && <Onboarding onDone={setIsOnboarding}/>}
 
-      <Consent />
+      {/* Once onboarding is done and the user has not yet consented */}
+      {!hasConsented && !isOnboarding && <Consent onConsented={setHasConsented}/>}
 
-      {/* <Navigation /> */}
+      {/* Not onboarding and consented implies that the user can see the app */}
+      {!isOnboarding && hasConsented && <Navigation />}
 
-      {/* {onboardingDone ? <Navigation /> : <Onboarding />} */}
     </NavigationContainer>
   );
 }

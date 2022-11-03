@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { assets, COLOURS } from "../constants";
 
 // Consent screen
-export default function Consent() {
+export default function Consent({ onConsented }) {
   const [modalOn, setModalOn] = useState(true);
   const [consent, setConsent] = useState(false);
 
@@ -14,8 +14,9 @@ export default function Consent() {
   const handleAccept = () => {
     setModalOn((previousState) => !previousState);
     setConsent((previousState) => !previousState);
-
-    // TimeOut (?) and Redirect to Main with the tab nav =>
+    setTimeout(() => {
+      onConsented(true);
+    }, 1000)
   };
 
   return (
