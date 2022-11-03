@@ -2,9 +2,10 @@ import AppIntroSlider from "react-native-app-intro-slider";
 
 import { View, Image, Text, StyleSheet } from "react-native";
 import { COLOURS, onboardingData } from "../constants";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 // Onboarding screen
-export default function Onboarding() {
+export default function Onboarding({ onDone }) {
   const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
@@ -88,7 +89,8 @@ export default function Onboarding() {
 
   const renderDoneButton = () => {
     return (
-      <View
+      <TouchableOpacity
+        onPress={() => onDone(false)}
         style={{
           ...styles.buttonWrapper,
           backgroundColor: COLOURS.primary,
@@ -109,7 +111,7 @@ export default function Onboarding() {
         >
           Done
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   };
 
