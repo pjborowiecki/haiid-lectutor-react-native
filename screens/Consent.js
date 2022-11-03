@@ -15,8 +15,8 @@ export default function Consent({ navigation }) {
     setModalOn((previousState) => !previousState);
     setConsent((previousState) => !previousState);
     setTimeout(() => {
-      navigation.navigate('App')
-    }, 1000)
+      navigation.navigate("App");
+    }, 1000);
   };
 
   return (
@@ -140,22 +140,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20,
     paddingHorizontal: 30,
-  },
-
-  logo: {
-    width: "100%",
-    height: "100%",
-  },
-
-  shadow: {
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
   },
 
   shadowDark: {
