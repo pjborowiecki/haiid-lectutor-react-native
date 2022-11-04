@@ -123,7 +123,7 @@ export default function Onboarding({ navigation }) {
           marginRight: 20,
         }}
       >
-        <Text style={styles.buttonText}>Next</Text>
+        <Text style={styles.buttonText}></Text>
       </View>
     );
   };
@@ -136,7 +136,7 @@ export default function Onboarding({ navigation }) {
           marginLeft: 20,
         }}
       >
-        <Text style={styles.buttonText}>Back</Text>
+        <Text style={styles.buttonText}></Text>
       </View>
     );
   };
