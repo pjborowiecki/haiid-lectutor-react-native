@@ -149,7 +149,7 @@ export const quizzes_questions_and_answers = [
   {
     id: 1,
     count: 4,
-    pairs: [
+    flashcards: [
       {
         id: 1,
         question: "What is Machine Learning?",

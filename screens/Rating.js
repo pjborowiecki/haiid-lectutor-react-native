@@ -11,7 +11,7 @@ import {
 import SimpleHeader from "../components/SimpleHeader";
   
   // Home screen
-  export default function QuizUpload({ navigation }) {
+  export default function Rating({ navigation }) {
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
         {/* Header */}
@@ -20,25 +20,27 @@ import SimpleHeader from "../components/SimpleHeader";
         {/* Section Content */}
         <View style={styles.sectionContent}>
           {/* Section Title */}
-          <Text style={styles.sectionTitle}>Upload Your Slides!</Text>
+          <Text style={styles.sectionTitle}>How did we do?</Text>
 
-          {/* Description of what input does */}
-          <Text>Please upload a PDF or PPTX format file by clicking the button below!</Text>
+          {/* Description of rating */}
+          <Text>Let the AI know if you liked this quiz using the buttons below. It will take this feedback and try its best to learn from it!</Text>
 
-          {/* Input for importing files */}
+          {/* Rating thumbs */}
+          <View>
+            <Button
+                title="Like"
+                onPress={() => navigation.navigate("Homepage")}
+            />
+            <Button 
+                title="Dislike"
+                onPress={() => navigation.navigate("Homepage")}
+            />
+          </View>
+          
+          {/* Skip button */}
           <Button
-            title="Input file"
-          />
-
-          {/* Note after input */}
-          <Text>Ensure your PDF contains enough text.</Text>
-  
-          {/* Confirmation button */}
-          <Button
-            onPress={() => navigation.navigate(
-                'QuizCreate'
-            )}
-            title="Confirm Upload"
+            onPress={() => navigation.navigate("Homepage")}
+            title="Skip"
           />
         </View>
 

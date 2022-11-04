@@ -22,7 +22,7 @@ const Row = ({ children }) => (
 )
   
   // Home screen
-  export default function QuizCreator({ navigator }) {
+  export default function QuizCreator({ navigation }) {
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
         {/* Header */}
@@ -68,9 +68,9 @@ const Row = ({ children }) => (
   
           {/* Generate quiz button */}
           <Button
-            onPress={() => navigator.navigate(
+            onPress={() => navigation.navigate(
                 'PlayQuiz', 
-                {quiz: quizzes_questions_and_answers[0]}
+                {quizId: 1}
             )}
             title="Generate quiz!"
           />
