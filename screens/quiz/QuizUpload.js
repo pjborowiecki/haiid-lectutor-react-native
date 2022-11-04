@@ -5,12 +5,12 @@ import {
     StyleSheet,
     Button,
   } from "react-native";
-  import { COLOURS } from "../constants";
+  import { COLOURS } from "../../constants";
   
   // Component imports
-import SimpleHeader from "../components/SimpleHeader";
+import SimpleHeader from "../../components/SimpleHeader";
   
-  // Home screen
+  // Quiz upload screen
   export default function QuizUpload({ navigation }) {
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>

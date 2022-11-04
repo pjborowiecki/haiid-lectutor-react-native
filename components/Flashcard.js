@@ -11,7 +11,7 @@ import {
 import { TextInput } from "react-native-gesture-handler";
 import { useState } from "react";
   
-  // Home screen
+  // Flashcard component
   export default function Flashcard({ 
     flashcard, 
     size, 
@@ -53,11 +53,11 @@ import { useState } from "react";
           { revealAnswers && <View>
             {flashcard.id > 1 && <Button 
                 title="Prev"
-                onPress={onPrev}
+                onPress={() => {setRevealAnswer(false); onPrev()}}
             />}
             {flashcard.id < size && <Button 
                 title="Next"
-                onPress={onNext}
+                onPress={() => {setRevealAnswer(false); onNext()}}
             />}
           </View>}
       </View>

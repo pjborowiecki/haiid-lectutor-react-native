@@ -5,14 +5,14 @@ import {
     StyleSheet,
     Button,
   } from "react-native";
-  import { COLOURS, quizzes, quizzes_questions_and_answers } from "../constants";
+  import { COLOURS, quizzes, quizzes_questions_and_answers } from "../../constants";
   
   // Component imports
-import SimpleHeader from "../components/SimpleHeader";
+import SimpleHeader from "../../components/SimpleHeader";
 import { useState } from "react";
-import Flashcard from "../components/Flashcard";
+import Flashcard from "../../components/Flashcard";
   
-  // Home screen
+  // Quiz player screen
   export default function QuizPlayer({ navigation, quizId }) {
     const quiz = quizzes.filter(quiz => quiz.id === quizId)
     const flashcards = quizzes_questions_and_answers.filter(quiz => quizId === quiz.quizId)[0].flashcards

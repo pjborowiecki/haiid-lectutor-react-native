@@ -5,24 +5,27 @@ import {
     StyleSheet,
     Button,
   } from "react-native";
-  import { COLOURS, colour_selector } from "../constants";
+  import { COLOURS, colour_selector } from "../../constants";
   
   // Component imports
-import SimpleHeader from "../components/SimpleHeader";
+import SimpleHeader from "../../components/SimpleHeader";
 import { TextInput } from "react-native-gesture-handler";
-
-const Col = ({ children }) => {
-  return  (
-    <View style={styles["col"]}>{children}</View>
-  )
-}
-
-const Row = ({ children }) => (
-  <View style={styles.row}>{children}</View>
-)
   
-  // Home screen
+  // Quiz creator screen
   export default function QuizCreator({ navigation }) {
+
+    // Colour selector column
+    const Col = ({ children }) => {
+      return  (
+        <View style={styles["col"]}>{children}</View>
+      )
+    }
+    
+    // Colour selector row
+    const Row = ({ children }) => (
+      <View style={styles.row}>{children}</View>
+    )
+
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
         {/* Header */}
@@ -69,7 +72,7 @@ const Row = ({ children }) => (
           {/* Generate quiz button */}
           <Button
             onPress={() => navigation.navigate(
-                'PlayQuiz', 
+                "QuizPlay", 
                 {quizId: 1}
             )}
             title="Generate quiz!"
