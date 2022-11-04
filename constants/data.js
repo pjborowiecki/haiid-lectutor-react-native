@@ -91,6 +91,12 @@ export const statistics = [
   },
 ];
 
+export const colour_selector = [
+  ["#FF7B7B", "#EBBFFF", "#ADE1FF", "#CEF7C4"],
+  ["#B5B0F4", "#FFAA7B", "#FF7BD2", "#AD7BFF"],
+  ["#DCDCDC", "#A7A7A7", "#686868", "#434343"]
+]
+
 export const settings = [
   {
     id: 1,

@@ -5,10 +5,21 @@ import {
     StyleSheet,
     Button,
   } from "react-native";
-  import { COLOURS } from "../constants";
+  import { COLOURS, colour_selector } from "../constants";
   
   // Component imports
 import SimpleHeader from "../components/SimpleHeader";
+import { TextInput } from "react-native-gesture-handler";
+
+const Col = ({ children }) => {
+  return  (
+    <View style={styles["col"]}>{children}</View>
+  )
+}
+
+const Row = ({ children }) => (
+  <View style={styles.row}>{children}</View>
+)
   
   // Home screen
   export default function QuizCreator({ navigator }) {
@@ -31,12 +42,26 @@ import SimpleHeader from "../components/SimpleHeader";
           <Text>Enter the number of questions you would like to see:</Text>
 
           {/* Number of questions input */}
-          
+          <TextInput
+            placeholder="15"
+            keyboardType="numeric"
+          />
 
           {/* Colour selector description */}
           <Text>Type in the name of the quiz:</Text>
 
           {/* Colour selector */}
+          <View>
+            {colour_selector.map((row, i) => (
+              <Row key={i}>
+                {row.map((colour, j) => (
+                  <Col key={j}>
+                    <Text>{colour}</Text>
+                  </Col>
+                ))}
+              </Row>
+            ))}
+          </View>
 
           {/* Note after input */}
           <Text>Ensure your PDF contains enough text.</Text>
@@ -75,6 +100,16 @@ import SimpleHeader from "../components/SimpleHeader";
       fontFamily: "HammersmithOne",
       fontSize: 20,
       textAlign: "center",
+    },
+
+    row: {
+      flexDirection: "row"
+    },
+
+    "col":  {
+      borderColor:  "#fff",
+      borderWidth:  1,
+      flex:  1
     },
   });
   

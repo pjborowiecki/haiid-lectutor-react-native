@@ -24,7 +24,7 @@ export default function Navigation() {
         component={QuizUpload}
       />
       <Stack.Screen
-        name="QuizCreator"
+        name="QuizCreate"
         component={QuizCreator}
       />
     </Stack.Navigator>

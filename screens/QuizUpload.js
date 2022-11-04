@@ -11,7 +11,7 @@ import {
 import SimpleHeader from "../components/SimpleHeader";
   
   // Home screen
-  export default function QuizUpload({ navigator }) {
+  export default function QuizUpload({ navigation }) {
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
         {/* Header */}
@@ -26,13 +26,16 @@ import SimpleHeader from "../components/SimpleHeader";
           <Text>Please upload a PDF or PPTX format file by clicking the button below!</Text>
 
           {/* Input for importing files */}
+          <Button
+            title="Input file"
+          />
 
           {/* Note after input */}
           <Text>Ensure your PDF contains enough text.</Text>
   
           {/* Confirmation button */}
           <Button
-            onPress={() => navigator.navigate(
+            onPress={() => navigation.navigate(
                 'QuizCreate', 
                 {quiz: quizzes_questions_and_answers[0]}
             )}
