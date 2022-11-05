@@ -9,9 +9,15 @@ import {
   
   // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
+import TitlePill from "../../components/TitlePill";
   
   // Quiz upload screen
   export default function QuizUpload({ navigation }) {
+
+    const createQuiz = () => {
+      navigation.navigate("QuizCreate");
+    }
+
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
         {/* Header */}
@@ -20,7 +26,7 @@ import SimpleHeader from "../../components/SimpleHeader";
         {/* Section Content */}
         <View style={styles.sectionContent}>
           {/* Section Title */}
-          <Text style={styles.sectionTitle}>Upload Your Slides!</Text>
+          <TitlePill title="Upload Your Slides!" />
 
           {/* Description of what input does */}
           <Text>Please upload a PDF or PPTX format file by clicking the button below!</Text>
@@ -35,9 +41,7 @@ import SimpleHeader from "../../components/SimpleHeader";
   
           {/* Confirmation button */}
           <Button
-            onPress={() => navigation.navigate(
-                'QuizCreate'
-            )}
+            onPress={createQuiz}
             title="Confirm Upload"
           />
         </View>
@@ -55,16 +59,10 @@ import SimpleHeader from "../../components/SimpleHeader";
       display: "flex",
       alignItems: "center",
     },
+
     sectionContent: {
-      top: 234,
       width: "100%",
       paddingHorizontal: 24,
-    },
-  
-    sectionTitle: {
-      fontFamily: "HammersmithOne",
-      fontSize: 20,
-      textAlign: "center",
     },
   });
   

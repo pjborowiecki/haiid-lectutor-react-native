@@ -8,7 +8,7 @@ import Stats from "../screens/home/Stats";
 import SettingsNavigation from "./SettingsNavigation";
 
 // Navigation component
-export default function HomeNavigation() {
+export default function HomeNavigation({ navigation }) {
   const Tab = createBottomTabNavigator();
 
   return (

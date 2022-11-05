@@ -11,7 +11,7 @@ export default function QuizCard({ navigation, quiz }) {
             backgroundColor: quiz.colour,
         }}
         onPress={() => navigation.navigate(
-            "QuizPlay",
+            "QuizPlay", 
             {quizId: 1}
         )}
     >

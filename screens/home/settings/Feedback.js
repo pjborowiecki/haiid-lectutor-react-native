@@ -34,7 +34,7 @@ export default function Feedback({ navigation }) {
       {/* Submit button */}
       <Button
         title="Submit"
-        onPress={() => navigation.navigate("Homepage")}
+        onPress={() => navigation.navigate("Home")}
       />
     </View>
   );

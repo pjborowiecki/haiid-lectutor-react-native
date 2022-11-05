@@ -1,9 +1,8 @@
-import { SafeAreaView, ScrollView, View, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { COLOURS, assets, quizzes } from "../../constants";
 
 // Component imports
 import Header from "../../components/Header";
-import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 import QuizCard from "../../components/QuizCard";
 
@@ -15,11 +14,16 @@ export default function Home({ navigation }) {
       <Header />
 
       {/* NewQuiz button */}
-      <FunctionCircle
-        navigation={navigation}
-        navigateTo="QuizUpload"
-        image={assets.plusIcon}
-      />
+      <TouchableOpacity
+        onPress={() => navigation ? navigation.navigate("QuizUpload") : {}}
+        style={styles.button}
+        >
+        <Image
+            source={assets.plusIcon}
+            resizeMode="contain"
+            style={styles.buttonIcon}
+        />
+      </TouchableOpacity>
 
       {/* Section Content */}
       <View style={styles.sectionContent}>
@@ -58,5 +62,29 @@ const styles = StyleSheet.create({
 
   quizList: {
     marginTop: 28,
+  },
+
+  button: {
+    width: 67,
+    height: 67,
+    backgroundColor: COLOURS.white,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 100,
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 14,
+  },
+
+  buttonIcon: {
+    width: 60,
+    height: 60,
+    bottom: -3,
+    right: -1,
   },
 });

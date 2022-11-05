@@ -10,6 +10,7 @@ import {
   // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
 import { TextInput } from "react-native-gesture-handler";
+import TitlePill from "../../components/TitlePill";
   
   // Quiz creator screen
   export default function QuizCreator({ navigation }) {
@@ -34,7 +35,7 @@ import { TextInput } from "react-native-gesture-handler";
         {/* Section Content */}
         <View style={styles.sectionContent}>
           {/* Section Title */}
-          <Text style={styles.sectionTitle}>Create your quiz!</Text>
+          <TitlePill title="Create your quiz!" />
 
           {/* Title input descrition */}
           <Text>Type in the name of the quiz:</Text>
@@ -94,15 +95,8 @@ import { TextInput } from "react-native-gesture-handler";
     },
   
     sectionContent: {
-      top: 234,
       width: "100%",
       paddingHorizontal: 24,
-    },
-  
-    sectionTitle: {
-      fontFamily: "HammersmithOne",
-      fontSize: 20,
-      textAlign: "center",
     },
 
     row: {
