@@ -7,11 +7,11 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
-import { COLOURS, quizzes_questions_and_answers, assets } from "../constants";
+import { COLOURS, quizzes_questions_and_answers, assets } from "../../constants";
 
 // Component imports
-import SimpleHeader from "../components/SimpleHeader";
-import Footer from "../components/Footer";
+import SimpleHeader from "../../components/SimpleHeader";
+import Footer from "../../components/Footer";
 
 // Home screen
 export default function QuizUpload({ navigation }) {
@@ -27,7 +27,7 @@ export default function QuizUpload({ navigation }) {
         
         <View style={{ ...styles.sectionTitlePill, ...styles.shadowDark }}>
           {/* Section Title */}
-          <TitlePill title="Upload your slides!" />
+          <Text style={styles.sectionTitle}>Upload your slides!</Text>
         </View>
 
         {/* Description of what input does */}
