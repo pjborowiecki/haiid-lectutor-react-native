@@ -8,7 +8,6 @@ import TitlePill from "../../../components/TitlePill";
 
 // Terms & conditions screen
 export default function TermsAndConditions({ navigation }) {
-
   // List item component
   const listItem = ({ item }) => (
     <View style={styles.listItem}>
@@ -24,7 +23,8 @@ export default function TermsAndConditions({ navigation }) {
       {/* Back button */}
       <FunctionCircle
         navigation={navigation}
-        image={assets.plusIcon}
+        icon={assets.chevronLeftIcon}
+        iconSize={42}
         navigateTo="Settings"
       />
 
@@ -32,10 +32,10 @@ export default function TermsAndConditions({ navigation }) {
       <TitlePill title="Terms & Conditions" />
 
       {/* List of terms & conditions */}
-      <FlatList 
+      <FlatList
         data={terms_and_conditions}
         renderItem={listItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
@@ -49,11 +49,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  listItem: {
+  listItem: {},
 
-  },
-
-  listItemText: {
-
-  },
+  listItemText: {},
 });

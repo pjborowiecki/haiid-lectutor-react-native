@@ -16,7 +16,8 @@ export default function Feedback({ navigation }) {
       {/* Back button */}
       <FunctionCircle
         navigation={navigation}
-        image={assets.plusIcon}
+        icon={assets.chevronLeftIcon}
+        iconSize={42}
         navigateTo="Settings"
       />
 
@@ -24,18 +25,16 @@ export default function Feedback({ navigation }) {
       <TitlePill title="Give Feedback" />
 
       {/* Explanation of screen */}
-      <Text>Your feedback is greatly appreciated and it helps us make the application even better!</Text>
+      <Text>
+        Your feedback is greatly appreciated and it helps us make the
+        application even better!
+      </Text>
 
       {/* Feedback input */}
-      <TextInput 
-        placeholder="Please tell us what you think..."
-      />
+      <TextInput placeholder="Please tell us what you think..." />
 
       {/* Submit button */}
-      <Button
-        title="Submit"
-        onPress={() => navigation.navigate("Home")}
-      />
+      <Button title="Submit" onPress={() => navigation.navigate("Home")} />
     </View>
   );
 }

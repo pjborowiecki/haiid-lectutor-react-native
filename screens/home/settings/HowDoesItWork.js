@@ -1,4 +1,4 @@
-import { View,Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { assets, COLOURS, how_does_it_work } from "../../../constants";
 
 // Component imports
@@ -8,7 +8,6 @@ import TitlePill from "../../../components/TitlePill";
 
 // How does it work screen
 export default function HowDoesItWork({ navigation }) {
-
   // List item component
   const listItem = ({ item }) => (
     <View style={styles.listItem}>
@@ -25,7 +24,8 @@ export default function HowDoesItWork({ navigation }) {
       {/* Back button */}
       <FunctionCircle
         navigation={navigation}
-        image={assets.plusIcon}
+        icon={assets.chevronLeftIcon}
+        iconSize={42}
         navigateTo="Settings"
       />
 
@@ -33,10 +33,10 @@ export default function HowDoesItWork({ navigation }) {
       <TitlePill title="How does it work?" />
 
       {/* List of terms & conditions */}
-      <FlatList 
+      <FlatList
         data={how_does_it_work}
         renderItem={listItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
@@ -50,15 +50,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  listItem: {
+  listItem: {},
 
-  },
+  listItemQuestion: {},
 
-  listItemQuestion: {
-
-  },
-
-  listItemAnswer: {
-
-},
+  listItemAnswer: {},
 });

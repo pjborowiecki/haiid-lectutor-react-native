@@ -16,7 +16,8 @@ export default function HelpAndSupport({ navigation }) {
       {/* Back button */}
       <FunctionCircle
         navigation={navigation}
-        image={assets.plusIcon}
+        icon={assets.chevronLeftIcon}
+        iconSize={42}
         navigateTo="Settings"
       />
 
@@ -24,7 +25,10 @@ export default function HelpAndSupport({ navigation }) {
       <TitlePill title="Help & Support" />
 
       {/* Explanation of screen */}
-      <Text>If you need any help with using the app, feel overwhelmed or just want somebody to talk to, please feel free to contact us at Team Alpha HQ:</Text>
+      <Text>
+        If you need any help with using the app, feel overwhelmed or just want
+        somebody to talk to, please feel free to contact us at Team Alpha HQ:
+      </Text>
 
       {/* Support email */}
       <View>
@@ -32,10 +36,14 @@ export default function HelpAndSupport({ navigation }) {
         <Text>lectutor@teamalpha.com</Text>
         <View style={styles.hr} />
       </View>
-      
+
       {/* Thank you section */}
       <View>
-        <Text>Thank you for using this app and supporting our work. We hope that we were able to meet and exceed your needs and expectations and wish all the best with learning in the future!</Text>
+        <Text>
+          Thank you for using this app and supporting our work. We hope that we
+          were able to meet and exceed your needs and expectations and wish all
+          the best with learning in the future!
+        </Text>
         <Text>Love, Team Alpha ❤️</Text>
       </View>
     </View>
@@ -51,7 +59,7 @@ const styles = StyleSheet.create({
   },
 
   hr: {
-    borderBottomColor: 'black',
+    borderBottomColor: "black",
     borderBottomWidth: StyleSheet.hairlineWidth,
-  }
+  },
 });

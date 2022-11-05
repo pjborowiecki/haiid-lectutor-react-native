@@ -7,15 +7,14 @@ import Header from "../../components/Header";
 import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 
-
 // Stats screen
 export default function Stats() {
   // Function to check if some statistics have been incremented
   const checkIfStatsExist = () => {
-    return statistics.some(stat => stat.count > 0);
-  }
+    return statistics.some((stat) => stat.count > 0);
+  };
 
-  const [statsState, setStatsState] = useState(checkIfStatsExist())
+  const [statsState, setStatsState] = useState(checkIfStatsExist());
 
   return (
     // Stats screen wrapper
@@ -24,12 +23,10 @@ export default function Stats() {
       <Header />
 
       {/* Share button */}
-      <FunctionCircle
-        image={assets.shareIcon}
-      />
+      <FunctionCircle icon={assets.shareIcon} iconSize={34} right={1} />
 
       {/* Section title pill */}
-      <TitlePill title="Statistics"/>
+      <TitlePill title="Statistics" />
 
       {/* Stats list */}
       <View style={styles.statsList}>
@@ -52,12 +49,14 @@ export default function Stats() {
       </View>
 
       {/* Bottom text */}
-      {!statsState && <View style={styles.bottomTextContainer}>
-        <Text style={styles.bottomText}>It's a bit quiet here...</Text>
-        <Text style={styles.bottomText}>
-          Try interacting with the app to record this data!
-        </Text>
-      </View>}
+      {!statsState && (
+        <View style={styles.bottomTextContainer}>
+          <Text style={styles.bottomText}>It's a bit quiet here...</Text>
+          <Text style={styles.bottomText}>
+            Try interacting with the app to record this data!
+          </Text>
+        </View>
+      )}
     </SafeAreaView>
   );
 }
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
   bottomTextContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 46,
+    marginTop: 28,
     marginBottom: 84,
     paddingHorizontal: 36,
   },

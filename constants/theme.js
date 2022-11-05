@@ -28,7 +28,7 @@ export const COLOURS = {
   secondaryText: "#818181",
   tertiaryText: "#B9B9B9",
 
-  chemistyBg: "#F7EFC4",
+  chemistryBg: "#F7EFC4",
   materialsBg: "#ADE1FF",
   particlePhysicsBg: "#B5B0F4",
   anotherQuizBg: "#CEF7C4",

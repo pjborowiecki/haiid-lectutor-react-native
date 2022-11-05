@@ -2,17 +2,29 @@ import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import { COLOURS } from "../constants";
 
 // Function circle that appears in the header
-export default function FunctionCircle({ navigation=null, image, navigateTo }) {
+export default function FunctionCircle({
+  navigation = null,
+  icon,
+  iconSize,
+  bottom,
+  right,
+  navigateTo,
+}) {
   return (
     <TouchableOpacity
-        onPress={() => navigation ? navigation.navigate(navigateTo) : {}}
-        style={styles.button}
-        >
-        <Image
-            source={image}
-            resizeMode="contain"
-            style={styles.buttonIcon}
-        />
+      onPress={() => (navigation ? navigation.navigate(navigateTo) : {})}
+      style={styles.button}
+    >
+      <Image
+        source={icon}
+        resizeMode="contain"
+        style={{
+          width: iconSize,
+          height: iconSize,
+          bottom: bottom,
+          right: right,
+        }}
+      />
     </TouchableOpacity>
   );
 }
@@ -27,7 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 100,
     position: "absolute",
-    top: 130,
+    top: 140,
     left: 30,
     shadowColor: COLOURS.black,
     shadowOffset: {
@@ -37,12 +49,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.41,
     shadowRadius: 9.11,
     elevation: 14,
-  },
-
-  buttonIcon: {
-    width: 60,
-    height: 60,
-    bottom: -3,
-    right: -1,
   },
 });

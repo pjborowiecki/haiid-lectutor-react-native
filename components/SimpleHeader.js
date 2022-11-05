@@ -7,7 +7,7 @@ export default function SimpleHeader({ navigation }) {
     // headerWrapper
     <View style={styles.headerWrapper}>
       {/* Header image */}
-      <Image source={assets.header} style={styles.headerImage} />
+      <Image source={assets.simpleHeader} style={styles.headerImage} />
     </View>
   );
 }
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   headerWrapper: {
     height: 220,
     position: "absolute",
-    top: 0,
+    top: -30,
     right: 0,
     left: 0,
   },
