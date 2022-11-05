@@ -68,10 +68,7 @@ const Row = ({ children }) => (
   
           {/* Generate quiz button */}
           <Button
-            onPress={() => navigation.navigate(
-                'PlayQuiz', 
-                {quizId: 1}
-            )}
+            onPress={() => navigation.navigate("LoadingScreen")}
             title="Generate quiz!"
           />
         </View>

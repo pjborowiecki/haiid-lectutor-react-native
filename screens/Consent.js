@@ -16,6 +16,10 @@ export default function Consent({ navigation }) {
     setConsent((previousState) => !previousState);
     setTimeout(() => {
       navigation.navigate("App");
+      setTimeout(() => {
+        setModalOn(true);
+        setConsent(false);
+      }, 2000)
     }, 1000);
   };
 

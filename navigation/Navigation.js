@@ -5,6 +5,7 @@ import QuizUpload from "../screens/QuizUpload";
 import QuizCreator from "../screens/QuizCreator";
 import QuizPlayer from "../screens/QuizPlayer";
 import Rating from "../screens/Rating";
+import LoadingScreen from "../screens/LoadingScreen";
 
 // Navigation component
 export default function Navigation() {
@@ -30,7 +31,11 @@ export default function Navigation() {
         component={QuizCreator}
       />
       <Stack.Screen
-        name="PlayQuiz"
+        name="LoadingScreen"
+        component={LoadingScreen}
+      />
+      <Stack.Screen
+        name="QuizPlay"
         component={QuizPlayer}
       />
       <Stack.Screen
