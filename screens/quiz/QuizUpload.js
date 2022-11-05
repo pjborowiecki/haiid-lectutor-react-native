@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
 
   sectionContent: {
-    top: 142,
+    top: 132,
     width: "100%",
     paddingHorizontal: 24,
     alignItems: "center",
