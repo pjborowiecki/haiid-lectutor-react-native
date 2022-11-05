@@ -3,6 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeNavigation from "./HomeNavigation";
 import QuizUpload from "../screens/QuizUpload";
 import QuizCreator from "../screens/QuizCreator";
+import QuizPlayer from "../screens/QuizPlayer";
+import Rating from "../screens/Rating";
 
 // Navigation component
 export default function Navigation() {
@@ -26,6 +28,14 @@ export default function Navigation() {
       <Stack.Screen
         name="QuizCreate"
         component={QuizCreator}
+      />
+      <Stack.Screen
+        name="PlayQuiz"
+        component={QuizPlayer}
+      />
+      <Stack.Screen
+        name="Rating"
+        component={Rating}
       />
     </Stack.Navigator>
   );

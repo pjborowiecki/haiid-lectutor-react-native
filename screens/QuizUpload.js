@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  Button,
 } from "react-native";
 import { COLOURS, quizzes_questions_and_answers, assets } from "../constants";
 
