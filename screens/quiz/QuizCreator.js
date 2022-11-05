@@ -72,10 +72,7 @@ import TitlePill from "../../components/TitlePill";
   
           {/* Generate quiz button */}
           <Button
-            onPress={() => navigation.navigate(
-                "QuizPlay", 
-                {quizId: 1}
-            )}
+            onPress={() => navigation.navigate("QuizLoadingScreen")}
             title="Generate quiz!"
           />
         </View>
