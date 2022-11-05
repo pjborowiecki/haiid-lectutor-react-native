@@ -5,17 +5,19 @@ import {
     StyleSheet,
     Button,
   } from "react-native";
-  import { COLOURS, quizzes, quizzes_questions_and_answers } from "../constants";
+  import { COLOURS, quizzes, quizzes_questions_and_answers } from "../../constants";
   
   // Component imports
-import SimpleHeader from "../components/SimpleHeader";
+import SimpleHeader from "../../components/SimpleHeader";
 import { useState } from "react";
-import Flashcard from "../components/Flashcard";
+import Flashcard from "../../components/Flashcard";
+import TitlePill from "../../components/TitlePill";
   
-  // Home screen
-  export default function QuizPlayer({ navigation, quizId }) {
-    const quiz = quizzes.filter(quiz => quiz.id === quizId)
-    const flashcards = quizzes_questions_and_answers.filter(quiz => quizId === quiz.quizId)[0].flashcards
+  // Quiz player screen
+  export default function QuizPlayer({ navigation, route }) {
+    const quizId = route.params.quizId;
+    const quiz = quizzes.filter(quiz => quiz.id === quizId)[0]
+    const flashcards = quizzes_questions_and_answers.filter(quiz => quizId === quiz.id)[0].flashcards
 
     const [index, setIndex] = useState(0)
     const [currentFlashcard, setCurrentFlashcard] = useState(flashcards[0]);
@@ -47,7 +49,7 @@ import Flashcard from "../components/Flashcard";
         {/* Section Content */}
         <View style={styles.sectionContent}>
           {/* Section Title */}
-          <Text style={styles.sectionTitle}>{quiz.title}</Text>
+          <TitlePill title={quiz.name} />
 
           {/* Flashcard */}
           <Flashcard 
@@ -78,16 +80,10 @@ import Flashcard from "../components/Flashcard";
       display: "flex",
       alignItems: "center",
     },
+    
     sectionContent: {
-      top: 234,
       width: "100%",
-      paddingHorizontal: 24,
-    },
-  
-    sectionTitle: {
-      fontFamily: "HammersmithOne",
-      fontSize: 20,
-      textAlign: "center",
+      paddingHorizontal: 50,
     },
   });
   

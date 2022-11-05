@@ -1,4 +1,5 @@
 import assets from "./assets";
+import { COLOURS } from "./theme";
 
 export const onboardingData = [
   {
@@ -28,13 +29,6 @@ export const onboardingData = [
   },
   {
     id: 5,
-    title:
-      "You can rate the performance of the AI after every quiz. Your feedback can directly affect the questions you get.",
-    text: "AI isn't perfect just like us, but it will do its best to learn from you!",
-    image: assets.onboardingImage05,
-  },
-  {
-    id: 6,
     title: "We hope you enjoy your time with our app.",
     text: "Best of luck with your learning journey!",
     image: assets.onboardingImage06,
@@ -46,25 +40,25 @@ export const quizzes = [
     id: 1,
     name: "Organic Chemistry",
     lastAccessed: "23/09/2022",
-    colour: "#F7EFC4",
+    colour: COLOURS.chemistryBg,
   },
   {
     id: 2,
     name: "Materials",
     lastAccessed: "04/11/2022",
-    colour: "#ADE1FF",
+    colour: COLOURS.materialsBg,
   },
   {
     id: 3,
     name: "Particle Physics",
     lastAccessed: "06/11/2022",
-    colour: "#B5B0F4",
+    colour: COLOURS.particlePhysicsBg,
   },
   {
     id: 4,
     name: "Computer Science",
     lastAccessed: "06/11/2022",
-    colour: "#CEF7C4",
+    colour: COLOURS.anotherQuizBg,
   },
 ];
 
@@ -94,8 +88,36 @@ export const statistics = [
 export const colour_selector = [
   ["#FF7B7B", "#EBBFFF", "#ADE1FF", "#CEF7C4"],
   ["#B5B0F4", "#FFAA7B", "#FF7BD2", "#AD7BFF"],
-  ["#DCDCDC", "#A7A7A7", "#686868", "#434343"]
-]
+  ["#DCDCDC", "#A7A7A7", "#686868", "#434343"],
+];
+
+export const terms_and_conditions = [
+  {
+    id: 1,
+    text: "This app features uploading lecture slides, which may contain personal data. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  },
+  {
+    id: 2,
+    text: "Suspendisse mollis interdum interdum. Quisque dui massa, mollis ut ipsum eget, pretium ullamcorper mi.",
+  },
+  {
+    id: 3,
+    text: "Duis vehicula non erat scelerisque venenatis. Sed viverra malesuada nisi, auctor auctor leo gravida vitae.",
+  },
+  {
+    id: 4,
+    text: "Sed dolor dui, elementum eget neque quis, rhoncus dignissim ante. Donec at orci id lectus viverra aliquet. Donec sagittis nisl nec mi pharetra, ac rutrum ipsum pharetra.",
+  },
+];
+
+export const how_does_it_work = [
+  {
+    id: 1,
+    question: "How does the app generate questions from my slides?",
+    answer:
+      "The app utilises an Artificial Intelligence (AI) to read through the uploaded content, search for keywords and then use them to generate “What is x?” style questions. As you might see, the AI is not perfect and may mistake other unnecessary words for keywords, so keep your eye out for that! The AI uses your post-quiz feedback to learn how to do better - the feedback allows it to alter its parameters and, with enough human reinforcement, it may improve over time! Establishing a feedback loop is essential to let the AI know what needs work.",
+  },
+];
 
 export const settings = [
   {
@@ -122,6 +144,7 @@ export const settings = [
     icon: assets.helpIcon,
     component: assets.chevronRightIcon,
     type: "chevron",
+    route: "HelpAndSupport",
   },
   {
     id: 5,
@@ -129,12 +152,15 @@ export const settings = [
     icon: assets.termsConditionsIcon,
     component: assets.chevronRightIcon,
     type: "chevron",
+    route: "TermsAndConditions",
   },
   {
     id: 6,
     name: "Give Feedback",
     icon: assets.feedbackIcon,
-    type: "",
+    component: assets.chevronRightIcon,
+    type: "chevron",
+    route: "Feedback",
   },
   {
     id: 7,
@@ -142,6 +168,7 @@ export const settings = [
     icon: "",
     component: assets.chevronRightIcon,
     type: "chevron",
+    route: "HowDoesItWork",
   },
 ];
 
@@ -153,24 +180,26 @@ export const quizzes_questions_and_answers = [
       {
         id: 1,
         question: "What is Machine Learning?",
-        answer: "A field of study that gives computers the ability to learn without being explicitly programmed."
+        answer:
+          "A field of study that gives computers the ability to learn without being explicitly programmed.",
       },
       {
         id: 2,
         question: "What is Supervised Learning?",
-        answer: "The typed of machine learning in which machines are trained using well \"labelled\" data"
+        answer:
+          'The typed of machine learning in which machines are trained using well "labelled" data',
       },
       {
         id: 3,
         question: "What is Unsupervised Learning?",
-        answer: "The types of machine learning in which machines are trained using well \"unlabelled\" training data."
+        answer:
+          'The types of machine learning in which machines are trained using well "unlabelled" training data.',
       },
       {
         id: 4,
         question: "What is a Feature?",
-        answer: ""
-      }
-    ]
-  }
-]
-
+        answer: "",
+      },
+    ],
+  },
+];

@@ -1,14 +1,14 @@
 import { View, Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { COLOURS } from "../constants";
 
 // Component imports
 import Home from "../screens/home/Home";
-import Settings from "../screens/home/Settings";
 import Stats from "../screens/home/Stats";
-import { COLOURS } from "../constants";
+import SettingsNavigation from "./SettingsNavigation";
 
 // Navigation component
-export default function HomeNavigation() {
+export default function HomeNavigation({ navigation }) {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -20,6 +20,7 @@ export default function HomeNavigation() {
         tabBarStyle: [styles.tabBar, styles.shadow],
       }}
     >
+      {/* Stats screen */}
       <Tab.Screen
         name="Stats"
         component={Stats}
@@ -43,6 +44,7 @@ export default function HomeNavigation() {
           ),
         }}
       />
+      {/* Homepage screen */}
       <Tab.Screen
         name="Home"
         component={Home}
@@ -66,9 +68,10 @@ export default function HomeNavigation() {
           ),
         }}
       />
+      {/* Settings navigator */}
       <Tab.Screen
-        name="Settings"
-        component={Settings}
+        name="SettingsNavigation"
+        component={SettingsNavigation}
         options={{
           tabBarIcon: ({ focused }) => (
             <View

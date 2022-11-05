@@ -5,12 +5,13 @@ import {
     StyleSheet,
     Button,
   } from "react-native";
-  import { COLOURS } from "../constants";
+  import { COLOURS } from "../../constants";
   
   // Component imports
-import SimpleHeader from "../components/SimpleHeader";
+import SimpleHeader from "../../components/SimpleHeader";
+import TitlePill from "../../components/TitlePill";
   
-  // Home screen
+  // Rating the quiz screen
   export default function Rating({ navigation }) {
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
@@ -20,7 +21,7 @@ import SimpleHeader from "../components/SimpleHeader";
         {/* Section Content */}
         <View style={styles.sectionContent}>
           {/* Section Title */}
-          <Text style={styles.sectionTitle}>How did we do?</Text>
+          <TitlePill title="How did we do?" />
 
           {/* Description of rating */}
           <Text>Let the AI know if you liked this quiz using the buttons below. It will take this feedback and try its best to learn from it!</Text>
@@ -58,7 +59,6 @@ import SimpleHeader from "../components/SimpleHeader";
       alignItems: "center",
     },
     sectionContent: {
-      top: 234,
       width: "100%",
       paddingHorizontal: 24,
     },

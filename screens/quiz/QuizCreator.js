@@ -5,24 +5,28 @@ import {
     StyleSheet,
     Button,
   } from "react-native";
-  import { COLOURS, colour_selector } from "../constants";
+  import { COLOURS, colour_selector } from "../../constants";
   
   // Component imports
-import SimpleHeader from "../components/SimpleHeader";
+import SimpleHeader from "../../components/SimpleHeader";
 import { TextInput } from "react-native-gesture-handler";
-
-const Col = ({ children }) => {
-  return  (
-    <View style={styles["col"]}>{children}</View>
-  )
-}
-
-const Row = ({ children }) => (
-  <View style={styles.row}>{children}</View>
-)
+import TitlePill from "../../components/TitlePill";
   
-  // Home screen
+  // Quiz creator screen
   export default function QuizCreator({ navigation }) {
+
+    // Colour selector column
+    const Col = ({ children }) => {
+      return  (
+        <View style={styles["col"]}>{children}</View>
+      )
+    }
+    
+    // Colour selector row
+    const Row = ({ children }) => (
+      <View style={styles.row}>{children}</View>
+    )
+
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
         {/* Header */}
@@ -31,7 +35,7 @@ const Row = ({ children }) => (
         {/* Section Content */}
         <View style={styles.sectionContent}>
           {/* Section Title */}
-          <Text style={styles.sectionTitle}>Create your quiz!</Text>
+          <TitlePill title="Create your quiz!" />
 
           {/* Title input descrition */}
           <Text>Type in the name of the quiz:</Text>
@@ -69,7 +73,7 @@ const Row = ({ children }) => (
           {/* Generate quiz button */}
           <Button
             onPress={() => navigation.navigate(
-                'PlayQuiz', 
+                "QuizPlay", 
                 {quizId: 1}
             )}
             title="Generate quiz!"
@@ -91,15 +95,8 @@ const Row = ({ children }) => (
     },
   
     sectionContent: {
-      top: 234,
       width: "100%",
       paddingHorizontal: 24,
-    },
-  
-    sectionTitle: {
-      fontFamily: "HammersmithOne",
-      fontSize: 20,
-      textAlign: "center",
     },
 
     row: {

@@ -1,5 +1,5 @@
 import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
-import { SHADOWS, COLOURS, assets } from "../constants";
+import { COLOURS, assets } from "../constants";
 
 // Header component
 export default function HeaderNew({ navigation }) {

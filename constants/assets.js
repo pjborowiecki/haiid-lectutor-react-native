@@ -8,14 +8,18 @@ import onboardingImage06 from "../assets/images/onboarding-image-6.png";
 import logo from "../assets/images/logo.png";
 import headerBg from "../assets/images/header-background.png";
 import header from "../assets/images/header.png";
+import simpleHeader from "../assets/images/simple-header.png";
+import footer from "../assets/images/footer.png";
 
 import chartHistogramIcon from "../assets/icons/chart-histogram-icon.png";
 import chevronRightIcon from "../assets/icons/chevron-right-icon.png";
+import chevronLeftIcon from "../assets/icons/chevron-left-icon.png";
 import darkModeIcon from "../assets/icons/dark-mode-icon.png";
 import easyReadModeIcon from "../assets/icons/easy-read-mode-icon.png";
 import exclamationIcon from "../assets/icons/exclamation-icon.png";
 import feedbackIcon from "../assets/icons/feedback-icon.png";
 import fireIcon from "../assets/icons/fire-icon.png";
+import fileUploadIcon from "../assets/icons/file-upload.png";
 import helpIcon from "../assets/icons/help-icon.png";
 import homeIcon from "../assets/icons/home-icon.png";
 import notificationsIcon from "../assets/icons/notifications-icon.png";
@@ -37,13 +41,17 @@ export default {
   logo,
   headerBg,
   header,
+  simpleHeader,
+  footer,
 
   chartHistogramIcon,
   chevronRightIcon,
+  chevronLeftIcon,
   darkModeIcon,
   easyReadModeIcon,
   exclamationIcon,
   feedbackIcon,
+  fileUploadIcon,
   fireIcon,
   helpIcon,
   homeIcon,

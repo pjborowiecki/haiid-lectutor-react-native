@@ -1,35 +1,32 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { COLOURS, statistics, assets } from "../../constants";
+import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
+import FunctionCircle from "../../components/FunctionCircle";
+import TitlePill from "../../components/TitlePill";
 
 // Stats screen
 export default function Stats() {
+  // Function to check if some statistics have been incremented
+  const checkIfStatsExist = () => {
+    return statistics.some((stat) => stat.count > 0);
+  };
+
+  const [statsState, setStatsState] = useState(checkIfStatsExist());
+
   return (
     // Stats screen wrapper
-    <View style={styles.statsScreenWrapper}>
+    <SafeAreaView style={styles.statsScreenWrapper}>
       {/* Header */}
       <Header />
 
       {/* Share button */}
-      <TouchableOpacity
-        style={{
-          ...styles.shareButton,
-          ...styles.shadowDark,
-        }}
-      >
-        <Image
-          source={assets.shareIcon}
-          resizeMode="contain"
-          style={styles.shareButtonIcon}
-        />
-      </TouchableOpacity>
+      <FunctionCircle icon={assets.shareIcon} iconSize={34} right={1} />
 
       {/* Section title pill */}
-      <View style={{ ...styles.sectionTitlePill, ...styles.shadowDark }}>
-        <Text style={styles.sectionTitleText}>Statistics</Text>
-      </View>
+      <TitlePill title="Statistics" />
 
       {/* Stats list */}
       <View style={styles.statsList}>
@@ -52,13 +49,15 @@ export default function Stats() {
       </View>
 
       {/* Bottom text */}
-      <View style={styles.bottomTextContainer}>
-        <Text style={styles.bottomText}>It's a bit quiet here...</Text>
-        <Text style={styles.bottomText}>
-          Try interacting with the app to record this data!
-        </Text>
-      </View>
-    </View>
+      {!statsState && (
+        <View style={styles.bottomTextContainer}>
+          <Text style={styles.bottomText}>It's a bit quiet here...</Text>
+          <Text style={styles.bottomText}>
+            Try interacting with the app to record this data!
+          </Text>
+        </View>
+      )}
+    </SafeAreaView>
   );
 }
 
@@ -68,40 +67,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLOURS.white,
     height: "100%",
     alignItems: "center",
-  },
-
-  shareButton: {
-    width: 67,
-    height: 67,
-    backgroundColor: COLOURS.white,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 100,
-    position: "absolute",
-    top: 130,
-    left: 30,
-  },
-
-  shareButtonIcon: {
-    width: 34,
-    height: 34,
-    left: -2,
-  },
-
-  sectionTitlePill: {
-    backgroundColor: COLOURS.white,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 230,
-    width: 244,
-    height: 37,
-    borderRadius: 70,
-  },
-
-  sectionTitleText: {
-    fontFamily: "HammersmithOne",
-    fontSize: 22,
-    top: 2,
   },
 
   statsList: {
@@ -123,7 +88,7 @@ const styles = StyleSheet.create({
   bottomTextContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 46,
+    marginTop: 28,
     marginBottom: 84,
     paddingHorizontal: 36,
   },
@@ -133,17 +98,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     color: COLOURS.tertiaryText,
-  },
-
-  shadowDark: {
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-
-    elevation: 14,
   },
 });
