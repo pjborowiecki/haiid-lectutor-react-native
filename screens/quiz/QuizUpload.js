@@ -68,7 +68,7 @@ export default function QuizUpload({ navigation }) {
 
         {/* Note after input */}
         <Text
-          style={{ ...styles.uploadInstructions, fontSize: 16, marginTop: 28 }}
+          style={{ ...styles.uploadInstructions, fontSize: 16, marginTop: 32 }}
         >
           Ensure your PDF contains enough text. The AI relies on keywords to
           write
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
 
   uploadPill: {
-    marginTop: 50,
+    marginTop: 36,
     backgroundColor: COLOURS.white,
     width: 258,
     height: 83,
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: -108,
+    bottom: -120,
   },
 
   confirmButton: {

@@ -22,16 +22,6 @@ export default function Home({ navigation }) {
       <Header />
 
       {/* NewQuiz button */}
-      {/* <TouchableOpacity
-        onPress={() => (navigation ? navigation.navigate("QuizUpload") : {})}
-        style={styles.button}
-      >
-        <Image
-          source={assets.plusIcon}
-          resizeMode="contain"
-          style={styles.buttonIcon}
-        />
-      </TouchableOpacity> */}
       <FunctionCircle
         navigation={navigation}
         navigateTo="QuizUpload"
@@ -84,33 +74,6 @@ const styles = StyleSheet.create({
   quizList: {
     marginTop: 28,
   },
-
-  // button: {
-  //   position: "absolute",
-  //   top: 140,
-  //   left: 30,
-  //   width: 67,
-  //   height: 67,
-  //   backgroundColor: COLOURS.white,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   borderRadius: 100,
-  //   shadowColor: COLOURS.black,
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 7,
-  //   },
-  //   shadowOpacity: 0.41,
-  //   shadowRadius: 9.11,
-  //   elevation: 14,
-  // },
-
-  // buttonIcon: {
-  //   width: 60,
-  //   height: 60,
-  //   bottom: -3,
-  //   right: -1,
-  // },
 
   quizListEnd: {
     width: "100%",
