@@ -13,7 +13,7 @@ import { COLOURS, quizzes_questions_and_answers, assets } from "../../constants"
 import SimpleHeader from "../../components/SimpleHeader";
 import Footer from "../../components/Footer";
 
-// Home screen
+// Quiz upload screen
 export default function QuizUpload({ navigation }) {
   const [fileUploaded, setFileUploaded] = useState(false);
   return (
