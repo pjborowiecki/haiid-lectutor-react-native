@@ -7,10 +7,22 @@ import QuizCreator from "../screens/quiz/QuizCreator";
 import QuizPlayer from "../screens/quiz/QuizPlayer";
 import Rating from "../screens/quiz/Rating";
 import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
+import { useState } from "react";
+import { statistics } from "../constants";
 
 // Navigation component
 export default function Navigation() {
   const Stack = createStackNavigator();
+
+  const [stats, setStats] = useState(statistics);
+
+  const incrementStat = (index) => {
+    const newStats = stats.map(stat => {
+      if (stat.id === index+1) stat.count++;
+      return stat;
+    })
+    setStats(newStats);
+  }
 
   return (
     <Stack.Navigator
@@ -21,28 +33,33 @@ export default function Navigation() {
     >
       <Stack.Screen
         name="Homepage"
-        component={HomeNavigation}
-      />
+      >
+        {props => <HomeNavigation {...props} statistics={stats}/>}
+      </Stack.Screen>
+      
       <Stack.Screen
         name="QuizUpload"
         component={QuizUpload}
       />
       <Stack.Screen
         name="QuizCreate"
-        component={QuizCreator}
-      />
+      >
+        {props => <QuizCreator {...props} incrementStat={incrementStat}/>}
+      </Stack.Screen>
       <Stack.Screen
         name="QuizLoadingScreen"
         component={QuizLoadingScreen}
       />
       <Stack.Screen
         name="QuizPlay"
-        component={QuizPlayer}
-      />
+      >
+        {props => <QuizPlayer {...props} incrementStat={incrementStat}/>}
+      </Stack.Screen>
       <Stack.Screen
         name="Rating"
-        component={Rating}
-      />
+      >
+        {props => <Rating {...props} incrementStat={incrementStat}/>}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 }

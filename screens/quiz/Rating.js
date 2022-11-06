@@ -12,7 +12,13 @@ import SimpleHeader from "../../components/SimpleHeader";
 import TitlePill from "../../components/TitlePill";
   
   // Rating the quiz screen
-  export default function Rating({ navigation }) {
+  export default function Rating({ navigation, incrementStat }) {
+
+    const giveRating = () => {
+      incrementStat(3);
+      navigation.navigate("Homepage");
+    }
+
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
         {/* Header */}
@@ -30,11 +36,11 @@ import TitlePill from "../../components/TitlePill";
           <View>
             <Button
                 title="Like"
-                onPress={() => navigation.navigate("Homepage")}
+                onPress={giveRating}
             />
             <Button 
                 title="Dislike"
-                onPress={() => navigation.navigate("Homepage")}
+                onPress={giveRating}
             />
           </View>
           

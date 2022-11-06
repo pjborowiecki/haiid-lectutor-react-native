@@ -20,12 +20,25 @@ import { useState } from "react";
     onPrev=() => {},
   }) {
 
-    const [revealAnswer, setRevealAnswer] = useState(false)
+    const [revealAnswer, setRevealAnswer] = useState(false);
+    const [revealedAnswerOnce, setRevealedAnswerOnce] = useState(false);
 
     const flipCard = () => {
         if (revealAnswers) {
             setRevealAnswer(!revealAnswer);
         }
+    }
+
+    const nextCard = () => {
+      setRevealedAnswerOnce(revealAnswer || revealedAnswerOnce ? true : false);
+      onNext(revealAnswer || revealedAnswerOnce ? true : false);
+      setRevealAnswer(false);
+    }
+
+    const prevCard = () => {
+      setRevealedAnswerOnce(revealAnswer || revealedAnswerOnce ? true : false);
+      onPrev(revealAnswer || revealedAnswerOnce ? true : false);
+      setRevealAnswer(false);
     }
 
     return (
@@ -53,11 +66,11 @@ import { useState } from "react";
           { revealAnswers && <View>
             {flashcard.id > 1 && <Button 
                 title="Prev"
-                onPress={() => {setRevealAnswer(false); onPrev()}}
+                onPress={prevCard}
             />}
             {flashcard.id < size && <Button 
                 title="Next"
-                onPress={() => {setRevealAnswer(false); onNext()}}
+                onPress={nextCard}
             />}
           </View>}
       </View>
