@@ -23,6 +23,7 @@ export const COLOURS = {
   lightGray: "#DCDCDC",
 
   strokeYellow: "#FFF500",
+  strokeBrown: "#535353",
 
   primaryText: "#000",
   secondaryText: "#818181",

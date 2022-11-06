@@ -7,31 +7,66 @@ export const onboardingData = [
     title: "We get it.",
     text: "Learning can be really daunting.",
     image: assets.onboardingImage01,
+    imageWidth: 292,
+    imageHeight: 344,
+    imageMarginVertical: 32,
+    titleSize: 55,
+    subtitleSize: 36,
+    titlePaddingHorizontal: 40,
+    subtitlePaddingHorizontal: 40,
   },
   {
     id: 2,
     title: "Which is why our app is here to show you how.",
     text: "All you need is your slides, a spare minute and some enthusiasm.",
     image: assets.onboardingImage02,
+    imageWidth: 288,
+    imageHeight: 224,
+    imageMarginVertical: 46,
+    titleSize: 38,
+    subtitleSize: 28,
+    titlePaddingHorizontal: 40,
+    subtitlePaddingHorizontal: 40,
   },
   {
     id: 3,
     title: "By uploading your slides to our app...",
-    text: "...you let the AI do all the grunt work for you.",
+    text: "...you'll enable the AI to create a set of questions and answers.",
     image: assets.onboardingImage03,
+    imageWidth: 194,
+    imageHeight: 194,
+    imageMarginVertical: 40,
+    titleSize: 38,
+    subtitleSize: 28,
+    titlePaddingHorizontal: 40,
+    subtitlePaddingHorizontal: 32,
   },
   {
     id: 4,
     title:
-      "Then, simply begin the AI-curated quiz to start absorbing knowledge.",
+      "Then, simply begin interacting with the AI-curated flashcards to start absorbing knowledge.",
     text: "...And that's it. No weird strings attached, just pure learning!",
     image: assets.onboardingImage04,
+    imageWidth: 200,
+    imageHeight: 200,
+    imageMarginVertical: 36,
+    titleSize: 30,
+    subtitleSize: 28,
+    titlePaddingHorizontal: 30,
+    subtitlePaddingHorizontal: 40,
   },
   {
     id: 5,
     title: "We hope you enjoy your time with our app.",
     text: "Best of luck with your learning journey!",
-    image: assets.onboardingImage06,
+    image: assets.onboardingImage05,
+    imageWidth: 276,
+    imageHeight: 288,
+    imageMarginVertical: 16,
+    titleSize: 36,
+    subtitleSize: 34,
+    titlePaddingHorizontal: 40,
+    subtitlePaddingHorizontal: 40,
   },
 ];
 
@@ -86,9 +121,75 @@ export const statistics = [
 ];
 
 export const colour_selector = [
-  ["#FF7B7B", "#EBBFFF", "#ADE1FF", "#CEF7C4"],
-  ["#B5B0F4", "#FFAA7B", "#FF7BD2", "#AD7BFF"],
-  ["#DCDCDC", "#A7A7A7", "#686868", "#434343"],
+  [
+    COLOURS.quizColour01,
+    COLOURS.quizColour02,
+    COLOURS.quizColour03,
+    COLOURS.quizColour04,
+  ],
+  [
+    COLOURS.quizColour05,
+    COLOURS.quizColour06,
+    COLOURS.quizColour07,
+    COLOURS.quizColour08,
+  ],
+  [
+    COLOURS.quizColour09,
+    COLOURS.quizColour10,
+    COLOURS.quizColour11,
+    COLOURS.quizColour12,
+  ],
+];
+
+export const quizColours = [
+  {
+    id: 1,
+    colour: COLOURS.quizColour01,
+  },
+  {
+    id: 2,
+    colour: COLOURS.quizColour02,
+  },
+  {
+    id: 3,
+    colour: COLOURS.quizColour03,
+  },
+  {
+    id: 4,
+    colour: COLOURS.quizColour04,
+  },
+  {
+    id: 5,
+    colour: COLOURS.quizColour05,
+  },
+  {
+    id: 6,
+    colour: COLOURS.quizColour06,
+  },
+  {
+    id: 7,
+    colour: COLOURS.quizColour07,
+  },
+  {
+    id: 8,
+    colour: COLOURS.quizColour08,
+  },
+  {
+    id: 9,
+    colour: COLOURS.quizColour09,
+  },
+  {
+    id: 10,
+    colour: COLOURS.quizColour10,
+  },
+  {
+    id: 11,
+    colour: COLOURS.quizColour11,
+  },
+  {
+    id: 12,
+    colour: COLOURS.quizColour12,
+  },
 ];
 
 export const terms_and_conditions = [
