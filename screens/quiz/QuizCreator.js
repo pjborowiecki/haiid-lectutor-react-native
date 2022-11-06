@@ -3,7 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-    Button,
+    TouchableOpacity,
   } from "react-native";
   import { COLOURS, colour_selector } from "../../constants";
   
@@ -13,7 +13,7 @@ import { TextInput } from "react-native-gesture-handler";
 import TitlePill from "../../components/TitlePill";
   
   // Quiz creator screen
-  export default function QuizCreator({ navigation }) {
+  export default function QuizCreator({ navigation, incrementStat }) {
 
     // Colour selector column
     const Col = ({ children }) => {
@@ -26,6 +26,14 @@ import TitlePill from "../../components/TitlePill";
     const Row = ({ children }) => (
       <View style={styles.row}>{children}</View>
     )
+
+    const createQuiz = () => {
+      incrementStat(2);
+      navigation.navigate(
+        "QuizPlay", 
+        {quizId: 1}
+      )
+    }
 
     return (
       <SafeAreaView style={styles.homeScreenWrapper}>
@@ -71,13 +79,9 @@ import TitlePill from "../../components/TitlePill";
           <Text>Ensure your PDF contains enough text.</Text>
   
           {/* Generate quiz button */}
-          <Button
-            onPress={() => navigation.navigate(
-                "QuizPlay", 
-                {quizId: 1}
-            )}
-            title="Generate quiz!"
-          />
+          <TouchableOpacity onPress={createQuiz}>
+            <Text>Generate quiz!</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Footer */}

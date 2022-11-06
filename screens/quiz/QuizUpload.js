@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: -120,
+    bottom: -108,
   },
 
   confirmButton: {
