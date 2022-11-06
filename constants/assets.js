@@ -3,7 +3,6 @@ import onboardingImage02 from "../assets/images/onboarding-image-2.png";
 import onboardingImage03 from "../assets/images/onboarding-image-3.png";
 import onboardingImage04 from "../assets/images/onboarding-image-4.png";
 import onboardingImage05 from "../assets/images/onboarding-image-5.png";
-import onboardingImage06 from "../assets/images/onboarding-image-6.png";
 
 import logo from "../assets/images/logo.png";
 import headerBg from "../assets/images/header-background.png";
@@ -29,6 +28,11 @@ import settingsIcon from "../assets/icons/settings-icon.png";
 import shareIcon from "../assets/icons/share-icon.png";
 import termsConditionsIcon from "../assets/icons/terms-conditions-icon.png";
 import trashIcon from "../assets/icons/trash-icon.png";
+import newQuestionArrowsIcon from "../assets/icons/new-question-arrows.png";
+import cardCornerLeft from "../assets/images/card-corner-left.png";
+import cardCornerRight from "../assets/images/card-corner-right.png";
+import thumbUpIcon from "../assets/icons/thumb-up-icon.png";
+import thumbDownIcon from "../assets/icons/thumb-down-icon.png";
 
 export default {
   onboardingImage01,
@@ -36,7 +40,6 @@ export default {
   onboardingImage03,
   onboardingImage04,
   onboardingImage05,
-  onboardingImage06,
 
   logo,
   headerBg,
@@ -62,4 +65,9 @@ export default {
   shareIcon,
   termsConditionsIcon,
   trashIcon,
+  newQuestionArrowsIcon,
+  cardCornerLeft,
+  cardCornerRight,
+  thumbUpIcon,
+  thumbDownIcon,
 };
