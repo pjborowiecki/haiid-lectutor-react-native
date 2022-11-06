@@ -9,6 +9,8 @@ import QuizCreator from "../screens/quiz/QuizCreator";
 import QuizPlayer from "../screens/quiz/QuizPlayer";
 import Rating from "../screens/quiz/Rating";
 import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
+import { useState } from "react";
+import { statistics } from "../constants";
 
 // Navigation component
 export default function Navigation() {

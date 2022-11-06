@@ -1,8 +1,7 @@
 import AppIntroSlider from "react-native-app-intro-slider";
-
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { COLOURS, onboardingData } from "../constants";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 // Onboarding screen
 export default function Onboarding({ navigation }) {
@@ -13,9 +12,8 @@ export default function Onboarding({ navigation }) {
         <Text
           style={{
             ...styles.slideTitle,
-            fontSize:
-              item.id === 1 ? 55 : item.id === 4 ? 32 : item.id === 5 ? 28 : 36,
-            marginTop: item.id === 1 ? 96 : 78,
+            fontSize: item.titleSize,
+            paddingHorizontal: item.titlePaddingHorizontal,
           }}
         >
           {item.title}
@@ -26,59 +24,19 @@ export default function Onboarding({ navigation }) {
           source={item.image}
           resizeMode="contain"
           style={{
-            width:
-              item.id === 1
-                ? 292
-                : item.id === 2
-                ? 288
-                : item.id === 3
-                ? 203
-                : item.id === 4
-                ? 326
-                : item.id === 5
-                ? 234
-                : item.id === 6
-                ? 368
-                : "100%",
-            height:
-              item.id === 1
-                ? 344
-                : item.id === 2
-                ? 224
-                : item.id === 3
-                ? 225
-                : item.id === 4
-                ? 279
-                : item.id === 5
-                ? 211
-                : item.id === 6
-                ? 378
-                : "100%",
-            marginVertical:
-              item.id === 1
-                ? 40
-                : item.id === 2
-                ? 68
-                : item.id === 3
-                ? 56
-                : item.id === 4
-                ? 24
-                : item.id === 5
-                ? 32
-                : item.id === 6
-                ? 0
-                : 36,
-            left: item.id === 3 ? 16 : 0,
+            width: item.imageWidth,
+            height: item.imageHeight,
+            marginVertical: item.imageMarginVertical,
+            left: item.id === 3 ? 14 : item.id === 4 ? 10 : 0,
           }}
         />
 
-        {/* Slide Text */}
+        {/* Slide Subtitle */}
         <Text
           style={{
             ...styles.slideText,
-            fontSize:
-              item.id === 1 ? 36 : item.id === 3 ? 34 : item.id === 6 ? 34 : 28,
-            paddingHorizontal: item.id === 5 ? 52 : 40,
+            fontSize: item.subtitleSize,
+            paddingHorizontal: item.subtitlePaddingHorizontal,
           }}
         >
           {item.text}
@@ -90,7 +48,7 @@ export default function Onboarding({ navigation }) {
   const renderDoneButton = () => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate('Consent')}
+        onPress={() => navigation.navigate("Consent")}
         style={{
           ...styles.buttonWrapper,
           backgroundColor: COLOURS.primary,
@@ -104,7 +62,7 @@ export default function Onboarding({ navigation }) {
       >
         <Text
           style={{
-            ...styles.rightButtonText,
+            ...styles.buttonText,
             color: COLOURS.white,
             fontSize: 16,
           }}
@@ -164,15 +122,14 @@ const styles = StyleSheet.create({
   slide: {
     flex: 1,
     alignItems: "center",
-    // justifyContent: "center",
-
+    justifyContent: "center",
     backgroundColor: COLOURS.onboardingBg,
   },
 
   slideTitle: {
     fontFamily: "HammersmithOne",
     textAlign: "center",
-    paddingHorizontal: 40,
+    // paddingHorizontal: 40,
   },
 
   slideText: {

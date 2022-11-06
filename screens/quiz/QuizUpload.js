@@ -28,10 +28,9 @@ export default function QuizUpload({ navigation }) {
       {/* Section Content */}
       <View style={styles.sectionContent}>
         {/* Section title pill */}
-
         <View style={{ ...styles.sectionTitlePill, ...styles.shadowDark }}>
           {/* Section Title */}
-          <Text style={styles.sectionTitle}>Upload your slides!</Text>
+          <Text style={styles.sectionTitle}>Upload your slides</Text>
         </View>
 
         {/* Description of what input does */}
@@ -136,7 +135,6 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     display: "flex",
-    // alignItems: "center",
   },
 
   sectionContent: {
@@ -209,7 +207,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: -108,
+    top: 470,
   },
 
   confirmButton: {
