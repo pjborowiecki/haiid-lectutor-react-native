@@ -57,7 +57,7 @@ export default function QuizCreator({ navigation }) {
 
         {/* Number of questions input */}
         <TextInput
-          onChangeText={(text) => setNumberOfQuestions(text)}
+          onChange={(number) => setNumberOfQuestions(number)}
           placeholder="15"
           keyboardType="numeric"
           style={{
@@ -178,6 +178,8 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
+    fontFamily: "HammersmithOne",
+    fontSize: 16,
     height: 38,
     backgroundColor: COLOURS.white,
     textAlign: "center",
@@ -209,7 +211,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: -78,
+    // bottom: -78,
+    top: 470,
   },
 
   generateQuizButton: {
