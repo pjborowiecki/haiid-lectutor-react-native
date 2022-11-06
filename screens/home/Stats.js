@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import { COLOURS, statistics, assets } from "../../constants";
+import { COLOURS, assets } from "../../constants";
 import { useState } from "react";
 
 // Component imports
@@ -8,7 +8,7 @@ import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 
 // Stats screen
-export default function Stats() {
+export default function Stats({ statistics }) {
   // Function to check if some statistics have been incremented
   const checkIfStatsExist = () => {
     return statistics.some((stat) => stat.count > 0);

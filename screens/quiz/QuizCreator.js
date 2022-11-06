@@ -8,26 +8,17 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { COLOURS, colour_selector, quizColours } from "../../constants";
+import { COLOURS, quizColours } from "../../constants";
 
 // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
 import Footer from "../../components/Footer";
-import TitlePill from "../../components/TitlePill";
 
 // Quiz creator screen
 export default function QuizCreator({ navigation }) {
   const [quizTitle, setQuizTitle] = useState("");
   const [quizColour, setQuizColour] = useState(null);
   const [numberOfQuestions, setNumberOfQuestions] = useState(0);
-
-  // Colour selector column
-  // const Col = ({ children }) => {
-  //   return <View style={styles["col"]}>{children}</View>;
-  // };
-
-  // Colour selector row
-  // const Row = ({ children }) => <View style={styles.row}>{children}</View>;
 
   return (
     <SafeAreaView style={styles.quizCreatorScreenWrapper}>
@@ -83,25 +74,6 @@ export default function QuizCreator({ navigation }) {
         </Text>
 
         {/* Colour selector */}
-
-        {/* <View style={styles.colourSelector}>
-          {colour_selector.map((row, i) => (
-            <Row key={i}>
-              {row.map((colour, j) => (
-                <Col key={j}>
-                  <TouchableOpacity
-                    style={{
-                      backgroundColor: colour,
-                      width: 16,
-                      height: 16,
-                    }}
-                  />
-                </Col>
-              ))}
-            </Row>
-          ))}
-        </View> */}
-
         <View style={styles.colourSelector}>
           {quizColours.map((colour, index) => (
             <TouchableOpacity
@@ -271,14 +243,4 @@ const styles = StyleSheet.create({
 
     elevation: 14,
   },
-
-  // row: {
-  //   flexDirection: "row",
-  // },
-
-  // col: {
-  //   borderColor: "#fff",
-  //   borderWidth: 1,
-  //   flex: 1,
-  // },
 });

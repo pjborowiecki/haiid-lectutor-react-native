@@ -1,7 +1,6 @@
 import {
     SafeAreaView,
     View,
-    Text,
     StyleSheet,
     Button,
   } from "react-native";
@@ -14,7 +13,7 @@ import Flashcard from "../../components/Flashcard";
 import TitlePill from "../../components/TitlePill";
   
   // Quiz player screen
-  export default function QuizPlayer({ navigation, route }) {
+  export default function QuizPlayer({ navigation, route, incrementStat }) {
     const quizId = route.params.quizId;
     const quiz = quizzes.filter(quiz => quiz.id === quizId)[0]
     const flashcards = quizzes_questions_and_answers.filter(quiz => quizId === quiz.id)[0].flashcards
@@ -24,17 +23,28 @@ import TitlePill from "../../components/TitlePill";
 
     const endQuiz = () => {
         // modal
+        // increment quizzes done
+        incrementStat(0);
+        if (currentFlashcard.id === flashcards.length) incrementStat(1);
         navigation.navigate("Rating")
     }
     
-    const onNext = () => {
+    const onNext = (revealAnswer) => {
+        // Assume that when person clicks next and
+        // they have revealed answer then they have
+        // answered the question
+        if (revealAnswer) incrementStat(1);
         if (index < flashcards.length - 1) {
             setCurrentFlashcard(flashcards[index+1]);
             setIndex(index+1);
         }
     }
 
-    const onPrev = () => {
+    const onPrev = (revealAnswer) => {
+        // Assume that when person clicks prev and
+        // they have revealed answer then they have
+        // answered the question
+        if (revealAnswer) incrementStat(1);
         if (index > 0) {
             setCurrentFlashcard(flashcards[index-1]);
             setIndex(index-1);

@@ -8,7 +8,7 @@ import Stats from "../screens/home/Stats";
 import SettingsNavigation from "./SettingsNavigation";
 
 // Navigation component
-export default function HomeNavigation({ navigation }) {
+export default function HomeNavigation({ statistics }) {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -23,7 +23,7 @@ export default function HomeNavigation({ navigation }) {
       {/* Stats screen */}
       <Tab.Screen
         name="Stats"
-        component={Stats}
+        children={() => <Stats statistics={statistics} />}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
