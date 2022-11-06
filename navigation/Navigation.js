@@ -1,4 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { statistics } from "../constants";
+import { useState } from "react";
 
 // Component imports
 import HomeNavigation from "./HomeNavigation";
@@ -6,8 +8,7 @@ import QuizUpload from "../screens/quiz/QuizUpload";
 import QuizCreator from "../screens/quiz/QuizCreator";
 import QuizPlayer from "../screens/quiz/QuizPlayer";
 import Rating from "../screens/quiz/Rating";
-import { useState } from "react";
-import { statistics } from "../constants";
+import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
 
 // Navigation component
 export default function Navigation() {
@@ -45,6 +46,10 @@ export default function Navigation() {
       >
         {props => <QuizCreator {...props} incrementStat={incrementStat}/>}
       </Stack.Screen>
+      <Stack.Screen
+        name="QuizLoadingScreen"
+        component={QuizLoadingScreen}
+      />
       <Stack.Screen
         name="QuizPlay"
       >
