@@ -20,7 +20,7 @@ export default function Stats({ statistics, streak }) {
     // Stats screen wrapper
     <SafeAreaView style={styles.statsScreenWrapper}>
       {/* Header */}
-      <Header streak={streak} />
+      <Header streak={streak} showFire={true} />
 
       {/* Share button */}
       <FunctionCircle icon={assets.shareIcon} iconSize={34} right={1} />
