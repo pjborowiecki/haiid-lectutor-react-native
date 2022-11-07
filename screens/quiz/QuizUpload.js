@@ -122,7 +122,7 @@ export default function QuizUpload({ navigation }) {
 
 // Styles
 const styles = StyleSheet.create({
-  quizUploadScreenWrapper: {
+  questionREviewScreenWrapper: {
     backgroundColor: COLOURS.white,
     height: "100%",
     width: "100%",
