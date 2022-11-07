@@ -8,6 +8,8 @@ import QuizPlayer from "../screens/quiz/QuizPlayer";
 import Rating from "../screens/quiz/Rating";
 import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
 import QuestionReview from "../screens/quiz/QuestionReview";
+import { useState } from "react";
+import { _flashcards, _quizzes, _statistics } from "../constants";
 
 // Navigation component
 export default function Navigation() {
