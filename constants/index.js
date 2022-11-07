@@ -9,6 +9,7 @@ import {
   _flashcards,
   terms_and_conditions,
   how_does_it_work,
+  _streak,
 } from "./data";
 
 export {
@@ -25,4 +26,5 @@ export {
   terms_and_conditions,
   how_does_it_work,
   _flashcards,
+  _streak,
 };
