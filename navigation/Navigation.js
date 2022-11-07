@@ -181,6 +181,8 @@ export default function Navigation() {
                     _flashcards={flashcards}
                     streak={streak}
                     updateQuizDate={updateQuizDate}
+                    prevAnswer={prevAnswer}
+                    nextAnswer={nextAnswer}
                     incrementStreak={incrementStreak}
                     prevAnswer={prevAnswer}
                     nextAnswer={nextAnswer}
