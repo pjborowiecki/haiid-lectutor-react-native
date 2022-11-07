@@ -11,6 +11,7 @@ import Rating from "../screens/quiz/Rating";
 import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
 import QuestionReview from "../screens/quiz/QuestionReview";
 import IncrementStreak from "../screens/quiz/IncrementStreak";
+import Navbar from "../components/Navbar";
 
 // Navigation component
 export default function Navigation() {
@@ -98,13 +99,16 @@ export default function Navigation() {
       <Stack.Screen
         name="Homepage"
       >
-        {props => <HomeNavigation 
-                    {...props} 
-                    statistics={statistics}
-                    deleteQuiz={deleteQuiz}
-                    quizzes={quizzes}
-                    streak={streak.streak}
-                  />}
+        {props => (<>
+          <HomeNavigation 
+            {...props} 
+            statistics={statistics}
+            deleteQuiz={deleteQuiz}
+            quizzes={quizzes}
+            streak={streak.streak}
+          />
+          <Navbar {...props} />
+      </>)}
       </Stack.Screen>
       
       <Stack.Screen

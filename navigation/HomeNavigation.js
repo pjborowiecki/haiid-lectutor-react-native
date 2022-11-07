@@ -1,108 +1,60 @@
-import { View, Image, StyleSheet } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { COLOURS } from "../constants";
 
 // Component imports
 import Home from "../screens/home/Home";
 import Stats from "../screens/home/Stats";
 import SettingsNavigation from "./SettingsNavigation";
+import Navbar from "../components/Navbar";
+import { useEffect } from "react";
 
 // Navigation component
 export default function HomeNavigation({ 
+  navigation,
   statistics, 
   deleteQuiz, 
   quizzes, 
   streak,
 }) {
-  const Tab = createBottomTabNavigator();
+  const Stack = createStackNavigator();
+
+  useEffect(() => {
+    navigation.navigate("Home");
+  }, [])
 
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: [styles.tabBar, styles.shadow],
-      }}
-    >
-      {/* Stats screen */}
-      <Tab.Screen
-        name="Stats"
-        children={() => <Stats statistics={statistics} streak={streak} />}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                ...styles.tabBarOption,
-                backgroundColor: focused ? COLOURS.homeIconBg : "none",
-              }}
-            >
-              <Image
-                source={require("../assets/icons/chart-histogram-icon.png")}
-                resizeMode="contain"
-                style={{
-                  ...styles.tabBarOptionIcon,
-                  tintColor: focused ? COLOURS.black : COLOURS.gray,
-                }}
-              />
-            </View>
-          ),
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarStyle: [styles.tabBar, styles.shadow],
         }}
-      />
-      {/* Homepage screen */}
-      <Tab.Screen
-        name="Home"
-        children={props => <Home 
-                          {...props}
-                          deleteQuiz={deleteQuiz} 
-                          quizzes={quizzes}
-                          streak={streak}
-                        />}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                ...styles.tabBarOption,
-                backgroundColor: focused ? COLOURS.homeIconBg : "none",
-              }}
-            >
-              <Image
-                source={require("../assets/icons/home-icon.png")}
-                resizeMode="contain"
-                style={{
-                  ...styles.tabBarOptionIcon,
-                  tintColor: focused ? COLOURS.black : COLOURS.gray,
-                }}
-              />
-            </View>
-          ),
-        }}
-      />
-      {/* Settings navigator */}
-      <Tab.Screen
-        name="SettingsNavigation"
-        component={SettingsNavigation}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                ...styles.tabBarOption,
-                backgroundColor: focused ? COLOURS.homeIconBg : "none",
-              }}
-            >
-              <Image
-                source={require("../assets/icons/settings-icon.png")}
-                resizeMode="contain"
-                style={{
-                  ...styles.tabBarOptionIcon,
-                  tintColor: focused ? COLOURS.black : COLOURS.gray,
-                }}
-              />
-            </View>
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      >
+        {/* Stats screen */}
+        <Stack.Screen
+          name="Stats"
+          children={() => <Stats statistics={statistics} streak={streak} />}
+          
+        />
+        {/* Homepage screen */}
+        <Stack.Screen
+          name="Home"
+          children={props => <Home 
+                            {...props}
+                            deleteQuiz={deleteQuiz} 
+                            quizzes={quizzes}
+                            streak={streak}
+                          />}
+        />
+        {/* Settings navigator */}
+        <Stack.Screen
+          name="SettingsNavigation"
+          component={SettingsNavigation}
+          
+        />
+      </Stack.Navigator>
   );
 }
 
@@ -144,3 +96,66 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 });
+
+// STATS
+/*options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                ...styles.tabBarOption,
+                backgroundColor: focused ? COLOURS.homeIconBg : "none",
+              }}
+            >
+              <Image
+                source={require("../assets/icons/chart-histogram-icon.png")}
+                resizeMode="contain"
+                style={{
+                  ...styles.tabBarOptionIcon,
+                  tintColor: focused ? COLOURS.black : COLOURS.gray,
+                }}
+              />
+            </View>
+          ),
+        }}*/
+
+  // SETTINGS
+  /*options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                ...styles.tabBarOption,
+                backgroundColor: focused ? COLOURS.homeIconBg : "none",
+              }}
+            >
+              <Image
+                source={require("../assets/icons/settings-icon.png")}
+                resizeMode="contain"
+                style={{
+                  ...styles.tabBarOptionIcon,
+                  tintColor: focused ? COLOURS.black : COLOURS.gray,
+                }}
+              />
+            </View>
+          ),
+        }}*/
+
+  // HOME
+  /*options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                ...styles.tabBarOption,
+                backgroundColor: focused ? COLOURS.homeIconBg : "none",
+              }}
+            >
+              <Image
+                source={require("../assets/icons/home-icon.png")}
+                resizeMode="contain"
+                style={{
+                  ...styles.tabBarOptionIcon,
+                  tintColor: focused ? COLOURS.black : COLOURS.gray,
+                }}
+              />
+            </View>
+          ),
+        }}*/
