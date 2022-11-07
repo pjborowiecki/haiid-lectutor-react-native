@@ -1,4 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { useState } from "react";
 
 // Component imports
 import Feedback from "../screens/home/settings/Feedback";
@@ -10,6 +11,9 @@ import Settings from "../screens/home/Settings";
 // Settings navigation component
 export default function SettingsNavigation() {
   const Stack = createStackNavigator();
+
+  
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
   return (
     <Stack.Navigator
@@ -24,8 +28,13 @@ export default function SettingsNavigation() {
       />
       <Stack.Screen
         name="Feedback"
-        component={Feedback}
-      />
+      >
+        {props => <Feedback 
+                    {...props} 
+                    showModal={showFeedbackModal}
+                    setShowModal={setShowFeedbackModal}
+                  />}
+      </Stack.Screen>
       <Stack.Screen
         name="TermsAndConditions"
         component={TermsAndConditions}
