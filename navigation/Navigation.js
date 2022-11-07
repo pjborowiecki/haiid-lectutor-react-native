@@ -61,6 +61,7 @@ export default function Navigation() {
       .map(fc => {
         if (fc.id === flashcardId) {
           fc.answer = "The use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyse and draw inferences from patterns in data.";
+          fc.type = "Alt Answer";
         }
         return fc;
     });
@@ -77,6 +78,7 @@ export default function Navigation() {
       .map(fc => {
         if (fc.id === flashcardId) {
           fc.answer = "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.";
+          fc.type = "Best Match"
         }
         return fc;
     });
@@ -92,8 +94,9 @@ export default function Navigation() {
     setQuizzes(newQuizzes);
   }
 
-  const deleteQuiz = (quiz) => {
-    const newQuizzes = quizzes.filter(q => q !== quiz);
+  const deleteQuiz = (id) => {
+    const newQuizzes = quizzes.filter(q => q.id !== id);
+    const newFlashcards = flashcards.filter(fc => fc.id !== id)
     setQuizzes(newQuizzes);
   }
 
