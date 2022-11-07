@@ -16,6 +16,7 @@ import IncrementStreak from "../screens/quiz/IncrementStreak";
 export default function Navigation() {
   const Stack = createStackNavigator();
 
+  // Data variables
   const [statistics, setStats] = useState(_statistics);
   const [quizzes, setQuizzes] = useState(_quizzes);
   const [flashcards, setFlashcards] = useState(_flashcards);
@@ -27,6 +28,9 @@ export default function Navigation() {
       time: new Date().getTime()
     });
   }
+
+  // One-time modal states
+  const [showQuizPlayerModal, setShowQuizPlayerModal] = useState(true);
 
   const incrementStat = (index) => {
     const newStats = statistics.map(stat => {
@@ -185,6 +189,8 @@ export default function Navigation() {
                     incrementStreak={incrementStreak}
                     prevAnswer={prevAnswer}
                     nextAnswer={nextAnswer}
+                    showModal={showQuizPlayerModal}
+                    setShowModal={setShowQuizPlayerModal}
                   />}
       </Stack.Screen>
       <Stack.Screen
