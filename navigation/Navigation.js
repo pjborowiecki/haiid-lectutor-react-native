@@ -87,7 +87,11 @@ export default function Navigation() {
       .map(fc => {
         if (fc.id === flashcardId) {
           fc.answer = "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.";
+<<<<<<< HEAD
           fc.type = "Best Match";
+=======
+          fc.type = "Best Match"
+>>>>>>> c25d91b (Added best match/alt answer indicator text)
         }
         return fc;
     });
@@ -182,10 +186,7 @@ export default function Navigation() {
                     _flashcards={flashcards}
                     streak={streak}
                     updateQuizDate={updateQuizDate}
-<<<<<<< HEAD
                     incrementStreak={incrementStreak}
-=======
->>>>>>> 0d77568 (Switch answer)
                     prevAnswer={prevAnswer}
                     nextAnswer={nextAnswer}
                   />}
