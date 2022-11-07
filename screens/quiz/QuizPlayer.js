@@ -22,6 +22,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
     _flashcards,
     streak,
     updateQuizDate,
+    prevAnswer,
+    nextAnswer,
     incrementStreak,
     prevAnswer,
     nextAnswer,
