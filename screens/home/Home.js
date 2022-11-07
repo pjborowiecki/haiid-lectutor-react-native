@@ -23,7 +23,7 @@ export default function Home({ navigation, deleteQuiz, quizzes, streak }) {
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
       {/* Header */}
-      <Header streak={streak} />
+      <Header streak={streak}  showFire={true} />
 
       {/* NewQuiz button */}
       <FunctionCircle
