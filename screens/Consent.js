@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text, Image } from "react-native";
 import { assets, COLOURS } from "../constants";
 
 // Import components
