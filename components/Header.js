@@ -1,8 +1,8 @@
-import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../constants";
 
 // Header component
-export default function HeaderNew({ navigation }) {
+export default function HeaderNew({ streak }) {
   return (
     // headerWrapper
     <View style={styles.headerWrapper}>
@@ -17,6 +17,7 @@ export default function HeaderNew({ navigation }) {
         }}
       >
         <Image source={assets.fireIcon} style={styles.fireIcon} />
+        
       </TouchableOpacity>
     </View>
   );

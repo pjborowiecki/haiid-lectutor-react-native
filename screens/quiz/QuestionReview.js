@@ -10,7 +10,6 @@ import { COLOURS } from "../../constants";
 
 // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
-import TitlePill from "../../components/TitlePill";
 import Flashcard from "../../components/Flashcard";
 import Footer from "../../components/Footer";
 

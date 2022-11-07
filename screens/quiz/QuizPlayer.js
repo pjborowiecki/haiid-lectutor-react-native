@@ -20,7 +20,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
     incrementStat,
     quizzes,
     _flashcards,
+    streak,
     updateQuizDate,
+    incrementStreak,
   }) {
     const id = route.params.id;
     const quiz = quizzes.filter(quiz => quiz.id === id)[0];
@@ -46,7 +48,13 @@ import { TouchableOpacity } from "react-native-gesture-handler";
         // increment quizzes done
         incrementStat(0);
         if (currentFlashcard.id === flashcards.length) incrementStat(1);
-        navigation.navigate("Rating")
+        if (streak.time < new Date().getTime()-8.64e+7) {
+          console.log("yes")
+          incrementStreak();
+          navigation.navigate("Rating", {streak: streak})
+        } else {
+          navigation.navigate("Rating")
+        }
     }
     
     const onNext = (revealAnswer) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text, Image, TouchableOpacity } from "react-native";
 import { assets, COLOURS } from "../constants";
 
 // Consent screen
@@ -25,7 +25,7 @@ export default function Consent({ navigation }) {
 
   return (
     // Consen Screen Wrapper
-    <View style={styles.consentScreenWrapper}>
+    <SafeAreaView style={styles.consentScreenWrapper}>
       {modalOn ? (
         // Modal Wrapper
         <View
@@ -85,7 +85,7 @@ export default function Consent({ navigation }) {
           </Text>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -1,4 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { useState } from "react";
+import { _flashcards, _quizzes, _statistics, _streak } from "../constants";
 
 // Component imports
 import HomeNavigation from "./HomeNavigation";
@@ -8,8 +10,7 @@ import QuizPlayer from "../screens/quiz/QuizPlayer";
 import Rating from "../screens/quiz/Rating";
 import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
 import QuestionReview from "../screens/quiz/QuestionReview";
-import { useState } from "react";
-import { _flashcards, _quizzes, _statistics } from "../constants";
+import IncrementStreak from "../screens/quiz/IncrementStreak";
 
 // Navigation component
 export default function Navigation() {
@@ -18,6 +19,14 @@ export default function Navigation() {
   const [statistics, setStats] = useState(_statistics);
   const [quizzes, setQuizzes] = useState(_quizzes);
   const [flashcards, setFlashcards] = useState(_flashcards);
+  const [streak, setStreak]  = useState(_streak);
+
+  const incrementStreak = () => {
+    setStreak({
+      streak: streak.streak+1,
+      time: new Date().getTime()
+    });
+  }
 
   const incrementStat = (index) => {
     const newStats = statistics.map(stat => {
@@ -94,6 +103,7 @@ export default function Navigation() {
                     statistics={statistics}
                     deleteQuiz={deleteQuiz}
                     quizzes={quizzes}
+                    streak={streak.streak}
                   />}
       </Stack.Screen>
       
@@ -134,7 +144,9 @@ export default function Navigation() {
                     incrementStat={incrementStat}
                     quizzes={quizzes}
                     _flashcards={flashcards}
+                    streak={streak}
                     updateQuizDate={updateQuizDate}
+                    incrementStreak={incrementStreak}
                   />}
       </Stack.Screen>
       <Stack.Screen
@@ -142,6 +154,10 @@ export default function Navigation() {
       >
         {props => <Rating {...props} incrementStat={incrementStat}/>}
       </Stack.Screen>
+      <Stack.Screen
+        name="IncrementStreak"
+        component={IncrementStreak}
+      />
     </Stack.Navigator>
   );
 }
