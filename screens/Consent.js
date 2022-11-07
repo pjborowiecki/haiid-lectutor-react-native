@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
-import Modal from "../components/Modal";
 import { assets, COLOURS } from "../constants";
+
+// Import components
+import Modal from "../components/Modal";
 
 // Consent screen
 export default function Consent({ navigation }) {
@@ -28,7 +30,7 @@ export default function Consent({ navigation }) {
 
   return (
     // Consen Screen Wrapper
-    <View style={styles.consentScreenWrapper}>
+    <SafeAreaView style={styles.consentScreenWrapper}>
       {modalOn ? (
         // Modal Wrapper
         <Modal modalText={modalText} onYes={handleAccept} onNo={handleReject} />
@@ -49,7 +51,7 @@ export default function Consent({ navigation }) {
           </Text>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

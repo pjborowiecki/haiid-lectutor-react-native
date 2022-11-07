@@ -1,4 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { useState } from "react";
+import { _flashcards, _quizzes, _statistics, _streak } from "../constants";
 
 // Component imports
 import HomeNavigation from "./HomeNavigation";
@@ -8,8 +10,7 @@ import QuizPlayer from "../screens/quiz/QuizPlayer";
 import Rating from "../screens/quiz/Rating";
 import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
 import QuestionReview from "../screens/quiz/QuestionReview";
-import { useState } from "react";
-import { _flashcards, _quizzes, _statistics } from "../constants";
+import IncrementStreak from "../screens/quiz/IncrementStreak";
 
 // Navigation component
 export default function Navigation() {
@@ -19,6 +20,14 @@ export default function Navigation() {
   const [statistics, setStats] = useState(_statistics);
   const [quizzes, setQuizzes] = useState(_quizzes);
   const [flashcards, setFlashcards] = useState(_flashcards);
+  const [streak, setStreak]  = useState(_streak);
+
+  const incrementStreak = () => {
+    setStreak({
+      streak: streak.streak+1,
+      time: new Date().getTime()
+    });
+  }
 
   // One-time modal states
   const [showQuizPlayerModal, setShowQuizPlayerModal] = useState(true);
@@ -59,14 +68,50 @@ export default function Navigation() {
     setFlashcards(newFullFlashcards);
   }
 
+  const nextAnswer = (flashcardId, quizId) => {
+    const newFlashcards = flashcards.filter(quiz => quiz.id === quizId)[0]
+      .flashcards
+      .map(fc => {
+        if (fc.id === flashcardId) {
+          fc.answer = "The use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyse and draw inferences from patterns in data.";
+          fc.type = "Alt Answer";
+        }
+        return fc;
+    });
+    const newFullFlashcards = flashcards.map(quiz => {
+      if (quiz.id === quizId) quiz.flashcards = newFlashcards;
+      return quiz;
+    })
+    setFlashcards(newFullFlashcards);
+  }
+
+  const prevAnswer = (flashcardId, quizId) => {
+    const newFlashcards = flashcards.filter(quiz => quiz.id === quizId)[0]
+      .flashcards
+      .map(fc => {
+        if (fc.id === flashcardId) {
+          fc.answer = "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.";
+          fc.type = "Best Match";
+        }
+        return fc;
+    });
+    const newFullFlashcards = flashcards.map(quiz => {
+      if (quiz.id === quizId) quiz.flashcards = newFlashcards;
+      return quiz;
+    })
+    setFlashcards(newFullFlashcards);
+  }
+
   const addQuiz = (quiz) => {
     const newQuizzes = [quiz, ...quizzes];
     setQuizzes(newQuizzes);
   }
 
-  const deleteQuiz = (quiz) => {
-    const newQuizzes = quizzes.filter(q => q !== quiz);
+  const deleteQuiz = (id) => {
+    const newQuizzes = quizzes.filter(q => q.id !== id);
+    const newFlashcards = flashcards.filter(fc => fc.id !== id)
     setQuizzes(newQuizzes);
+    setFlashcards(newFlashcards);
   }
 
   const updateQuizDate = (id, date) => {
@@ -98,6 +143,7 @@ export default function Navigation() {
                     statistics={statistics}
                     deleteQuiz={deleteQuiz}
                     quizzes={quizzes}
+                    streak={streak.streak}
                   />}
       </Stack.Screen>
       
@@ -138,9 +184,13 @@ export default function Navigation() {
                     incrementStat={incrementStat}
                     quizzes={quizzes}
                     _flashcards={flashcards}
+                    streak={streak}
                     updateQuizDate={updateQuizDate}
                     showModal={showQuizPlayerModal}
                     setShowModal={setShowQuizPlayerModal}
+                    incrementStreak={incrementStreak}
+                    prevAnswer={prevAnswer}
+                    nextAnswer={nextAnswer}
                   />}
       </Stack.Screen>
       <Stack.Screen
@@ -148,6 +198,10 @@ export default function Navigation() {
       >
         {props => <Rating {...props} incrementStat={incrementStat}/>}
       </Stack.Screen>
+      <Stack.Screen
+        name="IncrementStreak"
+        component={IncrementStreak}
+      />
     </Stack.Navigator>
   );
 }

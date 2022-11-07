@@ -70,6 +70,11 @@ export const onboardingData = [
   },
 ];
 
+export const _streak = {
+  time: new Date("2015-03-25").getTime(),
+  streak: 0
+}
+
 export const _quizzes = [
   {
     id: 1,
@@ -258,24 +263,28 @@ export const _flashcards = [
     flashcards: [
       {
         id: 1,
+        type: "Best Match",
         question: "What is Machine Learning?",
         answer:
-          "A field of study that gives computers the ability to learn without being explicitly programmed.",
+          "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.",
       },
       {
         id: 2,
+        type: "Best Match",
         question: "What is Supervised Learning?",
         answer:
           'The typed of machine learning in which machines are trained using well "labelled" data',
       },
       {
         id: 3,
+        type: "Best Match",
         question: "What is Unsupervised Learning?",
         answer:
           'The types of machine learning in which machines are trained using well "unlabelled" training data.',
       },
       {
         id: 4,
+        type: "Best Match",
         question: "What is a Feature?",
         answer: "A feature is an individual measurable property or characteristic.",
       },
@@ -286,24 +295,28 @@ export const _flashcards = [
     flashcards: [
       {
         id: 1,
+        type: "Best Match",
         question: "What is Machine Learning?",
         answer:
-          "A field of study that gives computers the ability to learn without being explicitly programmed.",
+          "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.",
       },
       {
         id: 2,
+        type: "Best Match",
         question: "What is Supervised Learning?",
         answer:
           'The typed of machine learning in which machines are trained using well "labelled" data',
       },
       {
         id: 3,
+        type: "Best Match",
         question: "What is Unsupervised Learning?",
         answer:
           'The types of machine learning in which machines are trained using well "unlabelled" training data.',
       },
       {
         id: 4,
+        type: "Best Match",
         question: "What is a Feature?",
         answer: "A feature is an individual measurable property or characteristic.",
       },
@@ -314,24 +327,28 @@ export const _flashcards = [
     flashcards: [
       {
         id: 1,
+        type: "Best Match",
         question: "What is Machine Learning?",
         answer:
-          "A field of study that gives computers the ability to learn without being explicitly programmed.",
+          "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.",
       },
       {
         id: 2,
+        type: "Best Match",
         question: "What is Supervised Learning?",
         answer:
           'The typed of machine learning in which machines are trained using well "labelled" data',
       },
       {
         id: 3,
+        type: "Best Match",
         question: "What is Unsupervised Learning?",
         answer:
           'The types of machine learning in which machines are trained using well "unlabelled" training data.',
       },
       {
         id: 4,
+        type: "Best Match",
         question: "What is a Feature?",
         answer: "A feature is an individual measurable property or characteristic.",
       },
@@ -342,24 +359,28 @@ export const _flashcards = [
     flashcards: [
       {
         id: 1,
+        type: "Best Match",
         question: "What is Machine Learning?",
         answer:
-          "A field of study that gives computers the ability to learn without being explicitly programmed.",
+          "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.",
       },
       {
         id: 2,
+        type: "Best Match",
         question: "What is Supervised Learning?",
         answer:
           'The typed of machine learning in which machines are trained using well "labelled" data',
       },
       {
         id: 3,
+        type: "Best Match",
         question: "What is Unsupervised Learning?",
         answer:
           'The types of machine learning in which machines are trained using well "unlabelled" training data.',
       },
       {
         id: 4,
+        type: "Best Match",
         question: "What is a Feature?",
         answer: "A feature is an individual measurable property or characteristic.",
       },

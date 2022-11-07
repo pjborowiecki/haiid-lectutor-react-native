@@ -87,7 +87,7 @@ export default function QuestionReview({
       </View>
       {/* Footer */}
       <View style={styles.footerWrapper}>
-        <Footer />
+        {/* <Footer /> */}
       </View>
     </SafeAreaView>
   );

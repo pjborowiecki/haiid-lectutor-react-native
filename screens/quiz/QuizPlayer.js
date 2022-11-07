@@ -21,9 +21,13 @@ import InfoModal from "../../components/InfoModal";
     incrementStat,
     quizzes,
     _flashcards,
+    streak,
     updateQuizDate,
     showModal,
     setShowModal,
+    incrementStreak,
+    prevAnswer,
+    nextAnswer,
   }) {
     const modalText = "Ready to see the answer? Tap on the card to flip it! Press the arrows to switch to the next card.";
     const id = route.params.id;
@@ -50,7 +54,13 @@ import InfoModal from "../../components/InfoModal";
         // increment quizzes done
         incrementStat(0);
         if (currentFlashcard.id === flashcards.length) incrementStat(1);
-        navigation.navigate("Rating")
+        if (streak.time < new Date().getTime()-8.64e+7) {
+          console.log("yes")
+          incrementStreak();
+          navigation.navigate("Rating", {streak: streak})
+        } else {
+          navigation.navigate("Rating")
+        }
     }
     
     const onNext = (revealAnswer) => {
@@ -96,11 +106,14 @@ import InfoModal from "../../components/InfoModal";
           {/* Flashcard */}
           <Flashcard 
             flashcard={currentFlashcard}
+            quizId={id}
             size={flashcards.length}
             index={index+1}
             playingQuiz={true}
             onNext={onNext}
             onPrev={onPrev}
+            onNextAnswer={nextAnswer}
+            onPrevAnswer={prevAnswer}
           />
           
           {/* End quiz button */}

@@ -16,6 +16,8 @@ export default function Flashcard({
   onPrev = () => {},
   onReroll = () => {},
   onDelete = () => {},
+  onNextAnswer = () => {},
+  onPrevAnswer = () => {},
 }) {
   const [revealAnswer, setRevealAnswer] = useState(false);
   const [revealedAnswerOnce, setRevealedAnswerOnce] = useState(false);
@@ -54,6 +56,20 @@ export default function Flashcard({
           <Text>{flashcard.answer}</Text>
         </TouchableOpacity>
       )}
+
+      {/* Next/Prev answers */}
+      {playingQuiz && revealAnswer && <View>
+        <TouchableOpacity onPress={() => onPrevAnswer(flashcard.id, quizId)}>
+          <Image source={assets.chevronLeftIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onNextAnswer(flashcard.id, quizId)}>
+          <Image source={assets.chevronRightIcon} />
+        </TouchableOpacity>
+
+        {/* Best/Alt answer text */}
+        <Text>{flashcard.type}</Text>
+      </View>}
+
 
       {/* Input for typing in answer */}
       {playingQuiz && (

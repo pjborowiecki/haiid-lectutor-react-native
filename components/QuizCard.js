@@ -28,7 +28,7 @@ export default function QuizCard({ navigation, quiz, onDelete }) {
         {/* Delete Button */}
         <TouchableOpacity
           style={styles.deleteButton}
-          onPress={() => onDelete(quiz)}
+          onPress={() => onDelete(quiz.id)}
         >
           <Image
             source={assets.trashIcon}
