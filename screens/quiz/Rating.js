@@ -12,11 +12,14 @@ import SimpleHeader from "../../components/SimpleHeader";
 import TitlePill from "../../components/TitlePill";
   
   // Rating the quiz screen
-  export default function Rating({ navigation, incrementStat }) {
+  export default function Rating({ navigation, incrementStat, route }) {
+    const streak = route.params?.streak;
 
-    const giveRating = () => {
-      incrementStat(3);
-      navigation.navigate("Homepage");
+    const giveRating = (like) => {
+      console.log(route)
+      if (like !== undefined) incrementStat(3);
+      if (streak) navigation.navigate("IncrementStreak", {streak: streak});
+      else navigation.navigate("Homepage");
     }
 
     return (
@@ -35,18 +38,18 @@ import TitlePill from "../../components/TitlePill";
           {/* Rating thumbs */}
           <View>
             <TouchableOpacity
-              onPress={giveRating}>
+              onPress={() => giveRating(true)}>
               <Text>Like</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={giveRating}>
+              onPress={() => giveRating(false)}>
               <Text>Dislike</Text>
             </TouchableOpacity>
           </View>
           
           {/* Skip button */}
           <TouchableOpacity
-            onPress={() => navigation.navigate("Homepage")}>
+            onPress={() => giveRating()}>
             <Text>Skip</Text>
           </TouchableOpacity>
         </View>

@@ -70,6 +70,11 @@ export const onboardingData = [
   },
 ];
 
+export const _streak = {
+  time: new Date("2015-03-25").getTime(),
+  streak: 0
+}
+
 export const _quizzes = [
   {
     id: 1,

@@ -8,7 +8,12 @@ import Stats from "../screens/home/Stats";
 import SettingsNavigation from "./SettingsNavigation";
 
 // Navigation component
-export default function HomeNavigation({ statistics, deleteQuiz, quizzes }) {
+export default function HomeNavigation({ 
+  statistics, 
+  deleteQuiz, 
+  quizzes, 
+  streak,
+}) {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -23,7 +28,7 @@ export default function HomeNavigation({ statistics, deleteQuiz, quizzes }) {
       {/* Stats screen */}
       <Tab.Screen
         name="Stats"
-        children={() => <Stats statistics={statistics} />}
+        children={() => <Stats statistics={statistics} streak={streak} />}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -51,6 +56,7 @@ export default function HomeNavigation({ statistics, deleteQuiz, quizzes }) {
                           {...props}
                           deleteQuiz={deleteQuiz} 
                           quizzes={quizzes}
+                          streak={streak}
                         />}
         options={{
           tabBarIcon: ({ focused }) => (

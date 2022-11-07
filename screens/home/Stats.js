@@ -8,7 +8,7 @@ import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 
 // Stats screen
-export default function Stats({ statistics }) {
+export default function Stats({ statistics, streak }) {
   // Function to check if some statistics have been incremented
   const checkIfStatsExist = () => {
     return statistics.some((stat) => stat.count > 0);
@@ -20,7 +20,7 @@ export default function Stats({ statistics }) {
     // Stats screen wrapper
     <SafeAreaView style={styles.statsScreenWrapper}>
       {/* Header */}
-      <Header />
+      <Header streak={streak} showFire={true} />
 
       {/* Share button */}
       <FunctionCircle icon={assets.shareIcon} iconSize={34} right={1} />

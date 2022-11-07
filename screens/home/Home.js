@@ -13,7 +13,7 @@ import QuizCard from "../../components/QuizCard";
 import FunctionCircle from "../../components/FunctionCircle";
 
 // Home screen
-export default function Home({ navigation, deleteQuiz, quizzes }) {
+export default function Home({ navigation, deleteQuiz, quizzes, streak }) {
 
   const onDeleteQuiz = (quiz) => {
     // modal
@@ -23,7 +23,7 @@ export default function Home({ navigation, deleteQuiz, quizzes }) {
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
       {/* Header */}
-      <Header />
+      <Header streak={streak}  showFire={true} />
 
       {/* NewQuiz button */}
       <FunctionCircle
