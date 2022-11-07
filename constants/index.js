@@ -2,12 +2,11 @@ import assets from "./assets";
 import { COLOURS, FONTS, SHADOWS, SIZES } from "./theme";
 import {
   onboardingData,
-  quizzes,
+  _quizzes,
   quizColours,
-  statistics,
+  _statistics,
   settings,
-  colour_selector,
-  quizzes_questions_and_answers,
+  _flashcards,
   terms_and_conditions,
   how_does_it_work,
 } from "./data";
@@ -19,12 +18,11 @@ export {
   SHADOWS,
   SIZES,
   onboardingData,
-  quizzes,
-  statistics,
+  _quizzes,
+  _statistics,
   settings,
-  colour_selector,
   quizColours,
   terms_and_conditions,
   how_does_it_work,
-  quizzes_questions_and_answers,
+  _flashcards,
 };

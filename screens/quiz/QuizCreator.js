@@ -15,10 +15,41 @@ import SimpleHeader from "../../components/SimpleHeader";
 import Footer from "../../components/Footer";
 
 // Quiz creator screen
-export default function QuizCreator({ navigation }) {
+export default function QuizCreator({ 
+  navigation, 
+  addQuiz, 
+  addFlashcards,
+  numberOfQuizzes,
+  incrementStat,
+}) {
   const [quizTitle, setQuizTitle] = useState("");
   const [quizColour, setQuizColour] = useState(null);
   const [numberOfQuestions, setNumberOfQuestions] = useState(0);
+
+  const generateDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    return mm + '/' + dd + '/' + yyyy;
+  }
+
+  const onAddQuiz = () => {
+    const id = numberOfQuizzes+1;
+    const newQuiz = {
+      id: id,
+      name: quizTitle,
+      lastAccessed: generateDate(),
+      colour: quizColour,
+    }
+    addQuiz(newQuiz);
+    addFlashcards(id);
+    incrementStat(2);
+    navigation.navigate(
+      "QuizLoadingScreen",
+      {id: id}
+    );
+  }
 
   return (
     <SafeAreaView style={styles.quizCreatorScreenWrapper}>
@@ -109,7 +140,7 @@ export default function QuizCreator({ navigation }) {
         >
           {/* Generate quiz button */}
           <TouchableOpacity
-            onPress={() => navigation.navigate("QuizLoadingScreen")}
+            onPress={onAddQuiz}
             disabled={!quizTitle || !quizColour || !numberOfQuestions}
             style={
               !quizTitle || !quizColour || !numberOfQuestions

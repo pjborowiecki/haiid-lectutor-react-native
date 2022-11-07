@@ -4,10 +4,8 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  Image,
 } from "react-native";
-import { COLOURS, assets, quizzes } from "../../constants";
+import { COLOURS, assets } from "../../constants";
 
 // Component imports
 import Header from "../../components/Header";
@@ -15,7 +13,13 @@ import QuizCard from "../../components/QuizCard";
 import FunctionCircle from "../../components/FunctionCircle";
 
 // Home screen
-export default function Home({ navigation }) {
+export default function Home({ navigation, deleteQuiz, quizzes }) {
+
+  const onDeleteQuiz = (quiz) => {
+    // modal
+    deleteQuiz(quiz);
+  }
+
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
       {/* Header */}
@@ -39,7 +43,11 @@ export default function Home({ navigation }) {
         {/* List of Quizzes */}
         <ScrollView style={styles.quizList}>
           {quizzes.map((quiz) => (
-            <QuizCard key={quiz.id} quiz={quiz} navigation={navigation} />
+            <QuizCard 
+              key={quiz.id} 
+              quiz={quiz} 
+              onDelete={onDeleteQuiz}
+              navigation={navigation} />
           ))}
           <View style={styles.quizListEnd}></View>
         </ScrollView>
@@ -54,8 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLOURS.white,
     height: "100%",
     display: "flex",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
 
   sectionContent: {
