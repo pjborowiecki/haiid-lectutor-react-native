@@ -65,7 +65,11 @@ export default function Flashcard({
         <TouchableOpacity onPress={() => onNextAnswer(flashcard.id, quizId)}>
           <Image source={assets.chevronRightIcon} />
         </TouchableOpacity>
+
+        {/* Best/Alt answer text */}
+        <Text>{flashcard.type}</Text>
       </View>}
+
 
       {/* Input for typing in answer */}
       {playingQuiz && (
