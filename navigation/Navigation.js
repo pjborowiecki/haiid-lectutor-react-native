@@ -64,6 +64,38 @@ export default function Navigation() {
     setFlashcards(newFullFlashcards);
   }
 
+  const nextAnswer = (flashcardId, quizId) => {
+    const newFlashcards = flashcards.filter(quiz => quiz.id === quizId)[0]
+      .flashcards
+      .map(fc => {
+        if (fc.id === flashcardId) {
+          fc.answer = "The use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyse and draw inferences from patterns in data.";
+        }
+        return fc;
+    });
+    const newFullFlashcards = flashcards.map(quiz => {
+      if (quiz.id === quizId) quiz.flashcards = newFlashcards;
+      return quiz;
+    })
+    setFlashcards(newFullFlashcards);
+  }
+
+  const prevAnswer = (flashcardId, quizId) => {
+    const newFlashcards = flashcards.filter(quiz => quiz.id === quizId)[0]
+      .flashcards
+      .map(fc => {
+        if (fc.id === flashcardId) {
+          fc.answer = "Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.";
+        }
+        return fc;
+    });
+    const newFullFlashcards = flashcards.map(quiz => {
+      if (quiz.id === quizId) quiz.flashcards = newFlashcards;
+      return quiz;
+    })
+    setFlashcards(newFullFlashcards);
+  }
+
   const addQuiz = (quiz) => {
     const newQuizzes = [quiz, ...quizzes];
     setQuizzes(newQuizzes);
@@ -147,6 +179,8 @@ export default function Navigation() {
                     streak={streak}
                     updateQuizDate={updateQuizDate}
                     incrementStreak={incrementStreak}
+                    prevAnswer={prevAnswer}
+                    nextAnswer={nextAnswer}
                   />}
       </Stack.Screen>
       <Stack.Screen
