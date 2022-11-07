@@ -70,7 +70,7 @@ export const onboardingData = [
   },
 ];
 
-export const quizzes = [
+export const _quizzes = [
   {
     id: 1,
     name: "Organic Chemistry",
@@ -97,7 +97,7 @@ export const quizzes = [
   },
 ];
 
-export const statistics = [
+export const _statistics = [
   {
     id: 1,
     name: "Quizzes done:",
@@ -118,27 +118,6 @@ export const statistics = [
     name: "Ratings given:",
     count: 0,
   },
-];
-
-export const colour_selector = [
-  [
-    COLOURS.quizColour01,
-    COLOURS.quizColour02,
-    COLOURS.quizColour03,
-    COLOURS.quizColour04,
-  ],
-  [
-    COLOURS.quizColour05,
-    COLOURS.quizColour06,
-    COLOURS.quizColour07,
-    COLOURS.quizColour08,
-  ],
-  [
-    COLOURS.quizColour09,
-    COLOURS.quizColour10,
-    COLOURS.quizColour11,
-    COLOURS.quizColour12,
-  ],
 ];
 
 export const quizColours = [
@@ -273,10 +252,9 @@ export const settings = [
   },
 ];
 
-export const quizzes_questions_and_answers = [
+export const _flashcards = [
   {
     id: 1,
-    count: 4,
     flashcards: [
       {
         id: 1,
@@ -299,7 +277,91 @@ export const quizzes_questions_and_answers = [
       {
         id: 4,
         question: "What is a Feature?",
-        answer: "",
+        answer: "A feature is an individual measurable property or characteristic.",
+      },
+    ],
+  },
+  {
+    id: 2,
+    flashcards: [
+      {
+        id: 1,
+        question: "What is Machine Learning?",
+        answer:
+          "A field of study that gives computers the ability to learn without being explicitly programmed.",
+      },
+      {
+        id: 2,
+        question: "What is Supervised Learning?",
+        answer:
+          'The typed of machine learning in which machines are trained using well "labelled" data',
+      },
+      {
+        id: 3,
+        question: "What is Unsupervised Learning?",
+        answer:
+          'The types of machine learning in which machines are trained using well "unlabelled" training data.',
+      },
+      {
+        id: 4,
+        question: "What is a Feature?",
+        answer: "A feature is an individual measurable property or characteristic.",
+      },
+    ],
+  },
+  {
+    id: 3,
+    flashcards: [
+      {
+        id: 1,
+        question: "What is Machine Learning?",
+        answer:
+          "A field of study that gives computers the ability to learn without being explicitly programmed.",
+      },
+      {
+        id: 2,
+        question: "What is Supervised Learning?",
+        answer:
+          'The typed of machine learning in which machines are trained using well "labelled" data',
+      },
+      {
+        id: 3,
+        question: "What is Unsupervised Learning?",
+        answer:
+          'The types of machine learning in which machines are trained using well "unlabelled" training data.',
+      },
+      {
+        id: 4,
+        question: "What is a Feature?",
+        answer: "A feature is an individual measurable property or characteristic.",
+      },
+    ],
+  },
+  {
+    id: 4,
+    flashcards: [
+      {
+        id: 1,
+        question: "What is Machine Learning?",
+        answer:
+          "A field of study that gives computers the ability to learn without being explicitly programmed.",
+      },
+      {
+        id: 2,
+        question: "What is Supervised Learning?",
+        answer:
+          'The typed of machine learning in which machines are trained using well "labelled" data',
+      },
+      {
+        id: 3,
+        question: "What is Unsupervised Learning?",
+        answer:
+          'The types of machine learning in which machines are trained using well "unlabelled" training data.',
+      },
+      {
+        id: 4,
+        question: "What is a Feature?",
+        answer: "A feature is an individual measurable property or characteristic.",
       },
     ],
   },

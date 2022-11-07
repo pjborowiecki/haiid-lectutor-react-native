@@ -1,25 +1,45 @@
 import {
     SafeAreaView,
     View,
+    Text,
     StyleSheet,
-    Button,
   } from "react-native";
-  import { COLOURS, quizzes, quizzes_questions_and_answers } from "../../constants";
+  import { COLOURS } from "../../constants";
+  import { useEffect, useState } from "react";
   
   // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
-import { useState } from "react";
 import Flashcard from "../../components/Flashcard";
 import TitlePill from "../../components/TitlePill";
+import { TouchableOpacity } from "react-native-gesture-handler";
   
   // Quiz player screen
-  export default function QuizPlayer({ navigation, route, incrementStat }) {
-    const quizId = route.params.quizId;
-    const quiz = quizzes.filter(quiz => quiz.id === quizId)[0]
-    const flashcards = quizzes_questions_and_answers.filter(quiz => quizId === quiz.id)[0].flashcards
+  export default function QuizPlayer({ 
+    navigation, 
+    route,
+    incrementStat,
+    quizzes,
+    _flashcards,
+    updateQuizDate,
+  }) {
+    const id = route.params.id;
+    const quiz = quizzes.filter(quiz => quiz.id === id)[0];
+    const flashcards = _flashcards.filter(quiz => id === quiz.id)[0].flashcards;
 
-    const [index, setIndex] = useState(0)
+    const [index, setIndex] = useState(0);
     const [currentFlashcard, setCurrentFlashcard] = useState(flashcards[0]);
+
+    const generateDate = () => {
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const yyyy = today.getFullYear();
+      return mm + '/' + dd + '/' + yyyy;
+    }
+
+    useEffect(() => {
+      updateQuizDate(quiz.id, generateDate());
+    }, [])
 
     const endQuiz = () => {
         // modal
@@ -65,16 +85,18 @@ import TitlePill from "../../components/TitlePill";
           <Flashcard 
             flashcard={currentFlashcard}
             size={flashcards.length}
-            revealAnswers={true}
+            index={index+1}
+            playingQuiz={true}
             onNext={onNext}
             onPrev={onPrev}
           />
           
           {/* End quiz button */}
-          <Button
+          <TouchableOpacity
             onPress={endQuiz}
-            title="End Quiz"
-          />
+          >
+            <Text>End Quiz</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Footer */}

@@ -2,7 +2,7 @@ import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { COLOURS, assets } from "../constants";
 
 // Individual quiz card
-export default function QuizCard({ navigation, quiz }) {
+export default function QuizCard({ navigation, quiz, onDelete }) {
   return (
     <TouchableOpacity
         style={{
@@ -12,7 +12,7 @@ export default function QuizCard({ navigation, quiz }) {
         }}
         onPress={() => navigation.navigate(
             "QuizPlay", 
-            {quizId: 1}
+            {id: quiz.id}
         )}
     >
         {/* Quiz Title */}
@@ -31,7 +31,10 @@ export default function QuizCard({ navigation, quiz }) {
         </Text>
 
         {/* Delete Button */}
-        <TouchableOpacity style={styles.deleteButton}>
+        <TouchableOpacity 
+          style={styles.deleteButton}
+          onPress={() => onDelete(quiz)}
+        >
             <Image
                 source={assets.trashIcon}
                 resizeMode="contain"
