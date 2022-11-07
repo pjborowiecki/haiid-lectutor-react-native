@@ -107,6 +107,7 @@ export default function Navigation() {
     const newQuizzes = quizzes.filter(q => q.id !== id);
     const newFlashcards = flashcards.filter(fc => fc.id !== id)
     setQuizzes(newQuizzes);
+    setFlashcards(newFlashcards);
   }
 
   const updateQuizDate = (id, date) => {
@@ -181,7 +182,10 @@ export default function Navigation() {
                     _flashcards={flashcards}
                     streak={streak}
                     updateQuizDate={updateQuizDate}
+<<<<<<< HEAD
                     incrementStreak={incrementStreak}
+=======
+>>>>>>> 0d77568 (Switch answer)
                     prevAnswer={prevAnswer}
                     nextAnswer={nextAnswer}
                   />}
