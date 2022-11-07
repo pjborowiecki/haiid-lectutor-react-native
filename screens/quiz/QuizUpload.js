@@ -7,11 +7,7 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
-import {
-  COLOURS,
-  quizzes_questions_and_answers,
-  assets,
-} from "../../constants";
+import { COLOURS, assets } from "../../constants";
 
 // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
@@ -94,11 +90,7 @@ export default function QuizUpload({ navigation }) {
         >
           {/* Confirmation button */}
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("QuizCreate", {
-                quiz: quizzes_questions_and_answers[0],
-              })
-            }
+            onPress={() => navigation.navigate("QuizCreate")}
             disabled={!fileUploaded}
             style={
               !fileUploaded

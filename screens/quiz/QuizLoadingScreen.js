@@ -1,22 +1,27 @@
-import {
-    SafeAreaView,
-    View,
-    Text,
-    StyleSheet,
-  } from "react-native";
+  import {
+      SafeAreaView,
+      View,
+      Text,
+      StyleSheet,
+    } from "react-native";
   import { COLOURS } from "../../constants";
+  import { useEffect, useState } from "react";
+
+  // Import components
   import { Bar } from "react-native-progress";
-import { useEffect, useState } from "react";
 
   // Loading Screen screen
-  export default function QuizLoadingScreen({ navigation }) {
+  export default function QuizLoadingScreen({ navigation, route }) {
 
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        if (progress == 1) {
+        if (progress === 1) {
             setTimeout(() => {
-                navigation.navigate("QuizPlay", {quizId: 1});
+                navigation.navigate(
+                  "QuestionReview", 
+                  {id: route.params.id
+                });
             }, 250)
         }
         setTimeout(() => {

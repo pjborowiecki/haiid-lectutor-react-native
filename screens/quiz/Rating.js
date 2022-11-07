@@ -3,7 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-    Button,
+    TouchableOpacity,
   } from "react-native";
   import { COLOURS } from "../../constants";
   
@@ -34,21 +34,21 @@ import TitlePill from "../../components/TitlePill";
 
           {/* Rating thumbs */}
           <View>
-            <Button
-                title="Like"
-                onPress={giveRating}
-            />
-            <Button 
-                title="Dislike"
-                onPress={giveRating}
-            />
+            <TouchableOpacity
+              onPress={giveRating}>
+              <Text>Like</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={giveRating}>
+              <Text>Dislike</Text>
+            </TouchableOpacity>
           </View>
           
           {/* Skip button */}
-          <Button
-            onPress={() => navigation.navigate("Homepage")}
-            title="Skip"
-          />
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Homepage")}>
+            <Text>Skip</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Footer */}
