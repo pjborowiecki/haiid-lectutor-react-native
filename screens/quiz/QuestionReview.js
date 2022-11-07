@@ -10,7 +10,6 @@ import { COLOURS } from "../../constants";
 
 // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
-import TitlePill from "../../components/TitlePill";
 import Flashcard from "../../components/Flashcard";
 import Footer from "../../components/Footer";
 
@@ -70,7 +69,7 @@ export default function QuestionReview({
       </View>
       {/* Footer */}
       <View style={styles.footerWrapper}>
-        <Footer />
+        {/* <Footer /> */}
       </View>
     </SafeAreaView>
   );

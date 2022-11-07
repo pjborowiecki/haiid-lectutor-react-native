@@ -21,6 +21,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
     quizzes,
     _flashcards,
     updateQuizDate,
+    prevAnswer,
+    nextAnswer,
   }) {
     const id = route.params.id;
     const quiz = quizzes.filter(quiz => quiz.id === id)[0];
@@ -84,11 +86,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
           {/* Flashcard */}
           <Flashcard 
             flashcard={currentFlashcard}
+            quizId={id}
             size={flashcards.length}
             index={index+1}
             playingQuiz={true}
             onNext={onNext}
             onPrev={onPrev}
+            onNextAnswer={nextAnswer}
+            onPrevAnswer={prevAnswer}
           />
           
           {/* End quiz button */}
