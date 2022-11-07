@@ -70,7 +70,6 @@ export default function Flashcard({
         <Text>{flashcard.type}</Text>
       </View>}
 
-
       {/* Input for typing in answer */}
       {playingQuiz && (
         <TextInput
