@@ -6,18 +6,25 @@ import {
   StyleSheet,
 } from "react-native";
 import { COLOURS, assets } from "../../constants";
+import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
 import QuizCard from "../../components/QuizCard";
 import FunctionCircle from "../../components/FunctionCircle";
+import Modal from "../../components/Modal";
+
 
 // Home screen
 export default function Home({ navigation, deleteQuiz, quizzes }) {
+  const modalText = "This will delete the quiz from storage and all its settings. Are you sure about this?";
 
-  const onDeleteQuiz = (quiz) => {
-    // modal
-    deleteQuiz(quiz);
+  const [showModal, setShowModal] = useState(false);
+
+  const onDeleteQuiz = () => {
+    // showModal stores the quiz cause I can't be bothered
+    deleteQuiz(showModal);
+    setShowModal(false);
   }
 
   return (
@@ -38,6 +45,13 @@ export default function Home({ navigation, deleteQuiz, quizzes }) {
       {/* Section Title */}
       <Text style={styles.sectionTitle}>Your Suggested Quizzes</Text>
 
+      {/* Deletion Modal */}
+      { showModal && <Modal 
+        modalText={modalText} 
+        onYes={onDeleteQuiz} 
+        onNo={() => setShowModal(false)}
+      />}
+
       {/* Section Content */}
       <ScrollView style={styles.sectionContent}>
         {/* List of Quizzes */}
@@ -46,7 +60,7 @@ export default function Home({ navigation, deleteQuiz, quizzes }) {
             <QuizCard 
               key={quiz.id} 
               quiz={quiz} 
-              onDelete={onDeleteQuiz}
+              onDelete={() => setShowModal(quiz)}
               navigation={navigation} />
           ))}
           <View style={styles.quizListEnd}></View>

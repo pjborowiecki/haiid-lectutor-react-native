@@ -15,9 +15,13 @@ import { _flashcards, _quizzes, _statistics } from "../constants";
 export default function Navigation() {
   const Stack = createStackNavigator();
 
+  // Data variables
   const [statistics, setStats] = useState(_statistics);
   const [quizzes, setQuizzes] = useState(_quizzes);
   const [flashcards, setFlashcards] = useState(_flashcards);
+
+  // One-time modal states
+  const [showQuizPlayerModal, setShowQuizPlayerModal] = useState(true);
 
   const incrementStat = (index) => {
     const newStats = statistics.map(stat => {
@@ -135,6 +139,8 @@ export default function Navigation() {
                     quizzes={quizzes}
                     _flashcards={flashcards}
                     updateQuizDate={updateQuizDate}
+                    showModal={showQuizPlayerModal}
+                    setShowModal={setShowQuizPlayerModal}
                   />}
       </Stack.Screen>
       <Stack.Screen

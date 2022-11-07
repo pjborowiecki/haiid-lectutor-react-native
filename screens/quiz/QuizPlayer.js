@@ -12,6 +12,7 @@ import SimpleHeader from "../../components/SimpleHeader";
 import Flashcard from "../../components/Flashcard";
 import TitlePill from "../../components/TitlePill";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import InfoModal from "../../components/InfoModal";
   
   // Quiz player screen
   export default function QuizPlayer({ 
@@ -21,7 +22,10 @@ import { TouchableOpacity } from "react-native-gesture-handler";
     quizzes,
     _flashcards,
     updateQuizDate,
+    showModal,
+    setShowModal,
   }) {
+    const modalText = "Ready to see the answer? Tap on the card to flip it! Press the arrows to switch to the next card.";
     const id = route.params.id;
     const quiz = quizzes.filter(quiz => quiz.id === id)[0];
     const flashcards = _flashcards.filter(quiz => id === quiz.id)[0].flashcards;
@@ -80,6 +84,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
         <View style={styles.sectionContent}>
           {/* Section Title */}
           <TitlePill title={quiz.name} />
+
+          {/* Explanation modal */}
+          { showModal && <InfoModal 
+              modalText={modalText}
+              answerText="Got it!"
+              fontSize={18}
+              onPress={() => {setShowModal(false)}}
+            /> }
 
           {/* Flashcard */}
           <Flashcard 

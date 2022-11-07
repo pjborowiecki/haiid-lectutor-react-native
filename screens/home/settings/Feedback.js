@@ -5,9 +5,17 @@ import { assets, COLOURS } from "../../../constants";
 import Header from "../../../components/Header";
 import TitlePill from "../../../components/TitlePill";
 import FunctionCircle from "../../../components/FunctionCircle";
+import InfoModal from "../../../components/InfoModal";
 
 // Feedback screen
-export default function Feedback({ navigation }) {
+export default function Feedback({ navigation, showModal, setShowModal }) {
+  const modalText = "Thank you for submitting your feedback!";
+
+  const onSubmit = () => {
+    setShowModal(false);
+    navigation.navigate("Home");
+  }
+
   return (
     <View style={styles.statsScreenWrapper}>
       {/* Header */}
@@ -24,6 +32,14 @@ export default function Feedback({ navigation }) {
       {/* Section title pill */}
       <TitlePill title="Give Feedback" />
 
+      {/* Explanation modal */}
+      { showModal && <InfoModal 
+        modalText={modalText}
+        answerText="OK"
+        fontSize={24}
+        onPress={onSubmit}
+      /> }
+
       {/* Explanation of screen */}
       <Text>
         Your feedback is greatly appreciated and it helps us make the
@@ -34,7 +50,7 @@ export default function Feedback({ navigation }) {
       <TextInput placeholder="Please tell us what you think..." />
 
       {/* Submit button */}
-      <Button title="Submit" onPress={() => navigation.navigate("Home")} />
+      <Button title="Submit" onPress={() => setShowModal(true)} />
     </View>
   );
 }
