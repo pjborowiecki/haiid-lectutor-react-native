@@ -50,6 +50,15 @@ export default function TermsAndConditions({
         keyExtractor={(item) => item.id}
         style={styles.termsAndConditionsList}
       />
+
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNavWrapper}>
+        <BottomNav
+          navigation={navigation}
+          tabActive={tabActive}
+          setTabActive={setTabActive}
+        />
+      </View>
     </View>
   );
 }
