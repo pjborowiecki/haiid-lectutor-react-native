@@ -7,11 +7,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { COLOURS } from "../../constants";
+import { useState } from "react";
 
 // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
 import Flashcard from "../../components/Flashcard";
 import Footer from "../../components/Footer";
+import Modal from "../../components/Modal";
 
 // Quiz creator screen
 export default function QuestionReview({
@@ -23,6 +25,15 @@ export default function QuestionReview({
 }) {
   const id = route.params.id;
   const flashcards = _flashcards.filter((quiz) => id === quiz.id)[0].flashcards;
+
+  const modalText = "This action will cause a question to be reloaded. Are you sure?";
+
+  const [showModal, setShowModal] = useState(false);
+
+  const onDeleteFlashcard = () => {
+    deleteFlashcard(showModal.flashcardId, showModal.quizId);
+    setShowModal(false);
+  }
 
   return (
     <SafeAreaView style={styles.questionReviewScreenWrapper}>
@@ -43,6 +54,13 @@ export default function QuestionReview({
           AI may be prone to mistakes!
         </Text>
 
+        {/* Deletion modal */}
+        { showModal && <Modal
+          modalText={modalText}
+          onYes={onDeleteFlashcard}
+          onNo={() => setShowModal(false)}
+        />}
+
         {/* Flashcard review scroll container */}
         <ScrollView style={styles.questionList}>
           {flashcards.map((flashcard) => (
@@ -51,7 +69,7 @@ export default function QuestionReview({
               flashcard={flashcard}
               quizId={id}
               onReroll={rerollFlashcard}
-              onDelete={deleteFlashcard}
+              onDelete={(fcId, qId) => setShowModal({flashcardId: fcId, quizId: qId})}
             />
           ))}
           <View style={styles.quizListEnd}></View>
@@ -69,7 +87,7 @@ export default function QuestionReview({
       </View>
       {/* Footer */}
       <View style={styles.footerWrapper}>
-        <Footer />
+        {/* <Footer /> */}
       </View>
     </SafeAreaView>
   );

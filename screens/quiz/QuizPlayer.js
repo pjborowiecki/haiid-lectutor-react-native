@@ -12,6 +12,7 @@ import SimpleHeader from "../../components/SimpleHeader";
 import Flashcard from "../../components/Flashcard";
 import TitlePill from "../../components/TitlePill";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import InfoModal from "../../components/InfoModal";
   
   // Quiz player screen
   export default function QuizPlayer({ 
@@ -23,7 +24,12 @@ import { TouchableOpacity } from "react-native-gesture-handler";
     streak,
     updateQuizDate,
     incrementStreak,
+    prevAnswer,
+    nextAnswer,
+    showModal,
+    setShowModal,
   }) {
+    const modalText = "Ready to see the answer? Tap on the card to flip it! Press the arrows to switch to the next card.";
     const id = route.params.id;
     const quiz = quizzes.filter(quiz => quiz.id === id)[0];
     const flashcards = _flashcards.filter(quiz => id === quiz.id)[0].flashcards;
@@ -49,7 +55,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
         incrementStat(0);
         if (currentFlashcard.id === flashcards.length) incrementStat(1);
         if (streak.time < new Date().getTime()-8.64e+7) {
-          console.log("yes")
           incrementStreak();
           navigation.navigate("Rating", {streak: streak})
         } else {
@@ -89,14 +94,25 @@ import { TouchableOpacity } from "react-native-gesture-handler";
           {/* Section Title */}
           <TitlePill title={quiz.name} />
 
+          {/* Explanation modal */}
+          { showModal && <InfoModal 
+              modalText={modalText}
+              answerText="Got it!"
+              fontSize={18}
+              onPress={() => {setShowModal(false)}}
+            /> }
+
           {/* Flashcard */}
           <Flashcard 
             flashcard={currentFlashcard}
+            quizId={id}
             size={flashcards.length}
             index={index+1}
             playingQuiz={true}
             onNext={onNext}
             onPrev={onPrev}
+            onNextAnswer={nextAnswer}
+            onPrevAnswer={prevAnswer}
           />
           
           {/* End quiz button */}

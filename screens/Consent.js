@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { StyleSheet, SafeAreaView, View, Text, Image, TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text, Image } from "react-native";
 import { assets, COLOURS } from "../constants";
+
+// Import components
+import Modal from "../components/Modal";
 
 // Consent screen
 export default function Consent({ navigation }) {
+  const modalText = "This app features uploading lecture slides, which may contain personal data. Do you consent to the app having access to and storing them?"
+
   const [modalOn, setModalOn] = useState(true);
   const [consent, setConsent] = useState(false);
 
@@ -28,46 +33,7 @@ export default function Consent({ navigation }) {
     <SafeAreaView style={styles.consentScreenWrapper}>
       {modalOn ? (
         // Modal Wrapper
-        <View
-          style={{
-            ...styles.moddalWrapper,
-            ...styles.shadowDark,
-          }}
-        >
-          {/* Modal Text */}
-          <Text style={styles.modalText}>
-            This app features uploading lecture slides, which may contain
-            personal data. Do you consent to the app having access to and
-            storing them?
-          </Text>
-
-          {/* Button Group */}
-          <View style={styles.buttonGroup}>
-            {/* Yes Button */}
-            <TouchableOpacity
-              onPress={handleAccept}
-              style={{
-                ...styles.button,
-                ...styles.shadowDark,
-                backgroundColor: COLOURS.primary,
-              }}
-            >
-              <Text style={styles.buttonText}>Yes</Text>
-            </TouchableOpacity>
-
-            {/* No Button */}
-            <TouchableOpacity
-              onPress={handleReject}
-              style={{
-                ...styles.button,
-                ...styles.shadowDark,
-                backgroundColor: COLOURS.cancelRed,
-              }}
-            >
-              <Text style={styles.buttonText}>No</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <Modal modalText={modalText} onYes={handleAccept} onNo={handleReject} />
       ) : consent ? (
         // Consent View after Yes
         <View style={styles.acceptView}>
