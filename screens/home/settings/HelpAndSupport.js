@@ -59,15 +59,6 @@ export default function HelpAndSupport({
           <Text style={styles.text}>Love, Team Alpha ❤️</Text>
         </View>
       </ScrollView>
-
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNavWrapper}>
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
     </View>
   );
 }
