@@ -23,6 +23,11 @@ export default function Home({
     "This will delete the quiz from storage and all its settings. Are you sure about this?";
 
   const [showModal, setShowModal] = useState(false);
+  const [quizzesShown, setQuizzesShown] = useState(quizzes);
+
+  const filterQuizzes = (filter) => {
+    setQuizzesShown(quizzes.filter(quiz => quiz.name.toLowerCase().includes(filter.toLowerCase())));
+  }
 
   const onDeleteQuiz = () => {
     // showModal stores the quiz cause I can't be bothered
@@ -52,7 +57,7 @@ export default function Home({
       <ScrollView style={styles.sectionContent}>
         {/* List of Quizzes */}
         <ScrollView style={styles.quizList}>
-          {quizzes.map((quiz) => (
+          {quizzesShown.map((quiz) => (
             <QuizCard
               key={quiz.id}
               quiz={quiz}
@@ -66,7 +71,7 @@ export default function Home({
       {/* Bottom Navigation and SearchBar Wrapper */}
       <View style={styles.bottomNavWrapper}>
         {/* SearchBar */}
-        <Searchbar />
+        <Searchbar filterQuizzes={filterQuizzes}/>
 
         {/* Bottom navigation */}
         <BottomNav
