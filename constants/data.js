@@ -120,7 +120,12 @@ export const _statistics = [
   },
   {
     id: 4,
-    name: "Ratings given:",
+    name: "Likes given:",
+    count: 0,
+  },
+  {
+    id: 5,
+    name: "Dislikes given:",
     count: 0,
   },
 ];

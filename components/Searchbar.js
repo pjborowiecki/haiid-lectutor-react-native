@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Image, TextInput, StyleSheet } from "react-native";
 import { assets, COLOURS } from "../constants";
 
-export default function Searchbar() {
+export default function Searchbar({ filterQuizzes }) {
   const [focused, setFocused] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState("");
+
+  useEffect(() => {
+    filterQuizzes(searchPhrase);
+  }, [searchPhrase])
+
   return (
     <View style={styles.searchBarWrapper}>
       <View style={styles.searchBar}>

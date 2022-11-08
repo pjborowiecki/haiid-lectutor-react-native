@@ -13,8 +13,6 @@ export default function InfoModal({
   answerText,
   onPress,
   fontSize,
-  tabActive,
-  setTabActive,
 }) {
   return (
     <SafeAreaView

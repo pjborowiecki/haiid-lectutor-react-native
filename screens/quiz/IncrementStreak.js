@@ -1,17 +1,22 @@
-import { SafeAreaView, View, Text, StyleSheet, Image } from "react-native";
+import { SafeAreaView, TouchableOpacity, View, Text, StyleSheet, Image } from "react-native";
 import { assets, COLOURS } from "../../constants";
 import { useEffect, useState } from "react";
 
 // Streak screen
 export default function IncrementStreak({ navigation, route }) {
   const [streak, setStreak] = useState(route.params.streak.streak);
+  const [showText, setShowText] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setStreak(streak+1);
       setTimeout(() => {
-        navigation.navigate("Homepage");
-      }, 2500);
+        setShowText(true);
+        setTimeout(() => {
+          setShowButton(true);
+        }, 2000);
+      }, 1500);
     }, 2000);
   }, []);
 
@@ -23,7 +28,19 @@ export default function IncrementStreak({ navigation, route }) {
         <View>
             <Image source={assets.logo} />
             <Text style={styles.loadingTitle}><Image source={assets.fireIcon} />{streak}</Text>
+            {showText && <Text>Come back tomorrow to continue your streak!</Text>}
         </View>
+        
+        {showButton && <TouchableOpacity
+          onPress={() => navigation.navigate("Homepage")}
+          style={{
+            ...styles.button,
+            ...styles.shadowDark,
+            backgroundColor: COLOURS.primary,
+          }}
+        >
+          <Text style={styles.buttonText}>OK</Text>
+        </TouchableOpacity>}
       </View>
     </SafeAreaView>
   );
@@ -73,5 +90,20 @@ const styles = StyleSheet.create({
     shadowRadius: 9.11,
 
     elevation: 14,
+  },
+
+  button: {
+    borderRadius: 70,
+    width: 138,
+    height: 48,
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 14,
+  },
+
+  buttonText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 24,
+    color: COLOURS.white,
   },
 });

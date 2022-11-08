@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { COLOURS, assets } from "../../constants";
+import { pick } from "react-native-document-picker";
 
 // Component imports
 import SimpleHeader from "../../components/SimpleHeader";
@@ -16,6 +17,20 @@ import Footer from "../../components/Footer";
 // Quiz upload screen
 export default function QuizUpload({ navigation }) {
   const [fileUploaded, setFileUploaded] = useState(false);
+
+  const uploadFile = async () => {
+    try {
+      await pick()
+      .then(file => {
+        console.log(file)
+      });
+    }
+    catch (err) {
+      console.log(err)
+    }
+    setFileUploaded(!fileUploaded)
+  }
+
   return (
     <SafeAreaView style={styles.quizUploadScreenWrapper}>
       {/* Header */}
@@ -49,7 +64,7 @@ export default function QuizUpload({ navigation }) {
         <View style={{ ...styles.uploadPill, ...styles.shadowDark }}>
           {/* File upload button */}
           <TouchableOpacity
-            onPress={() => setFileUploaded((previosState) => !previosState)}
+            onPress={uploadFile}
             style={{ ...styles.uploadButton, ...styles.shadowDark }}
           >
             {/* File upload icon */}
