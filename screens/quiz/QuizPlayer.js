@@ -55,7 +55,6 @@ import InfoModal from "../../components/InfoModal";
         incrementStat(0);
         if (currentFlashcard.id === flashcards.length) incrementStat(1);
         if (streak.time < new Date().getTime()-8.64e+7) {
-          console.log("yes")
           incrementStreak();
           navigation.navigate("Rating", {streak: streak})
         } else {
