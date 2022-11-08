@@ -29,8 +29,8 @@ export default function Feedback({
 
   const onSubmit = () => {
     setShowModal(false);
-    // setTabActive("Home");
-    navigation.navigate("Home");
+    setTabActive("Home");
+    navigation.navigate("Homepage");
   };
 
   return (
@@ -164,7 +164,6 @@ const styles = StyleSheet.create({
 
     paddingHorizontal: 16,
     paddingVertical: 16,
-
     textAlignVertical: "top",
 
     backgroundColor: COLOURS.white,

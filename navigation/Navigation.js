@@ -122,7 +122,6 @@ export default function Navigation() {
   };
 
   const deleteQuiz = (id) => {
-    console.log(id)
     const newQuizzes = quizzes.filter((q) => q.id !== id);
     const newFlashcards = flashcards.filter((fc) => fc.id !== id);
     setQuizzes(newQuizzes);
