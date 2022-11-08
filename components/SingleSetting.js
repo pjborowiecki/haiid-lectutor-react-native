@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: COLOURS.lightGray,
     paddingHorizontal: 36,
-    height: 48,
+    height: 47,
   },
 
   settingIconTitleGroup: {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 
   settingTitle: {
     fontFamily: "HammersmithOne",
-    fontSize: 20,
+    fontSize: 18,
   },
 
   chevronRightIcon: {
