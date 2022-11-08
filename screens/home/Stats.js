@@ -47,10 +47,10 @@ export default function Stats({
               borderBottomWidth: index === statistics.length - 1 ? 1 : 0,
             }}
           >
-            <Text style={{ fontFamily: "HammersmithOne", fontSize: 20 }}>
+            <Text style={{ fontFamily: "HammersmithOne", fontSize: 18 }}>
               {stat.name}
             </Text>
-            <Text style={{ fontFamily: "HammersmithOne", fontSize: 20 }}>
+            <Text style={{ fontFamily: "HammersmithOne", fontSize: 18 }}>
               {stat.count}
             </Text>
           </View>
@@ -111,11 +111,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: COLOURS.lightGray,
     paddingHorizontal: 46,
-    height: 52,
+    height: 47,
   },
 
   bottomTextContainer: {
-    marginTop: 28,
+    marginTop: 80,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
 
   bottomText: {
     fontFamily: "HammersmithOne",
-    fontSize: 20,
+    fontSize: 18,
     textAlign: "center",
     color: COLOURS.tertiaryText,
   },
