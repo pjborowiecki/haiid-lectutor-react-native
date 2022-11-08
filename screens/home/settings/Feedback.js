@@ -86,15 +86,6 @@ export default function Feedback({
         </View>
       </View>
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNavWrapper}>
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
-
       {/* Modal */}
       {showModal && (
         <View style={styles.modalOveraly}>

@@ -16,18 +16,11 @@ export default function Home({
   deleteQuiz,
   quizzes,
   streak,
-  tabActive,
-  setTabActive,
 }) {
   const modalText =
     "This will delete the quiz from storage and all its settings. Are you sure about this?";
 
   const [showModal, setShowModal] = useState(false);
-  const [quizzesShown, setQuizzesShown] = useState(quizzes);
-
-  const filterQuizzes = (filter) => {
-    setQuizzesShown(quizzes.filter(quiz => quiz.name.toLowerCase().includes(filter.toLowerCase())));
-  }
 
   const onDeleteQuiz = () => {
     // showModal stores the quiz cause I can't be bothered
@@ -57,7 +50,7 @@ export default function Home({
       <ScrollView style={styles.sectionContent}>
         {/* List of Quizzes */}
         <ScrollView style={styles.quizList}>
-          {quizzesShown.map((quiz) => (
+          {quizzes.map((quiz) => (
             <QuizCard
               key={quiz.id}
               quiz={quiz}
@@ -67,19 +60,6 @@ export default function Home({
           ))}
         </ScrollView>
       </ScrollView>
-
-      {/* Bottom Navigation and SearchBar Wrapper */}
-      <View style={styles.bottomNavWrapper}>
-        {/* SearchBar */}
-        <Searchbar filterQuizzes={filterQuizzes}/>
-
-        {/* Bottom navigation */}
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
 
       {/* Deletion Modal */}
       {showModal && (
@@ -120,29 +100,6 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 8,
     flex: 1,
-  },
-
-  bottomNavWrapper: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-
-    backgroundColor: COLOURS.white,
-    paddingVertical: 20,
-
-    display: "flex",
-
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-
-    elevation: 12,
-    zIndex: 99,
   },
 
   modalOverlay: {

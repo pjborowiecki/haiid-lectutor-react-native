@@ -77,15 +77,6 @@ export default function Settings({ navigation, tabActive, setTabActive }) {
           </View>
         ))}
       </ScrollView>
-
-      {/* Bottom Navigation Wrapper */}
-      <View style={styles.bottomNavWrapper}>
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
     </SafeAreaView>
   );
 }

@@ -66,15 +66,6 @@ export default function Stats({
           </Text>
         </View>
       )}
-
-      {/* Bottom Nnavigation */}
-      <View style={styles.bottomNavWrapper}>
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
     </SafeAreaView>
   );
 }
