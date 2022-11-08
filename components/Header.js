@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../constants";
 
 // Header component
-export default function HeaderNew({ streak, showFire=false }) {
+export default function HeaderNew({ streak, showFire = false }) {
   return (
     // headerWrapper
     <View style={styles.headerWrapper}>
@@ -10,14 +10,16 @@ export default function HeaderNew({ streak, showFire=false }) {
       <Image source={assets.header} style={styles.headerImage} />
 
       {/* Fire button */}
-      {showFire && <TouchableOpacity
-        style={{
-          ...styles.fireButton,
-          ...styles.shadowDark,
-        }}
-      >
-        <Image source={assets.fireIcon} style={styles.fireIcon} />
-      </TouchableOpacity>}
+      {showFire && (
+        <TouchableOpacity
+          style={{
+            ...styles.fireButton,
+            ...styles.shadowDark,
+          }}
+        >
+          <Image source={assets.fireIcon} style={styles.fireIcon} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -26,10 +28,10 @@ export default function HeaderNew({ streak, showFire=false }) {
 const styles = StyleSheet.create({
   headerWrapper: {
     height: 220,
-    position: "absolute",
-    top: 0,
-    right: 0,
-    left: 0,
+    // position: "absolute",
+    // top: 0,
+    // right: 0,
+    // left: 0,
   },
 
   headerImage: {

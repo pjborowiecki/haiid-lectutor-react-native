@@ -1,23 +1,40 @@
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { assets, COLOURS } from "../../../constants";
 
 // Component imports
 import Header from "../../../components/Header";
+import BottomNav from "../../../components/BottomNav";
 import TitlePill from "../../../components/TitlePill";
 import FunctionCircle from "../../../components/FunctionCircle";
 import InfoModal from "../../../components/InfoModal";
 
 // Feedback screen
-export default function Feedback({ navigation, showModal, setShowModal }) {
+export default function Feedback({
+  navigation,
+  showModal,
+  setShowModal,
+  tabActive,
+  setTabActive,
+}) {
+  const [reviewText, setReviewText] = useState("");
+
   const modalText = "Thank you for submitting your feedback!";
 
   const onSubmit = () => {
     setShowModal(false);
-    navigation.navigate("Home");
-  }
+    setTabActive("Home");
+    navigation.navigate("Homepage");
+  };
 
   return (
-    <View style={styles.statsScreenWrapper}>
+    <View style={styles.feedbackScreenWrapper}>
       {/* Header */}
       <Header />
 
@@ -30,36 +47,229 @@ export default function Feedback({ navigation, showModal, setShowModal }) {
       />
 
       {/* Section title pill */}
-      <TitlePill title="Give Feedback" />
+      <View style={styles.titlePillWrapper}>
+        <TitlePill title="Give Feedback" />
+      </View>
 
-      {/* Explanation modal */}
-      { showModal && <InfoModal 
-        modalText={modalText}
-        answerText="OK"
-        fontSize={24}
-        onPress={onSubmit}
-      /> }
+      {/* Section content */}
+      <View style={styles.sectionContentWrapper}>
+        {/* Explanation modal */}
 
-      {/* Explanation of screen */}
-      <Text>
-        Your feedback is greatly appreciated and it helps us make the
-        application even better!
-      </Text>
+        {/* Explanation of screen */}
+        <View style={styles.explanationContainer}>
+          <Text style={styles.explanationText}>
+            Your feedback is greatly appreciated and it helps us make the
+            application even better!
+          </Text>
+        </View>
 
-      {/* Feedback input */}
-      <TextInput placeholder="Please tell us what you think..." />
+        {/* Feedback input */}
+        <View style={styles.textInputContainer}>
+          <TextInput
+            placeholder="Please tell us what you think..."
+            value={reviewText}
+            onChangeText={setReviewText}
+            style={styles.textInput}
+          />
+        </View>
 
-      {/* Submit button */}
-      <Button title="Submit" onPress={() => setShowModal(true)} />
+        {/* Submit button */}
+        <View style={styles.submitButtonContainer}>
+          <View style={styles.submitButtonPill}>
+            <TouchableOpacity
+              onPress={() => setShowModal((previous) => !previous)}
+              style={styles.submitButton}
+            >
+              <Text style={styles.submitButtonText}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNavWrapper}>
+        <BottomNav
+          navigation={navigation}
+          tabActive={tabActive}
+          setTabActive={setTabActive}
+        />
+      </View>
+
+      {/* Modal */}
+      {showModal && (
+        <View style={styles.modalOveraly}>
+          <InfoModal
+            modalText={modalText}
+            tabActive={tabActive}
+            setTabActive={setTabActive}
+            answerText="OK"
+            fontSize={24}
+            onPress={onSubmit}
+          />
+        </View>
+      )}
     </View>
   );
 }
 
 // Styles
 const styles = StyleSheet.create({
-  statsScreenWrapper: {
+  feedbackScreenWrapper: {
     backgroundColor: COLOURS.white,
-    height: "100%",
+    display: "flex",
+    flex: 1,
+    width: "100%",
+  },
+
+  titlePillWrapper: {
+    width: "100%",
+    display: "flex",
     alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 24,
+  },
+
+  sectionContentWrapper: {
+    display: "flex",
+    flex: 1,
+    width: "100%",
+  },
+
+  explanationContainer: {
+    width: "100%",
+    paddingHorizontal: 24,
+  },
+
+  explanationText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 20,
+    textAlign: "center",
+  },
+
+  textInputContainer: {
+    marginTop: 24,
+    width: "100%",
+    height: 110,
+    display: "flex",
+    // flex: 1,
+
+    paddingHorizontal: "10%",
+
+    backgroundColor: COLOURS.white,
+  },
+
+  textInput: {
+    width: "100%",
+    height: "100%",
+    fontFamily: "HammersmithOne",
+    fontSize: 16,
+
+    borderColor: COLOURS.lightGray,
+    borderWidth: 1,
+    borderRadius: 10,
+
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    textAlignVertical: "top",
+
+    backgroundColor: COLOURS.white,
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    zIndex: 99,
+  },
+
+  submitButtonContainer: {
+    height: 100,
+    display: "flex",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+
+    paddingTop: 8,
+  },
+
+  submitButtonPill: {
+    backgroundColor: COLOURS.yesGreen,
+
+    borderRadius: 70,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    width: 192,
+    height: 60,
+  },
+
+  submitButton: {
+    backgroundColor: COLOURS.white,
+
+    borderRadius: 70,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    width: 168,
+    height: 38,
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+
+    elevation: 14,
+  },
+
+  submitButtonText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 20,
+    textAlign: "center",
+  },
+
+  bottomNavWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundColor: COLOURS.white,
+    paddingVertical: 20,
+
+    display: "flex",
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    zIndex: 99,
+  },
+
+  modalOveraly: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 99,
+    backgroundColor: "rgba(0,0,0,0.9)",
   },
 });

@@ -4,11 +4,18 @@ import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
+import BottomNav from "../../components/BottomNav";
 import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 
 // Stats screen
-export default function Stats({ statistics, streak }) {
+export default function Stats({
+  navigation,
+  statistics,
+  streak,
+  tabActive,
+  setTabActive,
+}) {
   // Function to check if some statistics have been incremented
   const checkIfStatsExist = () => {
     return statistics.some((stat) => stat.count > 0);
@@ -26,7 +33,9 @@ export default function Stats({ statistics, streak }) {
       <FunctionCircle icon={assets.shareIcon} iconSize={34} right={1} />
 
       {/* Section title pill */}
-      <TitlePill title="Statistics" />
+      <View style={styles.titlePillWrapper}>
+        <TitlePill title="Statistics" />
+      </View>
 
       {/* Stats list */}
       <View style={styles.statsList}>
@@ -57,6 +66,15 @@ export default function Stats({ statistics, streak }) {
           </Text>
         </View>
       )}
+
+      {/* Bottom Nnavigation */}
+      <View style={styles.bottomNavWrapper}>
+        <BottomNav
+          navigation={navigation}
+          tabActive={tabActive}
+          setTabActive={setTabActive}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -65,17 +83,28 @@ export default function Stats({ statistics, streak }) {
 const styles = StyleSheet.create({
   statsScreenWrapper: {
     backgroundColor: COLOURS.white,
-    height: "100%",
+    display: "flex",
+    flex: 1,
+    width: "100%",
+  },
+
+  titlePillWrapper: {
+    width: "100%",
+    display: "flex",
     alignItems: "center",
+    justifyContent: "center",
   },
 
   statsList: {
     display: "flex",
+    flex: 3,
     width: "100%",
     marginTop: 36,
   },
 
   statsListItem: {
+    width: "100%",
+    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -86,10 +115,15 @@ const styles = StyleSheet.create({
   },
 
   bottomTextContainer: {
+    marginTop: 28,
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 28,
-    marginBottom: 84,
+
+    display: "flex",
+    flex: 2,
+
+    // marginBottom: 84,
     paddingHorizontal: 36,
   },
 
@@ -98,5 +132,28 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     color: COLOURS.tertiaryText,
+  },
+
+  bottomNavWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundColor: COLOURS.white,
+    paddingVertical: 20,
+
+    display: "flex",
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    zIndex: 99,
   },
 });

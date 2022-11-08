@@ -1,22 +1,32 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, ScrollView, Text, StyleSheet, FlatList } from "react-native";
 import { assets, COLOURS, terms_and_conditions } from "../../../constants";
 
 // Component imports
 import Header from "../../../components/Header";
+import BottomNav from "../../../components/BottomNav";
 import FunctionCircle from "../../../components/FunctionCircle";
 import TitlePill from "../../../components/TitlePill";
 
 // Terms & conditions screen
-export default function TermsAndConditions({ navigation }) {
+export default function TermsAndConditions({
+  navigation,
+  tabActive,
+  setTabActive,
+}) {
   // List item component
   const listItem = ({ item }) => (
     <View style={styles.listItem}>
-      <Text style={styles.listItemText}>{item.text}</Text>
+      <View style={styles.listItemNumberContainer}>
+        <Text style={styles.listItemText}>{item.id}.</Text>
+      </View>
+      <View style={styles.listItemTextContainer}>
+        <Text style={styles.listItemText}>{item.text}</Text>
+      </View>
     </View>
   );
 
   return (
-    <View style={styles.statsScreenWrapper}>
+    <View style={styles.termsConditionsScreenWrapper}>
       {/* Header */}
       <Header />
 
@@ -29,27 +39,95 @@ export default function TermsAndConditions({ navigation }) {
       />
 
       {/* Section title pill */}
-      <TitlePill title="Terms & Conditions" />
+      <View style={styles.titlePillWrapper}>
+        <TitlePill title="Terms & Conditions" />
+      </View>
 
-      {/* List of terms & conditions */}
+      {/* List of terms and conditions */}
       <FlatList
         data={terms_and_conditions}
         renderItem={listItem}
         keyExtractor={(item) => item.id}
+        style={styles.termsAndConditionsList}
       />
+
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNavWrapper}>
+        <BottomNav
+          navigation={navigation}
+          tabActive={tabActive}
+          setTabActive={setTabActive}
+        />
+      </View>
     </View>
   );
 }
 
 // Styles
 const styles = StyleSheet.create({
-  statsScreenWrapper: {
+  termsConditionsScreenWrapper: {
     backgroundColor: COLOURS.white,
-    height: "100%",
-    alignItems: "center",
+    display: "flex",
+    flex: 1,
+    width: "100%",
   },
 
-  listItem: {},
+  titlePillWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 24,
+  },
 
-  listItemText: {},
+  termsAndConditionsList: {
+    width: "100%",
+    display: "flex",
+    flex: 1,
+    paddingHorizontal: 46,
+  },
+
+  listItem: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: 16,
+  },
+
+  listItemNumberContainer: {
+    width: 24,
+  },
+
+  listItemTextContainer: {
+    width: "100%",
+    flex: 1,
+  },
+
+  listItemText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 17,
+  },
+
+  bottomNavWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundColor: COLOURS.white,
+    paddingVertical: 20,
+
+    display: "flex",
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    zIndex: 99,
+  },
 });
