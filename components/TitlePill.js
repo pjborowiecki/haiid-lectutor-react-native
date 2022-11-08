@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLOURS.white,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 230,
     width: 244,
     height: 37,
     borderRadius: 70,
+
     shadowColor: COLOURS.black,
     shadowOffset: {
       width: 0,

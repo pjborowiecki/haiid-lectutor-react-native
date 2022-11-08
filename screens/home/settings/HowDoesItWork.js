@@ -3,11 +3,12 @@ import { assets, COLOURS, how_does_it_work } from "../../../constants";
 
 // Component imports
 import Header from "../../../components/Header";
+import BottomNav from "../../../components/BottomNav";
 import FunctionCircle from "../../../components/FunctionCircle";
 import TitlePill from "../../../components/TitlePill";
 
 // How does it work screen
-export default function HowDoesItWork({ navigation }) {
+export default function HowDoesItWork({ navigation, tabActive, setTabActive }) {
   // List item component
   const listItem = ({ item }) => (
     <View style={styles.listItem}>
@@ -17,7 +18,7 @@ export default function HowDoesItWork({ navigation }) {
   );
 
   return (
-    <View style={styles.statsScreenWrapper}>
+    <View style={styles.howDoesItWorkScreenWrapper}>
       {/* Header */}
       <Header />
 
@@ -30,29 +31,93 @@ export default function HowDoesItWork({ navigation }) {
       />
 
       {/* Section title pill */}
-      <TitlePill title="How does it work?" />
+      <View style={styles.titlePillWrapper}>
+        <TitlePill title="How does it work?" />
+      </View>
 
-      {/* List of terms & conditions */}
+      {/* List of questions and answers */}
       <FlatList
         data={how_does_it_work}
         renderItem={listItem}
         keyExtractor={(item) => item.id}
+        style={styles.questionsAndAnswersList}
       />
+
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNavWrapper}>
+        <BottomNav
+          navigation={navigation}
+          tabActive={tabActive}
+          setTabActive={setTabActive}
+        />
+      </View>
     </View>
   );
 }
 
 // Styles
 const styles = StyleSheet.create({
-  statsScreenWrapper: {
+  howDoesItWorkScreenWrapper: {
     backgroundColor: COLOURS.white,
-    height: "100%",
-    alignItems: "center",
+    display: "flex",
+    flex: 1,
+    width: "100%",
   },
 
-  listItem: {},
+  titlePillWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 24,
+  },
 
-  listItemQuestion: {},
+  questionsAndAnswersList: {
+    width: "100%",
+    display: "flex",
+    flex: 1,
+    paddingHorizontal: 38,
+  },
 
-  listItemAnswer: {},
+  listItem: {
+    marginBottom: 24,
+  },
+
+  listItemQuestion: {
+    fontFamily: "HammersmithOne",
+    fontSize: 22,
+    marginBottom: 16,
+    flex: 1,
+    width: "100%",
+  },
+
+  listItemAnswer: {
+    fontFamily: "HammersmithOne",
+    fontSize: 16,
+    flex: 1,
+    width: "100%",
+  },
+
+  bottomNavWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundColor: COLOURS.white,
+    paddingVertical: 20,
+
+    display: "flex",
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    zIndex: 99,
+  },
 });
