@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SafeAreaView, ScrollView, Text, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../../constants";
 

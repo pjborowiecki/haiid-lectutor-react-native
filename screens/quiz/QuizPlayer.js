@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
   },
 
   answerInputContainer: {
-    marginTop: 16,
+    marginTop: -8,
 
     width: "100%",
     height: "100%",
