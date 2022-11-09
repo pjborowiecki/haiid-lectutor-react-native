@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { COLOURS, _flashcards, _quizzes, _statistics, _streak } from "../constants";
+import {
+  COLOURS,
+  _flashcards,
+  _quizzes,
+  _statistics,
+  _streak,
+} from "../constants";
 
 // Screen imports
 import QuizUpload from "../screens/quiz/QuizUpload";
@@ -42,8 +48,12 @@ export default function Navigation() {
   };
 
   const filterQuizzes = (filter) => {
-    setQuizzesShown(quizzes.filter(quiz => quiz.name.toLowerCase().includes(filter.toLowerCase())));
-  }
+    setQuizzesShown(
+      quizzes.filter((quiz) =>
+        quiz.name.toLowerCase().includes(filter.toLowerCase())
+      )
+    );
+  };
 
   const incrementStreak = () => {
     setStreak({

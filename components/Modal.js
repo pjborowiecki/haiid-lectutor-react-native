@@ -57,10 +57,15 @@ export default function Modal({
 const styles = StyleSheet.create({
   moddalWrapper: {
     backgroundColor: COLOURS.white,
+
+    width: "90%",
+    height: "auto",
+
+    backgroundColor: COLOURS.white,
     marginHorizontal: 26,
     paddingHorizontal: 16,
     paddingVertical: 28,
-    borderRadius: 20,
+    borderRadius: 22,
     alignItems: "center",
   },
 
