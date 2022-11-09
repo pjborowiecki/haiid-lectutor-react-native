@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { COLOURS, _flashcards, _quizzes, _statistics, _streak } from "../constants";
+import {
+  COLOURS,
+  _flashcards,
+  _quizzes,
+  _statistics,
+  _streak,
+} from "../constants";
 
 // Screen imports
 import QuizUpload from "../screens/quiz/QuizUpload";
@@ -30,8 +36,12 @@ export default function Navigation() {
   const [renderNavbar, setRenderNavbar] = useState(true);
 
   const filterQuizzes = (filter) => {
-    setQuizzesShown(quizzes.filter(quiz => quiz.name.toLowerCase().includes(filter.toLowerCase())));
-  }
+    setQuizzesShown(
+      quizzes.filter((quiz) =>
+        quiz.name.toLowerCase().includes(filter.toLowerCase())
+      )
+    );
+  };
 
   const incrementStreak = () => {
     setStreak({
@@ -122,7 +132,7 @@ export default function Navigation() {
   };
 
   const deleteQuiz = (id) => {
-    console.log(id)
+    console.log(id);
     const newQuizzes = quizzes.filter((q) => q.id !== id);
     const newFlashcards = flashcards.filter((fc) => fc.id !== id);
     setQuizzes(newQuizzes);
@@ -166,13 +176,19 @@ export default function Navigation() {
             />
             {/* Bottom Navigation and SearchBar Wrapper */}
             <View style={styles.bottomNavWrapper}>
-              { tabActive === "Home" && <Searchbar 
-                  filterQuizzes={filterQuizzes} setRenderNavbar={setRenderNavbar}/>}
-              { renderNavbar && <BottomNav
-                {...props}
-                tabActive={tabActive}
-                setTabActive={setTabActive}
-              />}
+              {tabActive === "Home" && (
+                <Searchbar
+                  filterQuizzes={filterQuizzes}
+                  setRenderNavbar={setRenderNavbar}
+                />
+              )}
+              {renderNavbar && (
+                <BottomNav
+                  {...props}
+                  tabActive={tabActive}
+                  setTabActive={setTabActive}
+                />
+              )}
             </View>
           </>
         )}

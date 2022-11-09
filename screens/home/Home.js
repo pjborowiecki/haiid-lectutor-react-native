@@ -11,12 +11,7 @@ import FunctionCircle from "../../components/FunctionCircle";
 import Modal from "../../components/Modal";
 
 // Home screen
-export default function Home({
-  navigation,
-  deleteQuiz,
-  quizzes,
-  streak,
-}) {
+export default function Home({ navigation, deleteQuiz, quizzes, streak }) {
   const modalText =
     "This will delete the quiz from storage and all its settings. Are you sure about this?";
 
@@ -111,6 +106,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 99,
+    elevation: 99,
     backgroundColor: "rgba(0,0,0,0.9)",
   },
 });

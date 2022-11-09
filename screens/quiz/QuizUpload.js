@@ -107,7 +107,7 @@ export default function QuizUpload({ navigation }) {
 
       {/* Footer and Confirm Button Wrapper */}
       <View style={styles.footerAndConfirmButtonWrapper}>
-        {/* Confirm Button Wrapepr */}
+        {/* Confirm Button Wrapper */}
         <View style={styles.confirmButtonWrapper}>
           {/* Confirmation pill */}
           <View
