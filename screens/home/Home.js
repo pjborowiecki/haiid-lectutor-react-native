@@ -1,6 +1,5 @@
 import { SafeAreaView, ScrollView, Text, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../../constants";
-import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
@@ -14,7 +13,6 @@ export default function Home({
   streak,
   setShowModal,
 }) {
-
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
       {/* Header */}

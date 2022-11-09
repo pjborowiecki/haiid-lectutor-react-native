@@ -38,7 +38,7 @@ export default function Navigation() {
   const onDeleteQuiz = () => {
     // showModal stores the quiz cause I can't be bothered
     deleteQuiz(showDeletionModal.id);
-    setShowModal(false);
+    setShowDeletionModal(false);
   };
 
   const filterQuizzes = (filter) => {
