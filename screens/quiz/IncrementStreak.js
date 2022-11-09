@@ -25,22 +25,22 @@ export default function IncrementStreak({ navigation, route }) {
       {/* Section Content */}
       <View style={styles.sectionContent}>
         {/* Streak value and logo */}
-        <View>
-            <Image source={assets.logo} />
-            <Text style={styles.loadingTitle}><Image source={assets.fireIcon} />{streak}</Text>
-            {showText && <Text>Come back tomorrow to continue your streak!</Text>}
-        </View>
+        <Image source={assets.logo} />
+        <View style={styles.bottom}>
+          <Text style={styles.loadingTitle}><Image style={styles.logoView} source={assets.fireIcon} />{streak}</Text>
+          {showText && <Text style={styles.motivationText}>Come back tomorrow to continue your streak!</Text>}
         
-        {showButton && <TouchableOpacity
-          onPress={() => navigation.navigate("Homepage")}
-          style={{
-            ...styles.button,
-            ...styles.shadowDark,
-            backgroundColor: COLOURS.primary,
-          }}
-        >
-          <Text style={styles.buttonText}>OK</Text>
-        </TouchableOpacity>}
+          {showButton && <TouchableOpacity
+            onPress={() => navigation.navigate("Homepage")}
+            style={{
+              ...styles.button,
+              ...styles.shadowDark,
+              backgroundColor: COLOURS.homeIconBg,
+            }}
+          >
+            <Text style={styles.buttonText}>OK</Text>
+          </TouchableOpacity>}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -57,6 +57,15 @@ const styles = StyleSheet.create({
 
   sectionContent: {
     width: "100%",
+    marginTop: 220,
+    display: "flex",
+    flex: 1
+  },
+
+  bottom: {
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center"
   },
 
   loadingTitle: {
@@ -65,19 +74,23 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
+  logoView: {
+    backgroundColor: COLOURS.homeIconBg,
+    borderRadius: "50%",
+  },
+
+  motivationText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 20,
+    textAlign: "center"
+  },
+
   loadingSubtitle: {
     fontFamily: "HammersmithOne",
     fontSize: 18,
     textAlign: "center",
     opacity: 0.5,
     marginTop: 8,
-  },
-
-  progressbarWrapper: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 36,
   },
 
   shadowDark: {
@@ -99,11 +112,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 14,
+    marginTop: 80
   },
 
   buttonText: {
     fontFamily: "HammersmithOne",
     fontSize: 24,
-    color: COLOURS.white,
+    color: COLOURS.home,
   },
 });

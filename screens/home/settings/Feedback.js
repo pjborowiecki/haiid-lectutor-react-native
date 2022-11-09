@@ -159,8 +159,8 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderRadius: 10,
 
-    paddingHorizontal: 8,
-    paddingBottom: 100,
+    paddingHorizontal: 10,
+    paddingBottom: 105,
     textAlignVertical: "top",
 
     backgroundColor: COLOURS.white,
