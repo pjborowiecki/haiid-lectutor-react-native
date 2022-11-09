@@ -50,6 +50,10 @@ export const COLOURS = {
   homeIconBg: "#DEF9C8",
 
   rewriteFlashcardBg: "#FFAA7B",
+
+  darkModeBb: "#464646",
+  darkModeHeader: "#185A37",
+  darkIconColour: "#34B772",
 };
 
 export const SHADOWS = {

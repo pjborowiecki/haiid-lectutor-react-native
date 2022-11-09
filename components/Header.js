@@ -3,36 +3,11 @@ import { COLOURS, assets } from "../constants";
 
 // Header component
 export default function HeaderNew({ streak, showFire = false }) {
-  return (
-    // headerWrapper
-    <View style={styles.headerWrapper}>
-      {/* Header image */}
-      <Image source={assets.header} style={styles.headerImage} />
 
-      {/* Fire button */}
-      {showFire && (
-        <View
-          style={{
-            ...styles.fireButton,
-            ...styles.shadowDark,
-          }}
-        >
-          <Image source={assets.fireIcon} style={styles.fireIcon} />
-          <Text style={styles.streakText}>{streak}</Text>
-        </View>
-      )}
-    </View>
-  );
-}
-
-// Styles
+  // Styles
 const styles = StyleSheet.create({
   headerWrapper: {
     height: 220,
-    // position: "absolute",
-    // top: 0,
-    // right: 0,
-    // left: 0,
   },
 
   headerImage: {
@@ -80,3 +55,27 @@ const styles = StyleSheet.create({
     elevation: 14,
   },
 });
+
+  return (
+    // headerWrapper
+    <View style={styles.headerWrapper}>
+      {/* Header image */}
+      <Image source={assets.header} style={styles.headerImage} />
+
+      {/* Fire button */}
+      {showFire && (
+        <View
+          style={{
+            ...styles.fireButton,
+            ...styles.shadowDark,
+          }}
+        >
+          <Image source={assets.fireIcon} style={styles.fireIcon} />
+          <Text style={styles.streakText}>{streak}</Text>
+        </View>
+      )}
+    </View>
+  );
+}
+
+

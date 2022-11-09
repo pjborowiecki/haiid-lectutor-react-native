@@ -2,18 +2,17 @@ import { StyleSheet, View, Text } from "react-native";
 import { COLOURS } from "../constants";
 
 // Title pill after the header to introduce a screen
-export default function TitlePill({ title }) {
-  return (
-    <View style={styles.sectionTitlePill}>
-      <Text style={styles.sectionTitleText}>{title}</Text>
-    </View>
-  );
-}
+export default function TitlePill({ 
+  title, 
+  fontFamily="HammersmithOne", 
+  fontColour=COLOURS.black,
+  bgColour=COLOURS.white,
+}) {
 
-// Styles
+  // Styles
 const styles = StyleSheet.create({
   sectionTitlePill: {
-    backgroundColor: COLOURS.white,
+    backgroundColor: bgColour,
     justifyContent: "center",
     alignItems: "center",
     width: 244,
@@ -32,8 +31,15 @@ const styles = StyleSheet.create({
   },
 
   sectionTitleText: {
-    fontFamily: "HammersmithOne",
+    fontFamily: fontFamily,
+    color: fontColour,
     fontSize: 22,
-    top: 2,
+    top: fontFamily === "HammersmithOne" ? 2 : -2,
   },
 });
+  return (
+    <View style={styles.sectionTitlePill}>
+      <Text style={styles.sectionTitleText}>{title}</Text>
+    </View>
+  );
+}
