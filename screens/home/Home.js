@@ -24,7 +24,7 @@ export default function Home({
 
   const onDeleteQuiz = () => {
     // showModal stores the quiz cause I can't be bothered
-    deleteQuiz(showModal);
+    deleteQuiz(showModal.id);
     setShowModal(false);
   };
 

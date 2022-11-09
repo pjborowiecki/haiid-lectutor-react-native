@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../constants";
 
 // Header component
@@ -11,14 +11,15 @@ export default function HeaderNew({ streak, showFire = false }) {
 
       {/* Fire button */}
       {showFire && (
-        <TouchableOpacity
+        <View
           style={{
             ...styles.fireButton,
             ...styles.shadowDark,
           }}
         >
           <Image source={assets.fireIcon} style={styles.fireIcon} />
-        </TouchableOpacity>
+          <Text style={styles.streakText}>{streak}</Text>
+        </View>
       )}
     </View>
   );
@@ -50,11 +51,21 @@ const styles = StyleSheet.create({
   },
 
   fireIcon: {
-    top: 76,
-    right: -28,
+    top: 68,
+    right: -10,
     width: 36,
     height: 36,
     zIndex: 3,
+  },
+
+  streakText: {
+    top: 30,
+    right: -45,
+    width: 36,
+    height: 36,
+    zIndex: 3,
+    fontFamily: "HammersmithOne",
+    fontSize: 36
   },
 
   shadowDark: {
