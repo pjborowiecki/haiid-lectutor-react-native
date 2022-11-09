@@ -13,6 +13,8 @@ import footer from "../assets/images/footer.png";
 import chartHistogramIcon from "../assets/icons/chart-histogram-icon.png";
 import chevronRightIcon from "../assets/icons/chevron-right-icon.png";
 import chevronLeftIcon from "../assets/icons/chevron-left-icon.png";
+import chevronLeftAltIcon from "../assets/icons/chevron-left-alt-icon.png";
+import chevronRightAltIcon from "../assets/icons/chevron-right-alt-icon.png";
 import darkModeIcon from "../assets/icons/dark-mode-icon.png";
 import easyReadModeIcon from "../assets/icons/easy-read-mode-icon.png";
 import exclamationIcon from "../assets/icons/exclamation-icon.png";
@@ -74,6 +76,8 @@ export default {
   chartHistogramIcon,
   chevronRightIcon,
   chevronLeftIcon,
+  chevronLeftAltIcon,
+  chevronRightAltIcon,
   darkModeIcon,
   easyReadModeIcon,
   exclamationIcon,
