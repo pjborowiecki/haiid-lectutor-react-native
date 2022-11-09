@@ -1,32 +1,19 @@
-import { SafeAreaView, ScrollView, View, Text, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, Text, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../../constants";
 import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
-import BottomNav from "../../components/BottomNav";
-import Searchbar from "../../components/Searchbar";
 import QuizCard from "../../components/QuizCard";
 import FunctionCircle from "../../components/FunctionCircle";
-import Modal from "../../components/Modal";
 
 // Home screen
 export default function Home({
   navigation,
-  deleteQuiz,
   quizzes,
   streak,
+  setShowModal,
 }) {
-  const modalText =
-    "This will delete the quiz from storage and all its settings. Are you sure about this?";
-
-  const [showModal, setShowModal] = useState(false);
-
-  const onDeleteQuiz = () => {
-    // showModal stores the quiz cause I can't be bothered
-    deleteQuiz(showModal.id);
-    setShowModal(false);
-  };
 
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
@@ -60,17 +47,6 @@ export default function Home({
           ))}
         </ScrollView>
       </ScrollView>
-
-      {/* Deletion Modal */}
-      {showModal && (
-        <View style={styles.modalOverlay}>
-          <Modal
-            modalText={modalText}
-            onYes={onDeleteQuiz}
-            onNo={() => setShowModal(false)}
-          />
-        </View>
-      )}
     </SafeAreaView>
   );
 }
@@ -100,17 +76,5 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 8,
     flex: 1,
-  },
-
-  modalOverlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 99,
-    backgroundColor: "rgba(0,0,0,0.9)",
   },
 });

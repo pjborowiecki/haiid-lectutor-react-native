@@ -1,61 +1,15 @@
-import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../constants";
 
-export default function BottomNav({ navigation, tabActive, setTabActive }) {
-  return (
-    <View style={styles.bottomNavWrapper}>
-      {/* Navbar Pill */}
-      <View style={styles.pill}>
-        {/* Stats button */}
-        <TouchableOpacity
-          onPress={() => {
-            setTabActive("Stats");
-            navigation.navigate("Stats");
-          }}
-          style={
-            tabActive === "Stats"
-              ? [styles.button, styles.shadow, styles.buttonActive]
-              : styles.button
-          }
-        >
-          <Image source={assets.chartHistogramIcon} style={styles.icon} />
-        </TouchableOpacity>
+export default function BottomNav({ 
+  navigation, 
+  tabActive, 
+  setTabActive, 
+  navbarIconColour, 
+  bgColour, 
+}) {
 
-        {/* Home button */}
-        <TouchableOpacity
-          onPress={() => {
-            setTabActive("Home");
-            navigation.navigate("Home");
-          }}
-          style={
-            tabActive === "Home"
-              ? [styles.button, styles.shadow, styles.buttonActive]
-              : styles.button
-          }
-        >
-          <Image source={assets.homeIcon} style={styles.icon} />
-        </TouchableOpacity>
-
-        {/* Settings button */}
-        <TouchableOpacity
-          onPress={() => {
-            setTabActive("Settings");
-            navigation.navigate("Settings");
-          }}
-          style={
-            tabActive === "Settings"
-              ? [styles.button, styles.shadow, styles.buttonActive]
-              : styles.button
-          }
-        >
-          <Image source={assets.settingsIcon} style={styles.icon} />
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-}
-
-// Styles
+  // Styles
 const styles = StyleSheet.create({
   bottomNavWrapper: {
     width: "90%",
@@ -75,7 +29,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     // width: 292,
 
-    backgroundColor: COLOURS.white,
+    backgroundColor: bgColour,
 
     shadowColor: COLOURS.black,
     shadowOffset: {
@@ -94,7 +48,7 @@ const styles = StyleSheet.create({
   },
 
   buttonActive: {
-    backgroundColor: COLOURS.homeIconBg,
+    backgroundColor: navbarIconColour,
   },
 
   icon: {
@@ -113,3 +67,66 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 });
+
+  return (
+    <View style={styles.bottomNavWrapper}>
+      {/* Navbar Pill */}
+      <View style={styles.pill}>
+        {/* Stats button */}
+        <TouchableOpacity
+          onPress={() => {
+            setTabActive("Stats");
+            navigation.navigate("Stats");
+          }}
+          style={
+            tabActive === "Stats"
+              ? [styles.button, styles.shadow, styles.buttonActive]
+              : styles.button
+          }
+        >
+          <Image 
+            source={navbarIconColour === COLOURS.darkIconColour ? assets.chartHistogramIconDM : assets.chartHistogramIcon} 
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+        
+
+        {/* Home button */}
+        <TouchableOpacity
+          onPress={() => {
+            setTabActive("Home");
+            navigation.navigate("Home");
+          }}
+          style={
+            tabActive === "Home"
+              ? [styles.button, styles.shadow, styles.buttonActive]
+              : styles.button
+          }
+        >
+          <Image 
+            source={navbarIconColour === COLOURS.darkIconColour ? assets.homeIconDM : assets.homeIcon} 
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+
+        {/* Settings button */}
+        <TouchableOpacity
+          onPress={() => {
+            setTabActive("Settings");
+            navigation.navigate("Settings");
+          }}
+          style={
+            tabActive === "Settings"
+              ? [styles.button, styles.shadow, styles.buttonActive]
+              : styles.button
+          }
+        >
+          <Image 
+            source={navbarIconColour === COLOURS.darkIconColour ? assets.settingsIconDM : assets.settingsIcon} 
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
