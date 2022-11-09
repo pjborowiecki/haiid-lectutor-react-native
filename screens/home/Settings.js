@@ -4,7 +4,6 @@ import { COLOURS, settings } from "../../constants";
 
 // Component imports
 import Header from "../../components/Header";
-import BottomNav from "../../components/BottomNav";
 import SingleSetting from "../../components/SingleSetting";
 import TitlePill from "../../components/TitlePill";
 
@@ -77,15 +76,6 @@ export default function Settings({ navigation, tabActive, setTabActive }) {
           </View>
         ))}
       </ScrollView>
-
-      {/* Bottom Navigation Wrapper */}
-      <View style={styles.bottomNavWrapper}>
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
     </SafeAreaView>
   );
 }

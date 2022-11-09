@@ -4,18 +4,11 @@ import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
-import BottomNav from "../../components/BottomNav";
 import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 
 // Stats screen
-export default function Stats({
-  navigation,
-  statistics,
-  streak,
-  tabActive,
-  setTabActive,
-}) {
+export default function Stats({ statistics, streak }) {
   // Function to check if some statistics have been incremented
   const checkIfStatsExist = () => {
     return statistics.some((stat) => stat.count > 0);
@@ -47,12 +40,8 @@ export default function Stats({
               borderBottomWidth: index === statistics.length - 1 ? 1 : 0,
             }}
           >
-            <Text style={{ fontFamily: "HammersmithOne", fontSize: 20 }}>
-              {stat.name}
-            </Text>
-            <Text style={{ fontFamily: "HammersmithOne", fontSize: 20 }}>
-              {stat.count}
-            </Text>
+            <Text style={styles.statsListItemText}>{stat.name}</Text>
+            <Text style={styles.statsListItemText}>{stat.count}</Text>
           </View>
         ))}
       </View>
@@ -66,15 +55,6 @@ export default function Stats({
           </Text>
         </View>
       )}
-
-      {/* Bottom Nnavigation */}
-      <View style={styles.bottomNavWrapper}>
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
     </SafeAreaView>
   );
 }
@@ -93,13 +73,14 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 36,
   },
 
   statsList: {
-    display: "flex",
-    flex: 3,
     width: "100%",
-    marginTop: 36,
+    display: "flex",
+
+    height: "auto",
   },
 
   statsListItem: {
@@ -111,49 +92,32 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: COLOURS.lightGray,
     paddingHorizontal: 46,
-    height: 52,
+    height: 50,
+  },
+
+  statsListItemText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 20,
   },
 
   bottomTextContainer: {
-    marginTop: 28,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-
-    display: "flex",
-    flex: 2,
-
-    // marginBottom: 84,
-    paddingHorizontal: 36,
-  },
-
-  bottomText: {
-    fontFamily: "HammersmithOne",
-    fontSize: 20,
-    textAlign: "center",
-    color: COLOURS.tertiaryText,
-  },
-
-  bottomNavWrapper: {
     width: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
 
     backgroundColor: COLOURS.white,
-    paddingVertical: 20,
 
-    display: "flex",
+    flex: 1,
 
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
+    paddingHorizontal: 36,
+    paddingVertical: 16,
+  },
 
-    elevation: 12,
-    zIndex: 99,
+  bottomText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 16,
+    textAlign: "center",
+    color: COLOURS.tertiaryText,
   },
 });

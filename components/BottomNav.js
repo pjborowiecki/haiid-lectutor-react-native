@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../constants";
 
 export default function BottomNav({ navigation, tabActive, setTabActive }) {
@@ -26,7 +25,7 @@ export default function BottomNav({ navigation, tabActive, setTabActive }) {
         <TouchableOpacity
           onPress={() => {
             setTabActive("Home");
-            navigation.navigate("Homepage");
+            navigation.navigate("Home");
           }}
           style={
             tabActive === "Home"

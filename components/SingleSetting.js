@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: COLOURS.lightGray,
     paddingHorizontal: 36,
-    height: 48,
+    height: 50,
   },
 
   settingIconTitleGroup: {

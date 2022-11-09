@@ -1,17 +1,8 @@
 import { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { _flashcards, _quizzes, _statistics, _streak } from "../constants";
+import { COLOURS, _flashcards, _quizzes, _statistics, _streak } from "../constants";
 
 // Screen imports
-import Home from "../screens/home/Home";
-import Stats from "../screens/home/Stats";
-import Settings from "../screens/home/Settings";
-
-import Feedback from "../screens/home/settings/Feedback";
-import HelpAndSupport from "../screens/home/settings/HelpAndSupport";
-import HowDoesItWork from "../screens/home/settings/HowDoesItWork";
-import TermsAndConditions from "../screens/home/settings/TermsAndConditions";
-
 import QuizUpload from "../screens/quiz/QuizUpload";
 import QuizCreator from "../screens/quiz/QuizCreator";
 import QuizPlayer from "../screens/quiz/QuizPlayer";
@@ -19,6 +10,10 @@ import Rating from "../screens/quiz/Rating";
 import QuizLoadingScreen from "../screens/quiz/QuizLoadingScreen";
 import QuestionReview from "../screens/quiz/QuestionReview";
 import IncrementStreak from "../screens/quiz/IncrementStreak";
+import BottomNav from "../components/BottomNav";
+import { StyleSheet, View } from "react-native";
+import Searchbar from "../components/Searchbar";
+import HomeNavigation from "./HomeNavigation";
 
 // Navigation component
 export default function Navigation() {
@@ -27,10 +22,16 @@ export default function Navigation() {
   // Data variables
   const [statistics, setStats] = useState(_statistics);
   const [quizzes, setQuizzes] = useState(_quizzes);
+  const [quizzesShown, setQuizzesShown] = useState(quizzes);
   const [flashcards, setFlashcards] = useState(_flashcards);
   const [streak, setStreak] = useState(_streak);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [tabActive, setTabActive] = useState("Home");
+  const [renderNavbar, setRenderNavbar] = useState(true);
+
+  const filterQuizzes = (filter) => {
+    setQuizzesShown(quizzes.filter(quiz => quiz.name.toLowerCase().includes(filter.toLowerCase())));
+  }
 
   const incrementStreak = () => {
     setStreak({
@@ -121,9 +122,11 @@ export default function Navigation() {
   };
 
   const deleteQuiz = (id) => {
+    console.log(id)
     const newQuizzes = quizzes.filter((q) => q.id !== id);
     const newFlashcards = flashcards.filter((fc) => fc.id !== id);
     setQuizzes(newQuizzes);
+    setQuizzesShown(newQuizzes);
     setFlashcards(newFlashcards);
   };
 
@@ -151,80 +154,27 @@ export default function Navigation() {
       {/* Home Navigation */}
       <Stack.Screen name="Homepage">
         {(props) => (
-          <Home
-            {...props}
-            statistics={statistics}
-            deleteQuiz={deleteQuiz}
-            quizzes={quizzes}
-            streak={streak.streak}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
-          />
-        )}
-      </Stack.Screen>
-
-      <Stack.Screen name="Stats">
-        {(props) => (
-          <Stats
-            {...props}
-            statistics={statistics}
-            streak={streak}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
-          />
-        )}
-      </Stack.Screen>
-
-      {/* Settings Navigation */}
-      <Stack.Screen name="Settings">
-        {(props) => (
-          <Settings
-            {...props}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
-          />
-        )}
-      </Stack.Screen>
-
-      <Stack.Screen name="HelpAndSupport">
-        {(props) => (
-          <HelpAndSupport
-            {...props}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
-          />
-        )}
-      </Stack.Screen>
-
-      <Stack.Screen name="TermsAndConditions">
-        {(props) => (
-          <TermsAndConditions
-            {...props}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
-          />
-        )}
-      </Stack.Screen>
-
-      <Stack.Screen name="HowDoesItWork">
-        {(props) => (
-          <HowDoesItWork
-            {...props}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
-          />
-        )}
-      </Stack.Screen>
-
-      <Stack.Screen name="Feedback">
-        {(props) => (
-          <Feedback
-            {...props}
-            showModal={showFeedbackModal}
-            setShowModal={setShowFeedbackModal}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
-          />
+          <>
+            <HomeNavigation
+              {...props}
+              statistics={statistics}
+              deleteQuiz={deleteQuiz}
+              quizzes={quizzesShown}
+              streak={streak.streak}
+              showFeedbackModal={showFeedbackModal}
+              setShowFeedbackModal={setShowFeedbackModal}
+            />
+            {/* Bottom Navigation and SearchBar Wrapper */}
+            <View style={styles.bottomNavWrapper}>
+              { tabActive === "Home" && <Searchbar 
+                  filterQuizzes={filterQuizzes} setRenderNavbar={setRenderNavbar}/>}
+              { renderNavbar && <BottomNav
+                {...props}
+                tabActive={tabActive}
+                setTabActive={setTabActive}
+              />}
+            </View>
+          </>
         )}
       </Stack.Screen>
 
@@ -282,3 +232,29 @@ export default function Navigation() {
     </Stack.Navigator>
   );
 }
+
+// Styles
+const styles = StyleSheet.create({
+  bottomNavWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundColor: COLOURS.white,
+    paddingVertical: 20,
+
+    display: "flex",
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    zIndex: 99,
+  },
+});

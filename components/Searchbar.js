@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Image, TextInput, StyleSheet } from "react-native";
 import { assets, COLOURS } from "../constants";
 
-export default function Searchbar() {
-  const [focused, setFocused] = useState(false);
+export default function Searchbar({ filterQuizzes, setRenderNavbar }) {
   const [searchPhrase, setSearchPhrase] = useState("");
+
+  useEffect(() => {
+    filterQuizzes(searchPhrase);
+  }, [searchPhrase])
+
   return (
     <View style={styles.searchBarWrapper}>
       <View style={styles.searchBar}>
@@ -15,9 +19,10 @@ export default function Searchbar() {
         <TextInput
           style={styles.searchInput}
           placeholder="Search..."
+          onFocus={() => setRenderNavbar(true)}
+          onPressUp={() => setRenderNavbar(false)}
           value={searchPhrase}
           onChangeText={setSearchPhrase}
-          onFocus={() => setFocused((previous) => !previous)}
         />
       </View>
     </View>

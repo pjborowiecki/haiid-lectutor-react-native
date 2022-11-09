@@ -29,8 +29,8 @@ export default function Feedback({
 
   const onSubmit = () => {
     setShowModal(false);
-    setTabActive("Home");
-    navigation.navigate("Homepage");
+    // setTabActive("Home");
+    navigation.navigate("Home");
   };
 
   return (
@@ -86,15 +86,6 @@ export default function Feedback({
         </View>
       </View>
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNavWrapper}>
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
-
       {/* Modal */}
       {showModal && (
         <View style={styles.modalOveraly}>
@@ -130,9 +121,9 @@ const styles = StyleSheet.create({
   },
 
   sectionContentWrapper: {
+    width: "100%",
     display: "flex",
     flex: 1,
-    width: "100%",
   },
 
   explanationContainer: {
@@ -142,16 +133,17 @@ const styles = StyleSheet.create({
 
   explanationText: {
     fontFamily: "HammersmithOne",
-    fontSize: 20,
+    fontSize: 19,
     textAlign: "center",
   },
 
   textInputContainer: {
     marginTop: 24,
     width: "100%",
-    height: 110,
     display: "flex",
-    // flex: 1,
+
+    // height: 160,
+    height: "auto",
 
     paddingHorizontal: "10%",
 
@@ -160,16 +152,19 @@ const styles = StyleSheet.create({
 
   textInput: {
     width: "100%",
-    height: "100%",
+
+    height: 140,
+
     fontFamily: "HammersmithOne",
     fontSize: 16,
 
     borderColor: COLOURS.lightGray,
-    borderWidth: 1,
+    borderWidth: 5,
     borderRadius: 10,
 
     paddingHorizontal: 16,
     paddingVertical: 16,
+
     textAlignVertical: "top",
 
     backgroundColor: COLOURS.white,
@@ -179,7 +174,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 6,
     },
-    shadowOpacity: 0.37,
+    shadowOpacity: 0.35,
     shadowRadius: 7.49,
 
     elevation: 12,
@@ -187,13 +182,15 @@ const styles = StyleSheet.create({
   },
 
   submitButtonContainer: {
-    height: 100,
+    width: "100%",
     display: "flex",
-    flex: 1,
+
+    height: 100,
+
     alignItems: "center",
     justifyContent: "center",
 
-    paddingTop: 8,
+    paddingVertical: 16,
   },
 
   submitButtonPill: {
@@ -236,29 +233,6 @@ const styles = StyleSheet.create({
     fontFamily: "HammersmithOne",
     fontSize: 20,
     textAlign: "center",
-  },
-
-  bottomNavWrapper: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-
-    backgroundColor: COLOURS.white,
-    paddingVertical: 20,
-
-    display: "flex",
-
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-
-    elevation: 12,
-    zIndex: 99,
   },
 
   modalOveraly: {

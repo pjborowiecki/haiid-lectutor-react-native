@@ -16,7 +16,8 @@ import TitlePill from "../../components/TitlePill";
     const streak = route.params?.streak;
 
     const giveRating = (like) => {
-      if (like !== undefined) incrementStat(3);
+      if (like === true) incrementStat(3);
+      if (like === false) incrementStat(4);
       if (streak) navigation.navigate("IncrementStreak", {streak: streak});
       else navigation.navigate("Homepage");
     }

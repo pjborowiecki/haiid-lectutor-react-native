@@ -16,8 +16,6 @@ export default function Home({
   deleteQuiz,
   quizzes,
   streak,
-  tabActive,
-  setTabActive,
 }) {
   const modalText =
     "This will delete the quiz from storage and all its settings. Are you sure about this?";
@@ -26,7 +24,7 @@ export default function Home({
 
   const onDeleteQuiz = () => {
     // showModal stores the quiz cause I can't be bothered
-    deleteQuiz(showModal);
+    deleteQuiz(showModal.id);
     setShowModal(false);
   };
 
@@ -62,19 +60,6 @@ export default function Home({
           ))}
         </ScrollView>
       </ScrollView>
-
-      {/* Bottom Navigation and SearchBar Wrapper */}
-      <View style={styles.bottomNavWrapper}>
-        {/* SearchBar */}
-        <Searchbar />
-
-        {/* Bottom navigation */}
-        <BottomNav
-          navigation={navigation}
-          tabActive={tabActive}
-          setTabActive={setTabActive}
-        />
-      </View>
 
       {/* Deletion Modal */}
       {showModal && (
@@ -115,29 +100,6 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 8,
     flex: 1,
-  },
-
-  bottomNavWrapper: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-
-    backgroundColor: COLOURS.white,
-    paddingVertical: 20,
-
-    display: "flex",
-
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-
-    elevation: 12,
-    zIndex: 99,
   },
 
   modalOverlay: {
