@@ -40,6 +40,8 @@ export default function QuizPlayer({
 
   const [index, setIndex] = useState(0);
   const [currentFlashcard, setCurrentFlashcard] = useState(flashcards[0]);
+  const [revealAnswer, setRevealAnswer] = useState(false);
+  const [revealedAnswerOnce, setRevealedAnswerOnce] = useState(false);
 
   const [answer, setAnswer] = useState("");
 
@@ -70,23 +72,27 @@ export default function QuizPlayer({
     }
   };
 
-  const onNext = (revealAnswer) => {
+  const onNext = () => {
     // Assume that when person clicks next and
     // they have revealed answer then they have
     // answered the question
-    if (revealAnswer) incrementStat(1);
     if (index < flashcards.length - 1) {
+      setRevealedAnswerOnce(false);
+      setRevealAnswer(false);
+      if (revealAnswer || revealedAnswerOnce) incrementStat(1);
       setCurrentFlashcard(flashcards[index + 1]);
       setIndex(index + 1);
     }
   };
 
-  const onPrev = (revealAnswer) => {
+  const onPrev = () => {
     // Assume that when person clicks prev and
     // they have revealed answer then they have
     // answered the question
-    if (revealAnswer) incrementStat(1);
     if (index > 0) {
+      setRevealedAnswerOnce(false);
+      setRevealAnswer(false);
+      if (revealAnswer || revealedAnswerOnce) incrementStat(1);
       setCurrentFlashcard(flashcards[index - 1]);
       setIndex(index - 1);
     }
@@ -127,10 +133,12 @@ export default function QuizPlayer({
           size={flashcards.length}
           index={index + 1}
           playingQuiz={true}
-          onNext={onNext}
-          onPrev={onPrev}
           onNextAnswer={nextAnswer}
           onPrevAnswer={prevAnswer}
+          revealAnswer={revealAnswer}
+          setRevealAnswer={setRevealAnswer}
+          revealedAnswerOnce={revealedAnswerOnce}
+          setRevealedAnswerOnce={setRevealedAnswerOnce}
         />
 
         {/* Answer Input */}

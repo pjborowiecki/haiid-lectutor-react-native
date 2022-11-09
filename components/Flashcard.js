@@ -1,23 +1,22 @@
 import { useState } from "react";
 
-import { TextInput } from "react-native-gesture-handler";
 import { Text, Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { COLOURS, assets } from "../constants";
 
 // Flashcard component
 export default function Flashcard({
   flashcard,
+  revealAnswer,
+  setRevealAnswer,
+  setRevealedAnswerOnce,
   playingQuiz = false,
   quizId = null,
-  onNext = () => {},
-  onPrev = () => {},
   onReroll = () => {},
   onDelete = () => {},
   onNextAnswer = () => {},
   onPrevAnswer = () => {},
 }) {
-  const [revealAnswer, setRevealAnswer] = useState(false);
-  const [revealedAnswerOnce, setRevealedAnswerOnce] = useState(false);
+  const [isAltAnswer, setIsAltAnswer] = useState(null)
 
   const flipCard = () => {
     if (playingQuiz) {
@@ -25,46 +24,48 @@ export default function Flashcard({
     }
   };
 
-  const nextCard = () => {
-    setRevealedAnswerOnce(revealAnswer || revealedAnswerOnce ? true : false);
-    onNext(revealAnswer || revealedAnswerOnce ? true : false);
-    setRevealAnswer(false);
-  };
+  const showAnswer = () => {
+    if (playingQuiz) {
+      setRevealAnswer(true);
+      setRevealedAnswerOnce(true);
+    }
+  }
 
-  const prevCard = () => {
-    setRevealedAnswerOnce(revealAnswer || revealedAnswerOnce ? true : false);
-    onPrev(revealAnswer || revealedAnswerOnce ? true : false);
-    setRevealAnswer(false);
-  };
+  const showQuestion = () => {
+    if (playingQuiz) {
+      setRevealAnswer(false);
+    }
+  }
 
   return (
     <View style={styles.flashCardWrapper}>
       {/* Flashcard question */}
       {playingQuiz && !revealAnswer && (
-        <View style={styles.questionCardWrapper}>
+        <TouchableOpacity 
+          onPress={showAnswer}
+          style={styles.questionCardWrapper}>
           <View style={styles.rightCornerButtonContainer}>
             {/* Right corenr image (reveal answer button) */}
-            <TouchableOpacity
-              onPress={flipCard}
+            <View
               style={styles.rightCornerButton}
             >
               <Image
                 source={assets.cardCornerRight}
                 style={styles.rightCornerImage}
               />
-            </TouchableOpacity>
+            </View>
           </View>
           <View style={styles.questionWrapper}>
             <Text style={styles.questionText}>{flashcard.question}</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       )}
 
       {/* Flashcard answer */}
       {playingQuiz && revealAnswer && (
         <View style={styles.answerCardWrapper}>
           {/* Left corner image (back to question button) */}
-          <TouchableOpacity style={styles.leftCornerButton} onPress={flipCard}>
+          <TouchableOpacity style={styles.leftCornerButton} onPress={showQuestion}>
             <Image
               source={assets.cardCornerLeft}
               style={styles.leftCornerImage}
@@ -76,13 +77,18 @@ export default function Flashcard({
             {/* Left Arrow Container */}
             <View style={styles.leftArrowContainer}>
               <TouchableOpacity
-                onPress={() => onPrevAnswer(flashcard.id, quizId)}
+                onPress={() => {setIsAltAnswer(null); onPrevAnswer(flashcard.id, quizId)}}
                 style={styles.changeAnswerButton}
+                disabled={isAltAnswer === null}
               >
-                <Image
-                  source={assets.chevronLeftIcon}
+                {isAltAnswer && <Image
+                  source={isAltAnswer}
                   style={styles.chevronIcon}
-                />
+                />}
+                {isAltAnswer === null && <Image
+                  source={null}
+                  style={styles.chevronIcon}
+                />}
               </TouchableOpacity>
             </View>
 
@@ -95,7 +101,7 @@ export default function Flashcard({
             {/* Right Arrow Container */}
             <View style={styles.rightArrowContainer}>
               <TouchableOpacity
-                onPress={() => onNextAnswer(flashcard.id, quizId)}
+                onPress={() => {setIsAltAnswer(assets.chevronLeftIcon); onNextAnswer(flashcard.id, quizId)}}
                 style={styles.changeAnswerButton}
               >
                 <Image
@@ -107,9 +113,9 @@ export default function Flashcard({
           </View>
 
           {/* Answer Text Container */}
-          <View style={styles.answerTextContainer}>
+          <TouchableOpacity onPress={showQuestion} style={styles.answerTextContainer}>
             <Text style={styles.answerText}>{flashcard.answer}</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       )}
 
