@@ -3,7 +3,6 @@ import { assets, COLOURS, how_does_it_work } from "../../../constants";
 
 // Component imports
 import Header from "../../../components/Header";
-import BottomNav from "../../../components/BottomNav";
 import FunctionCircle from "../../../components/FunctionCircle";
 import TitlePill from "../../../components/TitlePill";
 

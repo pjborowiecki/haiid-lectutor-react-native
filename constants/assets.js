@@ -36,12 +36,36 @@ import cardCornerRight from "../assets/images/card-corner-right.png";
 import thumbUpIcon from "../assets/icons/thumb-up-icon.png";
 import thumbDownIcon from "../assets/icons/thumb-down-icon.png";
 
+import settingsIconDM from "../assets/icons/settings-w.png";
+import helpIconDM from "../assets/icons/interrogation-w.png";
+import homeIconDM from "../assets/icons/home-w.png";
+import notificationsIconDM from "../assets/icons/bell-w.png";
+import chartHistogramIconDM from "../assets/icons/chart-histogram-w.png";
+import chevronRightIconDM from "../assets/icons/next-w.png";
+import easyReadModeIconDM from "../assets/icons/font-w.png";
+import feedbackIconDM from "../assets/icons/feedback-w.png";
+import darkModeIconDM from "../assets/icons/moon-w.png";
+import termsConditionsIconDM from "../assets/icons/terms-and-conditions-w.png";
+
+
+
 export default {
   onboardingImage01,
   onboardingImage02,
   onboardingImage03,
   onboardingImage04,
   onboardingImage05,
+
+  settingsIconDM,
+  chartHistogramIconDM,
+  homeIconDM,
+  darkModeIconDM,
+  notificationsIconDM,
+  easyReadModeIconDM,
+  helpIconDM,
+  termsConditionsIconDM,
+  feedbackIconDM,
+  chevronRightIconDM,
 
   logo,
   headerBg,

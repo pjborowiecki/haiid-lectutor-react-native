@@ -20,10 +20,13 @@ import BottomNav from "../components/BottomNav";
 import { StyleSheet, View } from "react-native";
 import Searchbar from "../components/Searchbar";
 import HomeNavigation from "./HomeNavigation";
+import Modal from "../components/Modal";
 
 // Navigation component
 export default function Navigation() {
   const Stack = createStackNavigator();
+
+  const deletionModalText = "This will delete the quiz from storage and all its settings. Are you sure about this?";
 
   // Data variables
   const [statistics, setStats] = useState(_statistics);
@@ -34,6 +37,15 @@ export default function Navigation() {
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [tabActive, setTabActive] = useState("Home");
   const [renderNavbar, setRenderNavbar] = useState(true);
+  const [navbarIconColour, setNavbarIconColour] = useState(COLOURS.homeIconBg);
+  const [bgColour, setBgColour] = useState(COLOURS.white);
+  const [showDeletionModal, setShowDeletionModal] = useState(false);
+
+  const onDeleteQuiz = () => {
+    // showModal stores the quiz cause I can't be bothered
+    deleteQuiz(showDeletionModal.id);
+    setShowDeletionModal(false);
+  };
 
   const filterQuizzes = (filter) => {
     setQuizzesShown(
@@ -132,7 +144,6 @@ export default function Navigation() {
   };
 
   const deleteQuiz = (id) => {
-    console.log(id);
     const newQuizzes = quizzes.filter((q) => q.id !== id);
     const newFlashcards = flashcards.filter((fc) => fc.id !== id);
     setQuizzes(newQuizzes);
@@ -154,6 +165,44 @@ export default function Navigation() {
     setFlashcards(newFlashcards);
   };
 
+  // Styles
+  const styles = StyleSheet.create({
+    bottomNavWrapper: {
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+
+      backgroundColor: bgColour,
+      paddingVertical: 20,
+
+      display: "flex",
+
+      shadowColor: COLOURS.black,
+      shadowOffset: {
+        width: 0,
+        height: 6,
+      },
+      shadowOpacity: 0.37,
+      shadowRadius: 7.49,
+
+      elevation: 12,
+      zIndex: 99,
+    },
+
+    modalOverlay: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 99,
+      backgroundColor: "rgba(0,0,0,0.9)",
+    },
+  });
+
   return (
     <Stack.Navigator
       initialRouteName="Homepage"
@@ -173,23 +222,35 @@ export default function Navigation() {
               streak={streak.streak}
               showFeedbackModal={showFeedbackModal}
               setShowFeedbackModal={setShowFeedbackModal}
+              setNavbarIconColour={setNavbarIconColour}
+              bgColour={bgColour}
+              setBgColour={setBgColour}
+              setShowModal={setShowDeletionModal}
+              setTabActive={setTabActive}
             />
             {/* Bottom Navigation and SearchBar Wrapper */}
             <View style={styles.bottomNavWrapper}>
-              {tabActive === "Home" && (
-                <Searchbar
-                  filterQuizzes={filterQuizzes}
-                  setRenderNavbar={setRenderNavbar}
-                />
-              )}
-              {renderNavbar && (
-                <BottomNav
-                  {...props}
-                  tabActive={tabActive}
-                  setTabActive={setTabActive}
-                />
-              )}
+
+              { tabActive === "Home" && <Searchbar 
+                  filterQuizzes={filterQuizzes} setRenderNavbar={setRenderNavbar}/>}
+              { renderNavbar && <BottomNav
+                {...props}
+                tabActive={tabActive}
+                setTabActive={setTabActive}
+                navbarIconColour={navbarIconColour}
+                bgColour={bgColour}
+              />}
             </View>
+            {/* Deletion Modal */}
+            {showDeletionModal && (
+              <View style={styles.modalOverlay}>
+                <Modal
+                  modalText={deletionModalText}
+                  onYes={onDeleteQuiz}
+                  onNo={() => setShowDeletionModal(false)}
+                />
+              </View>
+      )}
           </>
         )}
       </Stack.Screen>
@@ -248,29 +309,3 @@ export default function Navigation() {
     </Stack.Navigator>
   );
 }
-
-// Styles
-const styles = StyleSheet.create({
-  bottomNavWrapper: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-
-    backgroundColor: COLOURS.white,
-    paddingVertical: 20,
-
-    display: "flex",
-
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-
-    elevation: 12,
-    zIndex: 99,
-  },
-});

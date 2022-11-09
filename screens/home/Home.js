@@ -1,14 +1,10 @@
-import { SafeAreaView, ScrollView, View, Text, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, Text, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../../constants";
-import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
-import BottomNav from "../../components/BottomNav";
-import Searchbar from "../../components/Searchbar";
 import QuizCard from "../../components/QuizCard";
 import FunctionCircle from "../../components/FunctionCircle";
-import Modal from "../../components/Modal";
 
 // Home screen
 export default function Home({ navigation, deleteQuiz, quizzes, streak }) {
@@ -55,17 +51,6 @@ export default function Home({ navigation, deleteQuiz, quizzes, streak }) {
           ))}
         </ScrollView>
       </ScrollView>
-
-      {/* Deletion Modal */}
-      {showModal && (
-        <View style={styles.modalOverlay}>
-          <Modal
-            modalText={modalText}
-            onYes={onDeleteQuiz}
-            onNo={() => setShowModal(false)}
-          />
-        </View>
-      )}
     </SafeAreaView>
   );
 }

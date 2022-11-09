@@ -262,6 +262,59 @@ export const settings = [
   },
 ];
 
+export const settingsDM = [
+  {
+    id: 1,
+    name: "Dark Mode",
+    icon: assets.darkModeIconDM,
+    type: "darkModeSwitch",
+  },
+  {
+    id: 2,
+    name: "Notifications",
+    icon: assets.notificationsIconDM,
+    type: "notificationsSwitch",
+  },
+  {
+    id: 3,
+    name: "Easy Read Mode",
+    icon: assets.easyReadModeIconDM,
+    type: "easyReadModeSwitch",
+  },
+  {
+    id: 4,
+    name: "Help & Support",
+    icon: assets.helpIconDM,
+    component: assets.chevronRightIconDM,
+    type: "chevron",
+    route: "HelpAndSupport",
+  },
+  {
+    id: 5,
+    name: "Terms & Conditions",
+    icon: assets.termsConditionsIconDM,
+    component: assets.chevronRightIconDM,
+    type: "chevron",
+    route: "TermsAndConditions",
+  },
+  {
+    id: 6,
+    name: "Give Feedback",
+    icon: assets.feedbackIconDM,
+    component: assets.chevronRightIconDM,
+    type: "chevron",
+    route: "Feedback",
+  },
+  {
+    id: 7,
+    name: "How does it work?",
+    icon: "",
+    component: assets.chevronRightIconDM,
+    type: "chevron",
+    route: "HowDoesItWork",
+  },
+];
+
 export const _flashcards = [
   {
     id: 1,

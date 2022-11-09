@@ -4,11 +4,18 @@ import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
+import BottomNav from "../../components/BottomNav";
 import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 
 // Stats screen
-export default function Stats({ statistics, streak }) {
+export default function Stats({
+  navigation,
+  statistics,
+  streak,
+  tabActive,
+  setTabActive,
+}) {
   // Function to check if some statistics have been incremented
   const checkIfStatsExist = () => {
     return statistics.some((stat) => stat.count > 0);
@@ -119,5 +126,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "center",
     color: COLOURS.tertiaryText,
+  },
+
+  bottomNavWrapper: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundColor: COLOURS.white,
+    paddingVertical: 20,
+
+    display: "flex",
+
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    zIndex: 99,
   },
 });
