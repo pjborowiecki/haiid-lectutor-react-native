@@ -15,14 +15,22 @@ export default function SimpleHeader({ navigation }) {
 // Styles
 const styles = StyleSheet.create({
   headerWrapper: {
-    height: 220,
-    position: "absolute",
-    top: -30,
-    right: 0,
-    left: 0,
+    width: "100%",
+
+    height: 180,
+    top: 0,
+
+    // position: "absolute",
+    // top: -30,
+    // right: 0,
+    // left: 0,
+
+    // borderColor: "red",
+    // borderWidth: 1,
   },
 
   headerImage: {
     width: "100%",
+    height: "100%",
   },
 });

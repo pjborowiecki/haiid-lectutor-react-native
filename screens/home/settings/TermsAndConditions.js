@@ -50,7 +50,6 @@ export default function TermsAndConditions({
         keyExtractor={(item) => item.id}
         style={styles.termsAndConditionsList}
       />
-
     </View>
   );
 }

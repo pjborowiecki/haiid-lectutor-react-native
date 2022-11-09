@@ -8,13 +8,10 @@ export default function Footer({ navigation }) {
 // Styles
 const styles = StyleSheet.create({
   footerImage: {
-    position: "absolute",
-    bottom: -32,
-    right: 0,
-    left: 0,
-
     width: "100%",
-    zIndex: -1,
-    elevation: -1,
+    height: 190,
+
+    zIndex: 5,
+    elevation: 5,
   },
 });
