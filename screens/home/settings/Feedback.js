@@ -133,14 +133,14 @@ const styles = StyleSheet.create({
 
   explanationText: {
     fontFamily: "HammersmithOne",
-    fontSize: 20,
+    fontSize: 19,
     textAlign: "center",
   },
 
   textInputContainer: {
     marginTop: 24,
     width: "100%",
-    height: 110,
+    height: 160,
     display: "flex",
     // flex: 1,
 
@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
 
     borderColor: COLOURS.lightGray,
-    borderWidth: 1,
+    borderWidth: 5,
     borderRadius: 10,
 
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingHorizontal: 8,
+    paddingBottom: 100,
     textAlignVertical: "top",
 
     backgroundColor: COLOURS.white,
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 6,
     },
-    shadowOpacity: 0.37,
+    shadowOpacity: 0.35,
     shadowRadius: 7.49,
 
     elevation: 12,

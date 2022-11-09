@@ -4,17 +4,13 @@ import { useState } from "react";
 
 // Component imports
 import Header from "../../components/Header";
-import BottomNav from "../../components/BottomNav";
 import FunctionCircle from "../../components/FunctionCircle";
 import TitlePill from "../../components/TitlePill";
 
 // Stats screen
 export default function Stats({
-  navigation,
   statistics,
   streak,
-  tabActive,
-  setTabActive,
 }) {
   // Function to check if some statistics have been incremented
   const checkIfStatsExist = () => {
@@ -47,10 +43,10 @@ export default function Stats({
               borderBottomWidth: index === statistics.length - 1 ? 1 : 0,
             }}
           >
-            <Text style={{ fontFamily: "HammersmithOne", fontSize: 18 }}>
+            <Text style={{ fontFamily: "HammersmithOne", fontSize: 20 }}>
               {stat.name}
             </Text>
-            <Text style={{ fontFamily: "HammersmithOne", fontSize: 18 }}>
+            <Text style={{ fontFamily: "HammersmithOne", fontSize: 20 }}>
               {stat.count}
             </Text>
           </View>
@@ -102,7 +98,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: COLOURS.lightGray,
     paddingHorizontal: 46,
-    height: 47,
+    height: 50,
   },
 
   bottomTextContainer: {
@@ -120,7 +116,7 @@ const styles = StyleSheet.create({
 
   bottomText: {
     fontFamily: "HammersmithOne",
-    fontSize: 18,
+    fontSize: 16,
     textAlign: "center",
     color: COLOURS.tertiaryText,
   },
