@@ -151,6 +151,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     display: "flex",
+
+    marginBottom: 24,
   },
 
   questionCardWrapper: {
@@ -235,8 +237,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
-    paddingHorizontal: 16,
-    paddingTop: 4,
+    paddingHorizontal: 8,
+    paddingTop: 8,
   },
 
   answerText: {

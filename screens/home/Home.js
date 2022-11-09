@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SafeAreaView, ScrollView, Text, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../../constants";
 
@@ -7,18 +8,7 @@ import QuizCard from "../../components/QuizCard";
 import FunctionCircle from "../../components/FunctionCircle";
 
 // Home screen
-export default function Home({ navigation, deleteQuiz, quizzes, streak }) {
-  const modalText =
-    "This will delete the quiz from storage and all its settings. Are you sure about this?";
-
-  const [showModal, setShowModal] = useState(false);
-
-  const onDeleteQuiz = () => {
-    // showModal stores the quiz cause I can't be bothered
-    deleteQuiz(showModal.id);
-    setShowModal(false);
-  };
-
+export default function Home({ navigation, quizzes, streak, setShowModal }) {
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
       {/* Header */}
