@@ -4,7 +4,6 @@ import { COLOURS, settings } from "../../constants";
 
 // Component imports
 import Header from "../../components/Header";
-import BottomNav from "../../components/BottomNav";
 import SingleSetting from "../../components/SingleSetting";
 import TitlePill from "../../components/TitlePill";
 

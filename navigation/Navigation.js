@@ -3,15 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { COLOURS, _flashcards, _quizzes, _statistics, _streak } from "../constants";
 
 // Screen imports
-import Home from "../screens/home/Home";
-import Stats from "../screens/home/Stats";
-import Settings from "../screens/home/Settings";
-
-import Feedback from "../screens/home/settings/Feedback";
-import HelpAndSupport from "../screens/home/settings/HelpAndSupport";
-import HowDoesItWork from "../screens/home/settings/HowDoesItWork";
-import TermsAndConditions from "../screens/home/settings/TermsAndConditions";
-
 import QuizUpload from "../screens/quiz/QuizUpload";
 import QuizCreator from "../screens/quiz/QuizCreator";
 import QuizPlayer from "../screens/quiz/QuizPlayer";
@@ -36,6 +27,7 @@ export default function Navigation() {
   const [streak, setStreak] = useState(_streak);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [tabActive, setTabActive] = useState("Home");
+  const [renderNavbar, setRenderNavbar] = useState(true);
 
   const filterQuizzes = (filter) => {
     setQuizzesShown(quizzes.filter(quiz => quiz.name.toLowerCase().includes(filter.toLowerCase())));
@@ -172,12 +164,13 @@ export default function Navigation() {
             />
             {/* Bottom Navigation and SearchBar Wrapper */}
             <View style={styles.bottomNavWrapper}>
-              { tabActive === "Home" && <Searchbar filterQuizzes={filterQuizzes}/>}
-              <BottomNav
+              { tabActive === "Home" && <Searchbar 
+                  filterQuizzes={filterQuizzes} setRenderNavbar={setRenderNavbar}/>}
+              { renderNavbar && <BottomNav
                 {...props}
                 tabActive={tabActive}
                 setTabActive={setTabActive}
-              />
+              />}
             </View>
           </>
         )}
