@@ -20,47 +20,52 @@ export default function QuizUpload({ navigation }) {
 
   const uploadFile = async () => {
     try {
-      await pick()
-      .then(file => {
-        console.log(file)
+      await pick().then((file) => {
+        console.log(file);
       });
+    } catch (err) {
+      console.log(err);
     }
-    catch (err) {
-      console.log(err)
-    }
-    setFileUploaded(!fileUploaded)
-  }
+    setFileUploaded(!fileUploaded);
+  };
 
   return (
     <SafeAreaView style={styles.quizUploadScreenWrapper}>
-      {/* Header */}
-      <SimpleHeader />
+      <View style={styles.headerAndTitleWrapper}>
+        {/* Header */}
+        <SimpleHeader />
 
-      {/* Section Content */}
-      <View style={styles.sectionContent}>
         {/* Section title pill */}
         <View style={{ ...styles.sectionTitlePill, ...styles.shadowDark }}>
-          {/* Section Title */}
           <Text style={styles.sectionTitle}>Upload your slides</Text>
         </View>
+      </View>
 
-        {/* Description of what input does */}
-        <Text
-          style={{ ...styles.uploadInstructions, fontSize: 24, marginTop: 32 }}
-        >
-          Please upload a PDF or PPTX format file by
-        </Text>
-        <Text
-          style={{
-            ...styles.uploadInstructions,
-            fontSize: 24,
-            paddingHorizontal: 30,
-          }}
-        >
-          clicking the button below!
-        </Text>
+      {/* Main Content */}
+      <View style={styles.mainContentWrapper}>
+        {/* Top instructions */}
+        <View style={styles.instructionsContainer}>
+          <Text
+            style={{
+              ...styles.instructionsText,
+              fontSize: 24,
+              paddingHorizontal: 30,
+            }}
+          >
+            Please upload a PDF or PPTX format file by
+          </Text>
+          <Text
+            style={{
+              ...styles.instructionsText,
+              fontSize: 24,
+              paddingHorizontal: 30,
+            }}
+          >
+            clicking the button below!
+          </Text>
+        </View>
 
-        {/* File upload pill  */}
+        {/* Upload Pill */}
         <View style={{ ...styles.uploadPill, ...styles.shadowDark }}>
           {/* File upload button */}
           <TouchableOpacity
@@ -76,88 +81,112 @@ export default function QuizUpload({ navigation }) {
           </Text>
         </View>
 
-        {/* Note after input */}
-        <Text
-          style={{ ...styles.uploadInstructions, fontSize: 16, marginTop: 32 }}
-        >
-          Ensure your PDF contains enough text. The AI relies on keywords to
-          write
-        </Text>
-        <Text style={{ ...styles.uploadInstructions, fontSize: 16 }}>
-          good flashcards!
-        </Text>
-
-        {/* Confirmation pill */}
+        {/* Bottom instructions */}
         <View
-          style={
-            !fileUploaded
-              ? {
-                  ...styles.confirmPill,
-                  ...styles.shadowDark,
-                  background: COLOURS.lightGray,
-                }
-              : {
-                  ...styles.confirmPill,
-                  ...styles.shadowDark,
-                  backgroundColor: COLOURS.yesGreen,
-                }
-          }
+          style={{ ...styles.instructionsContainer, paddingHorizontal: 40 }}
         >
-          {/* Confirmation button */}
-          <TouchableOpacity
-            onPress={() => navigation.navigate("QuizCreate")}
-            disabled={!fileUploaded}
-            style={
-              !fileUploaded
-                ? {
-                    ...styles.confirmButton,
-                    ...styles.confirmButtonDisabled,
-                  }
-                : { ...styles.confirmButton, ...styles.shadowDark }
-            }
+          <Text
+            style={{
+              ...styles.instructionsText,
+              fontSize: 16,
+            }}
           >
-            <Text
-              style={
-                !fileUploaded
-                  ? { ...styles.confirmButtonText, opacity: 0.3 }
-                  : styles.confirmButtonText
-              }
-            >
-              Confirm upload
-            </Text>
-          </TouchableOpacity>
+            Ensure your PDF contains enough text. The AI relies on keywords to
+            write
+          </Text>
+          <Text
+            style={{
+              ...styles.instructionsText,
+              fontSize: 16,
+            }}
+          >
+            good flashcards!
+          </Text>
         </View>
       </View>
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer and Confirm Button Wrapper */}
+      <View style={styles.footerAndConfirmButtonWrapper}>
+        {/* Confirm Button Wrapepr */}
+        <View style={styles.confirmButtonWrapper}>
+          {/* Confirmation pill */}
+          <View
+            style={
+              !fileUploaded
+                ? {
+                    ...styles.confirmPill,
+                    ...styles.shadowDark,
+                    background: COLOURS.lightGray,
+                  }
+                : {
+                    ...styles.confirmPill,
+                    ...styles.shadowDark,
+                    backgroundColor: COLOURS.yesGreen,
+                  }
+            }
+          >
+            {/* Confirmation button */}
+            <TouchableOpacity
+              onPress={() => navigation.navigate("QuizCreate")}
+              disabled={!fileUploaded}
+              style={
+                !fileUploaded
+                  ? {
+                      ...styles.confirmButton,
+                      ...styles.confirmButtonDisabled,
+                    }
+                  : { ...styles.confirmButton, ...styles.shadowDark }
+              }
+            >
+              <Text
+                style={
+                  !fileUploaded
+                    ? { ...styles.confirmButtonText, opacity: 0.3 }
+                    : styles.confirmButtonText
+                }
+              >
+                Confirm upload
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Footer */}
+        <Footer />
+      </View>
     </SafeAreaView>
   );
 }
 
 // Styles
 const styles = StyleSheet.create({
-  questionREviewScreenWrapper: {
+  quizUploadScreenWrapper: {
     backgroundColor: COLOURS.white,
-    height: "100%",
-    width: "100%",
     display: "flex",
+    flex: 1,
+    width: "100%",
   },
 
-  sectionContent: {
-    top: 132,
+  headerAndTitleWrapper: {
     width: "100%",
-    paddingHorizontal: 24,
+    height: "auto",
+    display: "flex",
     alignItems: "center",
   },
 
   sectionTitlePill: {
     backgroundColor: COLOURS.white,
-    justifyContent: "center",
-    alignItems: "center",
+    borderRadius: 70,
+
     width: 300,
     height: 48,
-    borderRadius: 70,
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    position: "absolute",
+    top: 140,
   },
 
   sectionTitle: {
@@ -167,36 +196,51 @@ const styles = StyleSheet.create({
     top: 2,
   },
 
-  uploadInstructions: {
-    fontFamily: "HammersmithOne",
-    textAlign: "center",
+  mainContentWrapper: {
+    flex: 1,
+
+    display: "flex",
+    alignItems: "center",
+
+    justifyContent: "center",
+
+    marginTop: 32,
+  },
+
+  instructionsContainer: {
+    paddingVertical: 24,
     paddingHorizontal: 16,
   },
 
+  instructionsText: {
+    fontFamily: "HammersmithOne",
+    textAlign: "center",
+  },
+
   uploadPill: {
-    marginTop: 36,
     backgroundColor: COLOURS.white,
-    width: 258,
-    height: 83,
     borderRadius: 70,
+
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+
+    width: 258,
+    height: 83,
   },
 
   uploadButton: {
     backgroundColor: COLOURS.homeIconBg,
+    borderRadius: 100,
+
     width: 58,
     height: 58,
-    borderRadius: 100,
+
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 16,
-  },
 
-  uploadIcon: {
-    width: 32,
-    height: 32,
+    marginHorizontal: 16,
   },
 
   uploadButtonText: {
@@ -206,6 +250,31 @@ const styles = StyleSheet.create({
     width: 140,
   },
 
+  uploadIcon: {
+    width: 32,
+    height: 32,
+  },
+
+  footerAndConfirmButtonWrapper: {
+    width: "100%",
+  },
+
+  confirmButtonWrapper: {
+    width: "100%",
+
+    position: "absolute",
+    top: 36,
+
+    zIndex: 99,
+    elevation: 99,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    height: "auto",
+  },
+
   confirmPill: {
     width: 192,
     height: 61,
@@ -213,9 +282,6 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    // bottom: -108,
-    top: 470,
   },
 
   confirmButton: {

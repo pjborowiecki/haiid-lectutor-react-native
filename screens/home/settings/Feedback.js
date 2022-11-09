@@ -29,8 +29,8 @@ export default function Feedback({
 
   const onSubmit = () => {
     setShowModal(false);
-    setTabActive("Home");
-    navigation.navigate("Homepage");
+    // setTabActive("Home");
+    navigation.navigate("Home");
   };
 
   return (
@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
   },
 
   sectionContentWrapper: {
+    width: "100%",
     display: "flex",
     flex: 1,
-    width: "100%",
   },
 
   explanationContainer: {
@@ -140,9 +140,10 @@ const styles = StyleSheet.create({
   textInputContainer: {
     marginTop: 24,
     width: "100%",
-    height: 160,
     display: "flex",
-    // flex: 1,
+
+    // height: 160,
+    height: "auto",
 
     paddingHorizontal: "10%",
 
@@ -151,7 +152,9 @@ const styles = StyleSheet.create({
 
   textInput: {
     width: "100%",
-    height: "100%",
+
+    height: 140,
+
     fontFamily: "HammersmithOne",
     fontSize: 16,
 
@@ -159,8 +162,9 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderRadius: 10,
 
-    paddingHorizontal: 10,
-    paddingBottom: 105,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+
     textAlignVertical: "top",
 
     backgroundColor: COLOURS.white,
@@ -178,13 +182,15 @@ const styles = StyleSheet.create({
   },
 
   submitButtonContainer: {
-    height: 100,
+    width: "100%",
     display: "flex",
-    flex: 1,
+
+    height: 100,
+
     alignItems: "center",
     justifyContent: "center",
 
-    paddingTop: 8,
+    paddingVertical: 16,
   },
 
   submitButtonPill: {
@@ -227,29 +233,6 @@ const styles = StyleSheet.create({
     fontFamily: "HammersmithOne",
     fontSize: 20,
     textAlign: "center",
-  },
-
-  bottomNavWrapper: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-
-    backgroundColor: COLOURS.white,
-    paddingVertical: 20,
-
-    display: "flex",
-
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-
-    elevation: 12,
-    zIndex: 99,
   },
 
   modalOveraly: {
