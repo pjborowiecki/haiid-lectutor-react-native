@@ -10,7 +10,6 @@ import { assets, COLOURS } from "../../../constants";
 
 // Component imports
 import Header from "../../../components/Header";
-import BottomNav from "../../../components/BottomNav";
 import TitlePill from "../../../components/TitlePill";
 import FunctionCircle from "../../../components/FunctionCircle";
 import InfoModal from "../../../components/InfoModal";
@@ -20,7 +19,6 @@ export default function Feedback({
   navigation,
   showModal,
   setShowModal,
-  tabActive,
   setTabActive,
 }) {
   const [reviewText, setReviewText] = useState("");
@@ -30,7 +28,7 @@ export default function Feedback({
   const onSubmit = () => {
     setShowModal(false);
     setTabActive("Home");
-    navigation.navigate("Homepage");
+    navigation.navigate("Home");
   };
 
   return (
@@ -91,8 +89,6 @@ export default function Feedback({
         <View style={styles.modalOveraly}>
           <InfoModal
             modalText={modalText}
-            tabActive={tabActive}
-            setTabActive={setTabActive}
             answerText="OK"
             fontSize={24}
             onPress={onSubmit}
@@ -142,7 +138,6 @@ const styles = StyleSheet.create({
     width: "100%",
     display: "flex",
 
-    // height: 160,
     height: "auto",
 
     paddingHorizontal: "10%",
@@ -153,7 +148,7 @@ const styles = StyleSheet.create({
   textInput: {
     width: "100%",
 
-    height: 140,
+    height: 160,
 
     fontFamily: "HammersmithOne",
     fontSize: 16,
@@ -163,7 +158,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingBottom: 120,
+
     textAlignVertical: "top",
 
     backgroundColor: COLOURS.white,
@@ -243,6 +239,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 99,
-    backgroundColor: "rgba(0,0,0,0.9)",
+    backgroundColor: "rgba(255,255,255,0.5)",
   },
 });

@@ -15,6 +15,7 @@ export default function App() {
   // Fonts import
   const [loaded] = useFonts({
     HammersmithOne: require("./assets/fonts/HammersmithOne-Regular.ttf"),
+    "OpenDyslexic": require("./assets/fonts/OpenDyslexic-Regular.otf"),
   });
 
   const Stack = createStackNavigator()

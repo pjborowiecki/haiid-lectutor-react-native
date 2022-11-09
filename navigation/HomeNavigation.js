@@ -19,6 +19,11 @@ export default function HomeNavigation({
   streak,
   showFeedbackModal,
   setShowFeedbackModal,
+  setNavbarIconColour,
+  bgColour,
+  setBgColour,
+  setShowModal,
+  setTabActive,
 }) {
   const Stack = createStackNavigator();
 
@@ -37,17 +42,25 @@ export default function HomeNavigation({
         {/* Homepage screen */}
         <Stack.Screen
           name="Home"
-          children={props => <Home 
-            {...props}
-            deleteQuiz={deleteQuiz} 
-            quizzes={quizzes}
-            streak={streak}
-        />}
+          children={props => <>
+            <Home 
+                {...props}
+                deleteQuiz={deleteQuiz} 
+                quizzes={quizzes}
+                streak={streak}
+                setShowModal={setShowModal}
+            />
+            </>}
         />
         {/* Settings navigator */}
         <Stack.Screen
           name="Settings"
-          component={Settings}
+          children={props => <Settings 
+            {...props}
+            setNavbarIconColour={setNavbarIconColour}
+            bgColour={bgColour}
+            setBgColour={setBgColour}
+        />}
         />
 
         <Stack.Screen name="HelpAndSupport">
@@ -80,6 +93,7 @@ export default function HomeNavigation({
             {...props}
             showModal={showFeedbackModal}
             setShowModal={setShowFeedbackModal}
+            setTabActive={setTabActive}
           />
         )}
       </Stack.Screen>
