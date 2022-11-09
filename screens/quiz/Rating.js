@@ -58,7 +58,7 @@ export default function Rating({ navigation, incrementStat, route }) {
               backgroundColor: COLOURS.yesGreen,
             }}
           >
-            <Image source={assets.thumbDownIcon} style={styles.ratingIcon} />
+            <Image source={assets.thumbUpIcon} style={styles.ratingIcon} />
           </TouchableOpacity>
 
           {/* Dislike button */}

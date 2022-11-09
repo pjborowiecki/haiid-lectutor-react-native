@@ -1,4 +1,11 @@
-import { SafeAreaView, TouchableOpacity, View, Text, StyleSheet, Image } from "react-native";
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+} from "react-native";
 import { assets, COLOURS } from "../../constants";
 import { useEffect, useState } from "react";
 
@@ -10,7 +17,7 @@ export default function IncrementStreak({ navigation, route }) {
 
   useEffect(() => {
     setTimeout(() => {
-      setStreak(streak+1);
+      setStreak(streak + 1);
       setTimeout(() => {
         setShowText(true);
         setTimeout(() => {
@@ -21,76 +28,101 @@ export default function IncrementStreak({ navigation, route }) {
   }, []);
 
   return (
-    <SafeAreaView style={styles.homeScreenWrapper}>
-      {/* Section Content */}
-      <View style={styles.sectionContent}>
-        {/* Streak value and logo */}
+    <SafeAreaView style={styles.incrementStreakScreenWrapper}>
+      {/* Streak value and logo */}
+
+      <View style={styles.logoContainer}>
         <Image source={assets.logo} />
-        <View style={styles.bottom}>
-          <Text style={styles.loadingTitle}><Image style={styles.logoView} source={assets.fireIcon} />{streak}</Text>
-          {showText && <Text style={styles.motivationText}>Come back tomorrow to continue your streak!</Text>}
-        
-          {showButton && <TouchableOpacity
-            onPress={() => navigation.navigate("Homepage")}
-            style={{
-              ...styles.button,
-              ...styles.shadowDark,
-              backgroundColor: COLOURS.homeIconBg,
-            }}
-          >
-            <Text style={styles.buttonText}>OK</Text>
-          </TouchableOpacity>}
+      </View>
+
+      {/* Fire icon and counter container */}
+      <View style={styles.counterContainer}>
+        {/* Fire icons */}
+        <View style={{ ...styles.fireIconContainer, ...styles.shadowDark }}>
+          <Image source={assets.fireIcon} />
+        </View>
+
+        {/* Streak count */}
+        <View style={styles.counterTextWrapper}>
+          <Text style={styles.counterText}>{streak}</Text>
         </View>
       </View>
+
+      {/* Motivation text */}
+      {showText && (
+        <View style={styles.motivationTextContainer}>
+          <Text style={styles.motivationText}>
+            Come back tomorrow to continue your streak!
+          </Text>
+        </View>
+      )}
+
+      {/* OK Button */}
+      {showButton && (
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Homepage")}
+          style={{
+            ...styles.button,
+            ...styles.shadowDark,
+            backgroundColor: COLOURS.homeIconBg,
+          }}
+        >
+          <Text style={styles.buttonText}>OK</Text>
+        </TouchableOpacity>
+      )}
     </SafeAreaView>
   );
 }
 
 // Styles
 const styles = StyleSheet.create({
-  homeScreenWrapper: {
-    backgroundColor: COLOURS.settingsGreen,
-    height: "100%",
+  incrementStreakScreenWrapper: {
     display: "flex",
-    justifyContent: "center",
-  },
-
-  sectionContent: {
+    flex: 1,
     width: "100%",
-    marginTop: 220,
-    display: "flex",
-    flex: 1
-  },
 
-  bottom: {
+    backgroundColor: COLOURS.settingsGreen,
+
     justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
-  loadingTitle: {
+  counterContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+
+    marginTop: -40,
+  },
+
+  fireIconContainer: {
+    backgroundColor: COLOURS.white,
+    borderRadius: 70,
+
+    padding: 14,
+  },
+
+  fireIcon: {},
+
+  counterTextWrapper: {
+    marginLeft: 16,
+  },
+
+  counterText: {
     fontFamily: "HammersmithOne",
-    fontSize: 28,
-    textAlign: "center",
+    fontSize: 32,
   },
 
-  logoView: {
-    backgroundColor: COLOURS.homeIconBg,
-    borderRadius: "50%",
+  motivationTextContainer: {
+    marginVertical: 36,
+    paddingHorizontal: 32,
   },
 
   motivationText: {
     fontFamily: "HammersmithOne",
-    fontSize: 20,
-    textAlign: "center"
-  },
-
-  loadingSubtitle: {
-    fontFamily: "HammersmithOne",
-    fontSize: 18,
+    fontSize: 24,
     textAlign: "center",
-    opacity: 0.5,
-    marginTop: 8,
   },
 
   shadowDark: {
@@ -112,7 +144,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 14,
-    marginTop: 80
   },
 
   buttonText: {

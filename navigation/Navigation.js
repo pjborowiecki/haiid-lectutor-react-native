@@ -26,7 +26,8 @@ import Modal from "../components/Modal";
 export default function Navigation() {
   const Stack = createStackNavigator();
 
-  const deletionModalText = "This will delete the quiz from storage and all its settings. Are you sure about this?";
+  const deletionModalText =
+    "This will delete the quiz from storage and all its settings. Are you sure about this?";
 
   // Data variables
   const [statistics, setStats] = useState(_statistics);
@@ -108,7 +109,7 @@ export default function Navigation() {
       .flashcards.map((fc) => {
         if (fc.id === flashcardId) {
           fc.answer =
-            "The use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyse and draw inferences from patterns in data.";
+            "The use of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to draw inferences from patterns in data.";
           fc.type = "Alt Answer";
         }
         return fc;
@@ -230,15 +231,21 @@ export default function Navigation() {
             />
             {/* Bottom Navigation and SearchBar Wrapper */}
             <View style={styles.bottomNavWrapper}>
-              { tabActive === "Home" && <Searchbar 
-                  filterQuizzes={filterQuizzes} setRenderNavbar={setRenderNavbar}/>}
-              { renderNavbar && <BottomNav
-                {...props}
-                tabActive={tabActive}
-                setTabActive={setTabActive}
-                navbarIconColour={navbarIconColour}
-                bgColour={bgColour}
-              />}
+              {tabActive === "Home" && (
+                <Searchbar
+                  filterQuizzes={filterQuizzes}
+                  setRenderNavbar={setRenderNavbar}
+                />
+              )}
+              {renderNavbar && (
+                <BottomNav
+                  {...props}
+                  tabActive={tabActive}
+                  setTabActive={setTabActive}
+                  navbarIconColour={navbarIconColour}
+                  bgColour={bgColour}
+                />
+              )}
             </View>
             {/* Deletion Modal */}
             {showDeletionModal && (
@@ -249,7 +256,7 @@ export default function Navigation() {
                   onNo={() => setShowDeletionModal(false)}
                 />
               </View>
-      )}
+            )}
           </>
         )}
       </Stack.Screen>
