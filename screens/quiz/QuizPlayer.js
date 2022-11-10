@@ -42,6 +42,7 @@ export default function QuizPlayer({
   const [currentFlashcard, setCurrentFlashcard] = useState(flashcards[0]);
   const [revealAnswer, setRevealAnswer] = useState(false);
   const [revealedAnswerOnce, setRevealedAnswerOnce] = useState(false);
+  const [isAltAnswer, setIsAltAnswer] = useState(null);
 
   const [answer, setAnswer] = useState("");
 
@@ -63,7 +64,7 @@ export default function QuizPlayer({
     // modal
     // increment quizzes done
     incrementStat(0);
-    if (currentFlashcard.id === flashcards.length) incrementStat(1);
+    if (revealAnswer || revealedAnswerOnce) incrementStat(1);
     if (streak.time < new Date().getTime() - 8.64e7) {
       incrementStreak();
       navigation.navigate("Rating", { streak: streak });
@@ -77,6 +78,8 @@ export default function QuizPlayer({
     // they have revealed answer then they have
     // answered the question
     if (index < flashcards.length - 1) {
+      prevAnswer(flashcards[0].id, id);
+      setIsAltAnswer(null);
       setRevealedAnswerOnce(false);
       setRevealAnswer(false);
       if (revealAnswer || revealedAnswerOnce) incrementStat(1);
@@ -90,6 +93,8 @@ export default function QuizPlayer({
     // they have revealed answer then they have
     // answered the question
     if (index > 0) {
+      prevAnswer(flashcards[0].id, id);
+      setIsAltAnswer(null);
       setRevealedAnswerOnce(false);
       setRevealAnswer(false);
       if (revealAnswer || revealedAnswerOnce) incrementStat(1);
@@ -133,11 +138,12 @@ export default function QuizPlayer({
           size={flashcards.length}
           index={index + 1}
           playingQuiz={true}
+          isAltAnswer={isAltAnswer}
+          setIsAltAnswer={setIsAltAnswer}
           onNextAnswer={nextAnswer}
           onPrevAnswer={prevAnswer}
           revealAnswer={revealAnswer}
           setRevealAnswer={setRevealAnswer}
-          revealedAnswerOnce={revealedAnswerOnce}
           setRevealedAnswerOnce={setRevealedAnswerOnce}
         />
 
@@ -289,7 +295,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingBottom: 64,
 
     textAlignVertical: "top",
   },

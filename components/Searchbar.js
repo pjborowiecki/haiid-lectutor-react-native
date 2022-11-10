@@ -4,37 +4,26 @@ import { assets, COLOURS } from "../constants";
 
 export default function Searchbar({ filterQuizzes, setRenderNavbar }) {
   const [searchPhrase, setSearchPhrase] = useState("");
+  const [searchMargin, setSearchMargin] = useState(20);
 
   useEffect(() => {
     filterQuizzes(searchPhrase);
   }, [searchPhrase])
 
-  return (
-    <View style={styles.searchBarWrapper}>
-      <View style={styles.searchBar}>
-        {/* Search Icon */}
-        <Image source={assets.searchIcon} style={styles.searchIcon} />
+  const filterText = () => {
+    setSearchMargin(225);
+  }
 
-        {/* Input Field */}
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search..."
-          onFocus={() => setRenderNavbar(true)}
-          onPressUp={() => setRenderNavbar(false)}
-          value={searchPhrase}
-          onChangeText={setSearchPhrase}
-        />
-      </View>
-    </View>
-  );
-}
+  const stopFiltering = () => {
+    setSearchMargin(20);
+  }
 
-// Styles
+  // Styles
 const styles = StyleSheet.create({
   searchBarWrapper: {
     width: "82%",
     marginHorizontal: "14%",
-    marginBottom: 20,
+    marginBottom: searchMargin,
   },
 
   searchBar: {
@@ -74,3 +63,24 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
 });
+
+
+  return (
+    <View style={styles.searchBarWrapper}>
+      <View style={styles.searchBar}>
+        {/* Search Icon */}
+        <Image source={assets.searchIcon} style={styles.searchIcon} />
+
+        {/* Input Field */}
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          onFocus={filterText}
+          onBlur={stopFiltering}
+          value={searchPhrase}
+          onChangeText={setSearchPhrase}
+        />
+      </View>
+    </View>
+  );
+}
