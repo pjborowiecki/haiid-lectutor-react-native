@@ -14,10 +14,13 @@ export default function IncrementStreak({ navigation, route }) {
   const [streak, setStreak] = useState(route.params.streak.streak);
   const [showText, setShowText] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [streakBg, setStreakBg] = useState(COLOURS.white);
+
 
   useEffect(() => {
     setTimeout(() => {
       setStreak(streak + 1);
+      setStreakBg(COLOURS.deleteRed);
       setTimeout(() => {
         setShowText(true);
         setTimeout(() => {
@@ -27,54 +30,7 @@ export default function IncrementStreak({ navigation, route }) {
     }, 2000);
   }, []);
 
-  return (
-    <SafeAreaView style={styles.incrementStreakScreenWrapper}>
-      {/* Streak value and logo */}
-
-      <View style={styles.logoContainer}>
-        <Image source={assets.logo} />
-      </View>
-
-      {/* Fire icon and counter container */}
-      <View style={styles.counterContainer}>
-        {/* Fire icons */}
-        <View style={{ ...styles.fireIconContainer, ...styles.shadowDark }}>
-          <Image source={assets.fireIcon} />
-        </View>
-
-        {/* Streak count */}
-        <View style={styles.counterTextWrapper}>
-          <Text style={styles.counterText}>{streak}</Text>
-        </View>
-      </View>
-
-      {/* Motivation text */}
-      {showText && (
-        <View style={styles.motivationTextContainer}>
-          <Text style={styles.motivationText}>
-            Come back tomorrow to continue your streak!
-          </Text>
-        </View>
-      )}
-
-      {/* OK Button */}
-      {showButton && (
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Homepage")}
-          style={{
-            ...styles.button,
-            ...styles.shadowDark,
-            backgroundColor: COLOURS.homeIconBg,
-          }}
-        >
-          <Text style={styles.buttonText}>OK</Text>
-        </TouchableOpacity>
-      )}
-    </SafeAreaView>
-  );
-}
-
-// Styles
+  // Styles
 const styles = StyleSheet.create({
   incrementStreakScreenWrapper: {
     display: "flex",
@@ -97,7 +53,7 @@ const styles = StyleSheet.create({
   },
 
   fireIconContainer: {
-    backgroundColor: COLOURS.white,
+    backgroundColor: streakBg,
     borderRadius: 70,
 
     padding: 14,
@@ -152,3 +108,52 @@ const styles = StyleSheet.create({
     color: COLOURS.home,
   },
 });
+
+  return (
+    <SafeAreaView style={styles.incrementStreakScreenWrapper}>
+      {/* Streak value and logo */}
+
+      <View style={styles.logoContainer}>
+        <Image source={assets.logo} />
+      </View>
+
+      {/* Fire icon and counter container */}
+      <View style={styles.counterContainer}>
+        {/* Fire icons */}
+        <View style={{ ...styles.fireIconContainer, ...styles.shadowDark }}>
+          <Image source={assets.fireIcon} />
+        </View>
+
+        {/* Streak count */}
+        <View style={styles.counterTextWrapper}>
+          <Text style={styles.counterText}>{streak}</Text>
+        </View>
+      </View>
+
+      {/* Motivation text */}
+      {showText && (
+        <View style={styles.motivationTextContainer}>
+          <Text style={styles.motivationText}>
+            Come back tomorrow to continue your streak!
+          </Text>
+        </View>
+      )}
+
+      {/* OK Button */}
+      {showButton && (
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Homepage")}
+          style={{
+            ...styles.button,
+            ...styles.shadowDark,
+            backgroundColor: COLOURS.homeIconBg,
+          }}
+        >
+          <Text style={styles.buttonText}>OK</Text>
+        </TouchableOpacity>
+      )}
+    </SafeAreaView>
+  );
+}
+
+
