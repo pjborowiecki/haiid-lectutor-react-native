@@ -43,6 +43,7 @@ export default function QuizPlayer({
   const [revealAnswer, setRevealAnswer] = useState(false);
   const [revealedAnswerOnce, setRevealedAnswerOnce] = useState(false);
   const [isAltAnswer, setIsAltAnswer] = useState(null);
+  const [inputMargin, setInputMargin] = useState(32);
 
   const [answer, setAnswer] = useState("");
 
@@ -103,6 +104,195 @@ export default function QuizPlayer({
     }
   };
 
+  // Styles
+const styles = StyleSheet.create({
+  quizPlayerScreenWrapper: {
+    backgroundColor: COLOURS.white,
+    display: "flex",
+    flex: 1,
+    width: "100%",
+  },
+
+  headerAndTitleWrapper: {
+    width: "100%",
+    height: "auto",
+    display: "flex",
+    alignItems: "center",
+  },
+
+  quizTitlePillWrapper: {
+    position: "absolute",
+    top: 60,
+  },
+
+  mainContanetWrapper: {
+    flex: 1,
+
+    width: "100%",
+
+    display: "flex",
+    alignItems: "center",
+
+    marginTop: inputMargin === 32 ? 48 : -24
+  },
+
+  answerInputContainer: {
+    marginTop: -8,
+
+    width: "100%",
+    height: "100%",
+
+    paddingHorizontal: "11%",
+    backgroundColor: COLOURS.white,
+  },
+
+  answerInput: {
+    height: 160,
+
+    width: "100%",
+
+    fontFamily: "HammersmithOne",
+    fontSize: 16,
+
+    borderColor: COLOURS.lightGray,
+    borderWidth: 1,
+    borderRadius: 10,
+
+    paddingHorizontal: 16,
+    paddingBottom: 120,
+
+    textAlignVertical: "top",
+  },
+
+  controlsWrapper: {
+    width: "100%",
+    height: 70,
+    
+    marginTop: inputMargin === 32 ? -90 : -162,
+    marginBottom: inputMargin === 32 ? -14 : 0,
+
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  questionCounterWrapper: {
+    width: "auto",
+    height: "auto",
+
+    paddingHorizontal: 80,
+  },
+
+  questionCounterText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 16,
+    color: COLOURS.tertiaryText,
+    letterSpacing: 2,
+
+    width: "100%",
+  },
+
+  controlButton: {
+    backgroundColor: COLOURS.white,
+
+    width: 50,
+    height: 50,
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    borderRadius: 100,
+  },
+
+  controlButtonFiller: {
+    backgroundColor: "transparent",
+    borderRadius: 100,
+    width: 50,
+    height: 50,
+  },
+
+  controlIcon: {
+    width: 28,
+    height: 28,
+  },
+
+  footerAndEndQuizButtonWrapper: {
+    width: "100%",
+  },
+
+  endQuizButtonWrapper: {
+    width: "100%",
+
+    position: "absolute",
+    top: -36,
+
+    zIndex: 70,
+    elevation: 70,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    height: "auto",
+  },
+
+  endQuizPill: {
+    width: "100%",
+    backgroundColor: COLOURS.yesGreen,
+    width: 192,
+    height: 61,
+    borderRadius: 70,
+    padding: 16,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 104,
+  },
+
+  endQuizButton: {
+    width: "100%",
+    backgroundColor: COLOURS.white,
+    width: 168,
+    height: 38,
+    borderRadius: 70,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  endQuizButtonText: {
+    width: "100%",
+    fontFamily: "HammersmithOne",
+    textAlign: "center",
+    fontSize: 18,
+  },
+
+  modalOveraly: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 99,
+    elevation: 99,
+    backgroundColor: "rgba(255,255,255,0.5)",
+  },
+
+  shadowDark: {
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+
+    elevation: 14,
+  },
+});
+
   return (
     <SafeAreaView style={styles.quizPlayerScreenWrapper}>
       {/* Modal */}
@@ -124,9 +314,9 @@ export default function QuizPlayer({
         <SimpleHeader />
 
         {/* Quiz Title Pill */}
-        <View style={styles.quizTitlePillWrapper}>
+        {inputMargin === 32 && <View style={styles.quizTitlePillWrapper}>
           <TitlePill title={quiz.name} />
-        </View>
+        </View>}
       </View>
 
       {/* Main content */}
@@ -152,6 +342,8 @@ export default function QuizPlayer({
           <TextInput
             value={answer}
             onChange={(value) => setAnswer(value)}
+            onFocus={() => setInputMargin(-40)}
+            onBlur={() => setInputMargin(32)}
             placeholder="Enter your answer (optional):"
             style={styles.answerInput}
           />
@@ -240,187 +432,3 @@ export default function QuizPlayer({
   );
 }
 
-// Styles
-const styles = StyleSheet.create({
-  quizPlayerScreenWrapper: {
-    backgroundColor: COLOURS.white,
-    display: "flex",
-    flex: 1,
-    width: "100%",
-  },
-
-  headerAndTitleWrapper: {
-    width: "100%",
-    height: "auto",
-    display: "flex",
-    alignItems: "center",
-  },
-
-  quizTitlePillWrapper: {
-    position: "absolute",
-    top: 140,
-  },
-
-  mainContanetWrapper: {
-    flex: 1,
-
-    width: "100%",
-
-    display: "flex",
-    alignItems: "center",
-
-    marginTop: 32,
-  },
-
-  answerInputContainer: {
-    marginTop: -8,
-
-    width: "100%",
-    height: "100%",
-
-    paddingHorizontal: "11%",
-    backgroundColor: COLOURS.white,
-  },
-
-  answerInput: {
-    height: 100,
-
-    width: "100%",
-
-    fontFamily: "HammersmithOne",
-    fontSize: 16,
-
-    borderColor: COLOURS.lightGray,
-    borderWidth: 1,
-    borderRadius: 10,
-
-    paddingHorizontal: 16,
-    paddingBottom: 64,
-
-    textAlignVertical: "top",
-  },
-
-  controlsWrapper: {
-    width: "100%",
-    height: 70,
-
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  questionCounterWrapper: {
-    width: "auto",
-    height: "auto",
-
-    paddingHorizontal: 80,
-  },
-
-  questionCounterText: {
-    fontFamily: "HammersmithOne",
-    fontSize: 16,
-    color: COLOURS.tertiaryText,
-    letterSpacing: 2,
-
-    width: "100%",
-  },
-
-  controlButton: {
-    backgroundColor: COLOURS.white,
-
-    width: 50,
-    height: 50,
-
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-
-    borderRadius: 100,
-  },
-
-  controlButtonFiller: {
-    backgroundColor: "transparent",
-    borderRadius: 100,
-    width: 50,
-    height: 50,
-  },
-
-  controlIcon: {
-    width: 28,
-    height: 28,
-  },
-
-  footerAndEndQuizButtonWrapper: {
-    width: "100%",
-  },
-
-  endQuizButtonWrapper: {
-    width: "100%",
-
-    position: "absolute",
-    top: -36,
-
-    zIndex: 70,
-    elevation: 70,
-
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-
-    height: "auto",
-  },
-
-  endQuizPill: {
-    width: "100%",
-    backgroundColor: COLOURS.yesGreen,
-    width: 192,
-    height: 61,
-    borderRadius: 70,
-    padding: 16,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  endQuizButton: {
-    width: "100%",
-    backgroundColor: COLOURS.white,
-    width: 168,
-    height: 38,
-    borderRadius: 70,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  endQuizButtonText: {
-    width: "100%",
-    fontFamily: "HammersmithOne",
-    textAlign: "center",
-    fontSize: 18,
-  },
-
-  modalOveraly: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 99,
-    elevation: 99,
-    backgroundColor: "rgba(0,0,0,0.9)",
-  },
-
-  shadowDark: {
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-
-    elevation: 14,
-  },
-});

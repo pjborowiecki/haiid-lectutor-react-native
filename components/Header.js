@@ -2,12 +2,14 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { COLOURS, assets } from "../constants";
 
 // Header component
-export default function HeaderNew({ streak, showFire = false }) {
+export default function HeaderNew({ streak, showFire = false, marginBottom=0, marginTop=-50 }) {
 
   // Styles
 const styles = StyleSheet.create({
   headerWrapper: {
     height: 220,
+    marginBottom: marginBottom,
+    marginTop: marginTop,
   },
 
   headerImage: {
@@ -16,31 +18,31 @@ const styles = StyleSheet.create({
 
   fireButton: {
     position: "absolute",
-    top: -5,
-    right: -10,
-    width: 136,
-    height: 136,
+    top: 35,
+    right: 0,
+    width: 110,
+    height: 110,
     borderRadius: 100,
     transform: [{ translateX: 50 }, { translateY: -50 }],
-    backgroundColor: COLOURS.primary,
+    backgroundColor: "#39B979",
   },
 
   fireIcon: {
     top: 68,
-    right: -10,
-    width: 36,
-    height: 36,
+    right: -15,
+    width: 24,
+    height: 24,
     zIndex: 3,
   },
 
   streakText: {
-    top: 30,
-    right: -45,
+    top: 42,
+    right: -38,
     width: 36,
     height: 36,
     zIndex: 3,
     fontFamily: "HammersmithOne",
-    fontSize: 36
+    fontSize: 24
   },
 
   shadowDark: {
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 7,
     },
-    shadowOpacity: 0.41,
+    shadowOpacity: 0.3,
     shadowRadius: 9.11,
 
     elevation: 14,

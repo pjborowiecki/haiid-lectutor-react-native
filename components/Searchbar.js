@@ -2,20 +2,19 @@ import { useEffect, useState } from "react";
 import { View, Image, TextInput, StyleSheet } from "react-native";
 import { assets, COLOURS } from "../constants";
 
-export default function Searchbar({ filterQuizzes, setRenderNavbar }) {
+export default function Searchbar({ filterQuizzes, isFiltering, setIsFiltering }) {
   const [searchPhrase, setSearchPhrase] = useState("");
-  const [searchMargin, setSearchMargin] = useState(20);
 
   useEffect(() => {
     filterQuizzes(searchPhrase);
   }, [searchPhrase])
 
   const filterText = () => {
-    setSearchMargin(225);
+    setIsFiltering(225);
   }
 
   const stopFiltering = () => {
-    setSearchMargin(20);
+    setIsFiltering(20);
   }
 
   // Styles
@@ -23,7 +22,7 @@ const styles = StyleSheet.create({
   searchBarWrapper: {
     width: "82%",
     marginHorizontal: "14%",
-    marginBottom: searchMargin,
+    marginBottom: isFiltering,
   },
 
   searchBar: {

@@ -19,7 +19,7 @@ export default function HowDoesItWork({ navigation, tabActive, setTabActive }) {
   return (
     <View style={styles.howDoesItWorkScreenWrapper}>
       {/* Header */}
-      <Header />
+      <Header  marginTop={0}/>
 
       {/* Back button */}
       <FunctionCircle

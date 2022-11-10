@@ -24,6 +24,7 @@ export default function HomeNavigation({
   setBgColour,
   setShowModal,
   setTabActive,
+  isFiltering,
 }) {
   const Stack = createStackNavigator();
 
@@ -49,6 +50,7 @@ export default function HomeNavigation({
                 quizzes={quizzes}
                 streak={streak}
                 setShowModal={setShowModal}
+                isFiltering={isFiltering}
             />
             </>}
         />

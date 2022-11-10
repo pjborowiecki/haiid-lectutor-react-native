@@ -22,6 +22,7 @@ export default function Feedback({
   setTabActive,
 }) {
   const [reviewText, setReviewText] = useState("");
+  const [inputMargin, setInputMargin] = useState(0);
 
   const modalText = "Thank you for submitting your feedback!";
 
@@ -31,75 +32,7 @@ export default function Feedback({
     navigation.navigate("Home");
   };
 
-  return (
-    <View style={styles.feedbackScreenWrapper}>
-      {/* Header */}
-      <Header />
-
-      {/* Back button */}
-      <FunctionCircle
-        navigation={navigation}
-        icon={assets.chevronLeftIcon}
-        iconSize={42}
-        navigateTo="Settings"
-      />
-
-      {/* Section title pill */}
-      <View style={styles.titlePillWrapper}>
-        <TitlePill title="Give Feedback" />
-      </View>
-
-      {/* Section content */}
-      <View style={styles.sectionContentWrapper}>
-        {/* Explanation modal */}
-
-        {/* Explanation of screen */}
-        <View style={styles.explanationContainer}>
-          <Text style={styles.explanationText}>
-            Your feedback is greatly appreciated and it helps us make the
-            application even better!
-          </Text>
-        </View>
-
-        {/* Feedback input */}
-        <View style={styles.textInputContainer}>
-          <TextInput
-            placeholder="Please tell us what you think..."
-            value={reviewText}
-            onChangeText={setReviewText}
-            style={styles.textInput}
-          />
-        </View>
-
-        {/* Submit button */}
-        <View style={styles.submitButtonContainer}>
-          <View style={styles.submitButtonPill}>
-            <TouchableOpacity
-              onPress={() => setShowModal((previous) => !previous)}
-              style={styles.submitButton}
-            >
-              <Text style={styles.submitButtonText}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-
-      {/* Modal */}
-      {showModal && (
-        <View style={styles.modalOveraly}>
-          <InfoModal
-            modalText={modalText}
-            answerText="OK"
-            fontSize={24}
-            onPress={onSubmit}
-          />
-        </View>
-      )}
-    </View>
-  );
-}
-
-// Styles
+  // Styles
 const styles = StyleSheet.create({
   feedbackScreenWrapper: {
     backgroundColor: COLOURS.white,
@@ -113,7 +46,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 24,
+    marginBottom: 12,
   },
 
   sectionContentWrapper: {
@@ -123,6 +56,7 @@ const styles = StyleSheet.create({
   },
 
   explanationContainer: {
+    marginTop: 12,
     width: "100%",
     paddingHorizontal: 24,
   },
@@ -242,3 +176,74 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.5)",
   },
 });
+
+  return (
+    <View style={styles.feedbackScreenWrapper}>
+      {/* Header */}
+      <Header marginBottom={inputMargin}  marginTop={0}/>
+
+      {/* Back button */}
+      <FunctionCircle
+        navigation={navigation}
+        icon={assets.chevronLeftIcon}
+        iconSize={42}
+        navigateTo="Settings"
+      />
+
+      {/* Section title pill */}
+      { inputMargin === 0 && <View style={styles.titlePillWrapper}>
+        <TitlePill title="Give Feedback" />
+      </View>}
+
+      {/* Section content */}
+      <View style={styles.sectionContentWrapper}>
+        {/* Explanation modal */}
+
+        {/* Explanation of screen */}
+        <View style={styles.explanationContainer}>
+          <Text style={styles.explanationText}>
+            Your feedback is greatly appreciated and it helps us make the
+            application even better!
+          </Text>
+        </View>
+
+        {/* Feedback input */}
+        <View style={styles.textInputContainer}>
+          <TextInput
+            placeholder="Please tell us what you think..."
+            value={reviewText}
+            onFocus={() => setInputMargin(-24)}
+            onBlur={() => setInputMargin(0)}
+            onChangeText={setReviewText}
+            style={styles.textInput}
+          />
+        </View>
+
+        {/* Submit button */}
+        <View style={styles.submitButtonContainer}>
+          <View style={styles.submitButtonPill}>
+            <TouchableOpacity
+              onPress={() => setShowModal((previous) => !previous)}
+              style={styles.submitButton}
+            >
+              <Text style={styles.submitButtonText}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+
+      {/* Modal */}
+      {showModal && (
+        <View style={styles.modalOveraly}>
+          <InfoModal
+            modalText={modalText}
+            answerText="OK"
+            fontSize={24}
+            onPress={onSubmit}
+          />
+        </View>
+      )}
+    </View>
+  );
+}
+

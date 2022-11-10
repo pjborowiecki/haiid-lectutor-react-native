@@ -9,6 +9,9 @@ import Navigation from "./navigation/Navigation";
 // Screen imports
 import Onboarding from "./screens/Onboarding";
 import Consent from "./screens/Consent";
+import { COLOURS } from "./constants";
+import { StyleSheet, View } from "react-native";
+import { useState } from "react";
 
 // App
 export default function App() {
@@ -18,13 +21,16 @@ export default function App() {
     "OpenDyslexic": require("./assets/fonts/OpenDyslexic-Regular.otf"),
   });
 
+  const [showRect, setShowRect] = useState(false);
+
   const Stack = createStackNavigator()
 
   if (!loaded) return null;
 
   return (
     <NavigationContainer>
-      <StatusBar />
+      <StatusBar style={{backgroundColor: COLOURS.yesGreen}}/>
+      {showRect && <View style={styles.rectangle}></View>}
       <Stack.Navigator 
           initialRouteName={"Onboarding"}
           screenOptions={{
@@ -42,9 +48,21 @@ export default function App() {
         />
         <Stack.Screen
           name="App"
-          component={Navigation}
+          children={props => 
+            <Navigation {...props} setShowRect={setShowRect}/>
+          }
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  rectangle: {
+    backgroundColor: COLOURS.settingsGreen,
+    position: "absolute",
+    width: 900,
+    height: 50,
+    zIndex: 99,
+  }
+})

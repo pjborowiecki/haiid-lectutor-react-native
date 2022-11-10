@@ -13,6 +13,7 @@ export default function Home({
   quizzes,
   streak,
   setShowModal,
+  isFiltering,
 }) {
   return (
     <SafeAreaView style={styles.homeScreenWrapper}>
@@ -30,7 +31,7 @@ export default function Home({
       />
 
       {/* Section Title */}
-      <Text style={styles.sectionTitle}>Your Suggested Quizzes</Text>
+      { isFiltering === 20 && <Text style={styles.sectionTitle}>Your Suggested Quizzes</Text>}
 
       {/* Section Content */}
       <ScrollView style={styles.sectionContent}>

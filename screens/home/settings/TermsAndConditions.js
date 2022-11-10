@@ -28,7 +28,7 @@ export default function TermsAndConditions({
   return (
     <View style={styles.termsConditionsScreenWrapper}>
       {/* Header */}
-      <Header />
+      <Header marginTop={0}/>
 
       {/* Back button */}
       <FunctionCircle

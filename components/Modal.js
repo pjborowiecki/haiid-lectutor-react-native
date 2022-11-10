@@ -12,7 +12,79 @@ export default function Modal({
   modalText,
   onNo = () => {},
   onYes = () => {},
+  fontSize=18
 }) {
+
+  // Styles
+const styles = StyleSheet.create({
+  moddalWrapper: {
+    backgroundColor: COLOURS.white,
+
+    width: "90%",
+    height: "auto",
+
+    backgroundColor: COLOURS.white,
+    marginHorizontal: 26,
+    paddingHorizontal: 16,
+    paddingVertical: 28,
+    borderRadius: 22,
+    alignItems: "center",
+  },
+
+  modalText: {
+    fontFamily: "HammersmithOne",
+    fontSize: fontSize,
+    textAlign: "center",
+    marginBottom: 20,
+    marginTop: 20,
+    width: "90%",
+  },
+
+  buttonGroup: {
+    flexDirection: "row",
+  },
+
+  button: {
+    borderRadius: 70,
+    width: 129,
+    height: 61,
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 14,
+    marginBottom: 20,
+  },
+
+  buttonText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 32,
+    color: COLOURS.white,
+  },
+
+  acceptView: {},
+
+  rejectView: {},
+
+  rejectText: {
+    fontFamily: "HammersmithOne",
+    fontSize: 17,
+    color: COLOURS.black,
+    textAlign: "center",
+    marginBottom: 20,
+    paddingHorizontal: 30,
+  },
+
+  shadowDark: {
+    shadowColor: COLOURS.black,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+
+    elevation: 14,
+  },
+});
   return (
     <SafeAreaView
       style={{
@@ -53,70 +125,4 @@ export default function Modal({
   );
 }
 
-// Styles
-const styles = StyleSheet.create({
-  moddalWrapper: {
-    backgroundColor: COLOURS.white,
 
-    width: "90%",
-    height: "auto",
-
-    backgroundColor: COLOURS.white,
-    marginHorizontal: 26,
-    paddingHorizontal: 16,
-    paddingVertical: 28,
-    borderRadius: 22,
-    alignItems: "center",
-  },
-
-  modalText: {
-    fontFamily: "HammersmithOne",
-    fontSize: 18,
-    textAlign: "center",
-    marginBottom: 20,
-  },
-
-  buttonGroup: {
-    flexDirection: "row",
-  },
-
-  button: {
-    borderRadius: 70,
-    width: 129,
-    height: 61,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 14,
-  },
-
-  buttonText: {
-    fontFamily: "HammersmithOne",
-    fontSize: 32,
-    color: COLOURS.white,
-  },
-
-  acceptView: {},
-
-  rejectView: {},
-
-  rejectText: {
-    fontFamily: "HammersmithOne",
-    fontSize: 17,
-    color: COLOURS.black,
-    textAlign: "center",
-    marginBottom: 20,
-    paddingHorizontal: 30,
-  },
-
-  shadowDark: {
-    shadowColor: COLOURS.black,
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-
-    elevation: 14,
-  },
-});

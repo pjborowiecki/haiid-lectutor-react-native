@@ -3,7 +3,6 @@ import { assets, COLOURS } from "../../../constants";
 
 // Component imports
 import Header from "../../../components/Header";
-import BottomNav from "../../../components/BottomNav";
 import FunctionCircle from "../../../components/FunctionCircle";
 import TitlePill from "../../../components/TitlePill";
 
@@ -16,7 +15,7 @@ export default function HelpAndSupport({
   return (
     <View style={styles.helpSupportScreenWrapper}>
       {/* Header */}
-      <Header />
+      <Header marginBottom={50} marginTop={0}/>
 
       {/* Back button */}
       <FunctionCircle
