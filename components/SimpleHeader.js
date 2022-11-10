@@ -2,7 +2,24 @@ import { View, Image, StyleSheet } from "react-native";
 import { assets } from "../constants";
 
 // Header component
-export default function SimpleHeader({ navigation }) {
+export default function SimpleHeader({ bottomMargin=0 }) {
+  // Styles
+const styles = StyleSheet.create({
+  headerWrapper: {
+    width: "100%",
+
+    height: 180,
+    top: 0,
+    bottomMargin: bottomMargin,
+    marginTop: -80
+  },
+
+  headerImage: {
+    width: "100%",
+    height: "100%",
+  },
+});
+
   return (
     // headerWrapper
     <View style={styles.headerWrapper}>
@@ -11,26 +28,3 @@ export default function SimpleHeader({ navigation }) {
     </View>
   );
 }
-
-// Styles
-const styles = StyleSheet.create({
-  headerWrapper: {
-    width: "100%",
-
-    height: 180,
-    top: 0,
-
-    // position: "absolute",
-    // top: -30,
-    // right: 0,
-    // left: 0,
-
-    // borderColor: "red",
-    // borderWidth: 1,
-  },
-
-  headerImage: {
-    width: "100%",
-    height: "100%",
-  },
-});

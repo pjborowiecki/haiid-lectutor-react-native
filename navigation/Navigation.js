@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
   COLOURS,
@@ -23,7 +23,7 @@ import HomeNavigation from "./HomeNavigation";
 import Modal from "../components/Modal";
 
 // Navigation component
-export default function Navigation() {
+export default function Navigation({ setShowRect }) {
   const Stack = createStackNavigator();
 
   const deletionModalText =
@@ -41,6 +41,11 @@ export default function Navigation() {
   const [navbarIconColour, setNavbarIconColour] = useState(COLOURS.homeIconBg);
   const [bgColour, setBgColour] = useState(COLOURS.white);
   const [showDeletionModal, setShowDeletionModal] = useState(false);
+  const [isFiltering, setIsFiltering] = useState(20);
+
+  useEffect(() => {
+    setShowRect(true);
+  },[])
 
   const onDeleteQuiz = () => {
     // showModal stores the quiz cause I can't be bothered
@@ -90,7 +95,7 @@ export default function Navigation() {
       .filter((quiz) => quiz.id === quizId)[0]
       .flashcards.map((fc) => {
         if (fc.id === flashcardId) {
-          fc.question = "What is backpropagation?";
+          fc.question = "What is Backpropagation?";
           fc.answer =
             "A widely used algorithm for training feedforward neural networks";
         }
@@ -208,7 +213,7 @@ export default function Navigation() {
     <Stack.Navigator
       initialRouteName="Homepage"
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
       }}
     >
       {/* Home Navigation */}
@@ -228,6 +233,7 @@ export default function Navigation() {
               setBgColour={setBgColour}
               setShowModal={setShowDeletionModal}
               setTabActive={setTabActive}
+              isFiltering={isFiltering}
             />
             {/* Bottom Navigation and SearchBar Wrapper */}
             <View style={styles.bottomNavWrapper}>
@@ -235,6 +241,8 @@ export default function Navigation() {
                 <Searchbar
                   filterQuizzes={filterQuizzes}
                   setRenderNavbar={setRenderNavbar}
+                  isFiltering={isFiltering}
+                  setIsFiltering={setIsFiltering}
                 />
               )}
               {renderNavbar && (

@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     marginBottom: 20,
+    marginTop: 10,
   },
 
   buttonGroup: {
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 14,
+    marginVertical: 14,
   },
 
   buttonText: {

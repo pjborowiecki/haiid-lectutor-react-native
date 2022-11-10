@@ -9,6 +9,8 @@ export default function Flashcard({
   revealAnswer,
   setRevealAnswer,
   setRevealedAnswerOnce,
+  isAltAnswer,
+  setIsAltAnswer,
   playingQuiz = false,
   quizId = null,
   onReroll = () => {},
@@ -16,14 +18,6 @@ export default function Flashcard({
   onNextAnswer = () => {},
   onPrevAnswer = () => {},
 }) {
-  const [isAltAnswer, setIsAltAnswer] = useState(null)
-
-  const flipCard = () => {
-    if (playingQuiz) {
-      setRevealAnswer(!revealAnswer);
-    }
-  };
-
   const showAnswer = () => {
     if (playingQuiz) {
       setRevealAnswer(true);
@@ -231,7 +225,7 @@ const styles = StyleSheet.create({
 
   answerTypeText: {
     fontFamily: "HammersmithOne",
-    fontSize: 10,
+    fontSize: 11,
     textAlign: "center",
   },
 
@@ -249,7 +243,7 @@ const styles = StyleSheet.create({
 
   answerText: {
     fontFamily: "HammersmithOne",
-    fontSize: 14,
+    fontSize: 13,
     textAlign: "center",
   },
 

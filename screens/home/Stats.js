@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
 
   bottomText: {
     fontFamily: "HammersmithOne",
-    fontSize: 16,
+    fontSize: 20,
     textAlign: "center",
     color: COLOURS.tertiaryText,
   },

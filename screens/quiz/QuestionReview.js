@@ -43,6 +43,7 @@ export default function QuestionReview({
         <View style={styles.modalOverlay}>
           <Modal
             modalText={modalText}
+            fontSize={20}
             onYes={onDeleteFlashcard}
             onNo={() => setShowModal(false)}
           />
@@ -108,7 +109,7 @@ export default function QuestionReview({
         </View>
 
         {/* Footer */}
-        <Footer />
+        <Footer marginBottom={20}/>
       </View>
     </SafeAreaView>
   );
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
 
     position: "absolute",
-    top: 140,
+    top: 60,
   },
 
   sectionTitle: {
